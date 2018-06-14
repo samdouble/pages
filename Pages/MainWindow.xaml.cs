@@ -16,11 +16,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace Pages
 {
     public partial class MainWindow : Window
     {
+        private float margeGauche = 5f;
+        private float margeDroite = 5f;
+        private float margeHaut = 64f;
+        private float margeBas = 64f;
+
+        private float espaceHEntreCases = 10f;
+        private float espaceVEntreCases = 10f;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,18 +37,55 @@ namespace Pages
             Document doc = new Document();
             try
             {
-                PdfWriter.GetInstance(doc, new FileStream(@"..\..\Images.pdf", FileMode.Create));
+                PdfWriter procEcriture = PdfWriter.GetInstance(doc, new FileStream(@"..\..\Images.pdf", FileMode.Create));
                 doc.Open();
 
-                // Image 001
-                iTextSharp.text.Image gif = iTextSharp.text.Image.GetInstance(@"..\..\images\image001.png");
-                gif.ScalePercent(16f);
-                gif.Border = iTextSharp.text.Rectangle.BOX;
-                gif.BorderColor = BaseColor.BLACK;
-                gif.BorderWidth = 8f;
-                gif.SetAbsolutePosition(32f, doc.PageSize.Height - 0.16f * gif.Height - 64f);
-                doc.Add(gif);
+                float hauteurCase = (doc.PageSize.Height - margeHaut - margeBas - 3 * espaceVEntreCases) / 4;
+                float x = 0;
+                float y = 0;
 
+                XmlDocument xml = new XmlDocument();
+                xml.Load(@"..\..\..\..\bd1\bd.xml");
+                foreach (XmlNode espace in xml.DocumentElement.ChildNodes)
+                {
+                    foreach (XmlNode casex in espace.ChildNodes)
+                    {
+                        foreach (XmlNode element in casex.ChildNodes)
+                        {
+                            Element item = null;
+                            if (element.Name == "image")
+                                item = new Image(element);
+                            else if (element.Name == "texte")
+                                item = new Texte(element);
+
+                            item.Redimensionner(hauteurCase);
+                            item.Decouper(procEcriture);
+
+                            if (element.Name == "image")
+                            {
+                                if (x + item.getLargeur() > doc.PageSize.Width - margeDroite - margeGauche)
+                                {
+                                    x = 0;
+                                    y += item.getHauteur() + espaceVEntreCases;
+                                }
+                            }
+                            
+                            item.Positionner(doc, x, y, margeHaut, margeGauche);
+
+                            if (element.Name == "image")
+                            {
+                                x += item.getLargeur() + espaceHEntreCases;
+                            }
+
+                            item.AjouterBordures();
+
+                            doc.Add(item.getImage());
+
+                            //doc.NewPage();
+                        }
+                    }
+                }
+                /*
                 doc.NewPage();
 
                 // Image 002
@@ -49,7 +95,7 @@ namespace Pages
                 gif2.BorderColor = BaseColor.BLACK;
                 gif2.BorderWidth = 8f;
                 gif2.SetAbsolutePosition(32f + 0.16f * gif.Width + 10f, doc.PageSize.Height - 0.16f * gif2.Height - 64f);
-                doc.Add(gif2);
+                doc.Add(gif2);*/
             }
             catch (Exception ex)
             {
