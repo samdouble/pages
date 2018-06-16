@@ -50,9 +50,9 @@ namespace Pages
                 {
                     foreach (XmlNode casex in espace.ChildNodes)
                     {
+                        Element item = null;
                         foreach (XmlNode element in casex.ChildNodes)
                         {
-                            Element item = null;
                             if (element.Name == "image")
                                 item = new Image(element);
                             else if (element.Name == "texte")
@@ -72,17 +72,13 @@ namespace Pages
                             
                             item.Positionner(doc, x, y, margeHaut, margeGauche);
 
-                            if (element.Name == "image")
-                            {
-                                x += item.getLargeur() + espaceHEntreCases;
-                            }
-
                             item.AjouterBordures();
 
                             doc.Add(item.getImage());
 
                             //doc.NewPage();
                         }
+                        x += item.getLargeur() + espaceHEntreCases;
                     }
                 }
                 /*
