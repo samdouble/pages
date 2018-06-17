@@ -1,10 +1,5 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
 
@@ -31,7 +26,7 @@ namespace Pages
 
         }
 
-        public virtual void Decouper(PdfWriter procEcriture)
+        public virtual void Decouper(PdfWriter procEcriture, float decoupageGauche, float offset)
         {
 
         }

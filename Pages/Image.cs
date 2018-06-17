@@ -22,9 +22,9 @@ namespace Pages
             this.image.ScalePercent(100 * pctScaling);
         }
 
-        public override void Decouper(PdfWriter procEcriture)
+        public override void Decouper(PdfWriter procEcriture, float decoupageGauche, float offset)
         {
-            this.image = Crop(this.image, procEcriture, 20, 0, this.image.ScaledWidth - 40, this.image.ScaledHeight);
+            this.image = Crop(this.image, procEcriture, decoupageGauche, 0, this.image.ScaledWidth - offset, this.image.ScaledHeight);
         }
 
         public override void AjouterBordures()
