@@ -9,6 +9,7 @@ namespace Pages
     {
         protected iTextSharp.text.Image image;
         protected float offsetHaut;
+        protected float offsetGauche;
 
         public Element()
         {
@@ -19,6 +20,7 @@ namespace Pages
         {
             this.image = iTextSharp.text.Image.GetInstance(@"..\..\..\..\bd1\" + element.Attributes["src"]?.InnerText);
             this.offsetHaut = element.Attributes["haut"] != null ? float.Parse(element.Attributes["haut"].InnerText) : 0f;
+            this.offsetGauche = element.Attributes["gauche"] != null ? float.Parse(element.Attributes["gauche"].InnerText) : 0f;
         }
 
         public virtual void Redimensionner(float hauteurCase)
@@ -34,6 +36,7 @@ namespace Pages
         public virtual void Positionner(Document doc, float x, float y, float margeHaut, float margeGauche)
         {
             Point position = new Point(margeGauche + x, doc.PageSize.Height - margeHaut - y - this.image.ScaledHeight);
+            position.X += this.offsetGauche;
             position.Y -= this.offsetHaut;
 
             this.image.SetAbsolutePosition((float) position.X, (float) position.Y);
