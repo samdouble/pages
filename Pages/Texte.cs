@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Globalization;
+using System.Xml;
 
 namespace Pages
 {
@@ -8,7 +9,7 @@ namespace Pages
 
         public Texte(XmlNode element) : base(element)
         {
-            this.scale = float.Parse(element.Attributes["scale"]?.InnerText);
+            this.scale = float.Parse(element.Attributes["scale"]?.InnerText, CultureInfo.InvariantCulture);
         }
 
         public override void Redimensionner(float hauteurCase)

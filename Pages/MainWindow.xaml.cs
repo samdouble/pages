@@ -26,16 +26,18 @@ namespace Pages
             Document doc = new Document();
             try
             {
-                PdfWriter procEcriture = PdfWriter.GetInstance(doc, new FileStream(@"..\..\Images.pdf", FileMode.Create));
+                PdfWriter procEcriture = PdfWriter.GetInstance(doc, new FileStream(@"..\..\..\..\bd1\Images.pdf", FileMode.Create));
                 doc.Open();
 
-                float hauteurCase = (doc.PageSize.Height - margeHaut - margeBas - 3 * espaceVEntreCases) / 4;
+                float nbRangeesParPage = 4;
+                float hauteurCase = (doc.PageSize.Height - margeHaut - margeBas - (nbRangeesParPage - 1) * espaceVEntreCases) / nbRangeesParPage;
                 float largeurRangee = doc.PageSize.Width - margeDroite - margeGauche;
 
                 List<Espace> espaces = LireXML(@"..\..\..\..\bd1\bd.xml", hauteurCase);
 
                 float x = 0;
                 float y = 0;
+                float noRangee = 0;
                 for (int i = 0; i < espaces.Count; )
                 {
                     int nbCasesDansLaRangee = 0;
@@ -84,6 +86,7 @@ namespace Pages
                         }
                     }
 
+                    // On ajoute le padding qu'il faut pour remplir la rangée le plus équitablement possible
                     List<Espace> espacesSurLaRangeeTries = espacesSurLaRangee.OrderBy(e => e.paddingMaxGauchePct + e.paddingMaxDroitePct).ToList();
                     while (decoupage < Math.Min(decoupageTotal, espacesSurLaRangee.Sum(e => (e.paddingMaxGauchePct + e.paddingMaxDroitePct) * e.getLargeur() / 100)))
                     {
@@ -103,9 +106,9 @@ namespace Pages
                         }
                     }
 
+                    // On procède au découpage et positionnement de l'image
                     foreach (Espace espace in espacesSurLaRangee)
                     {
-                        Console.WriteLine(espace.paddingGauche + " " + espace.paddingDroite);
                         espace.Decouper(procEcriture);
 
                         espace.Positionner(doc, x, y, margeHaut, margeGauche);
@@ -117,12 +120,20 @@ namespace Pages
                             doc.Add(element.getImage());
 
                         x += espace.getLargeur() + espaceHEntreCases;
-
-                        //doc.NewPage();
                     }
                     x = 0;
-                    y += espaces[i].getHauteur() + espaceVEntreCases;
                     i += nbCasesDansLaRangee;
+                    ++noRangee;
+                    
+                    if (noRangee % nbRangeesParPage == 0)
+                    {
+                        doc.NewPage();
+                        y = 0;
+                    }
+                    else
+                    {
+                        y += espaces[i].getHauteur() + espaceVEntreCases;
+                    }
                 }
             }
             catch (Exception ex)
