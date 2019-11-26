@@ -31,7 +31,7 @@ namespace Pages
         {
             this.image.Border = Rectangle.BOX;
             this.image.BorderColor = BaseColor.BLACK;
-            this.image.BorderWidth = 1f;
+            this.image.BorderWidth = 2f;
         }
 
         private static iTextSharp.text.Image Crop(iTextSharp.text.Image image, PdfWriter writer, float x, float y, float width, float height)
