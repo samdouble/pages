@@ -11,14 +11,16 @@ namespace Pages
 {
     public partial class MainWindow : Window
     {
-        private float margeGauche = 5f;
-        private float margeDroite = 5f;
+        private float margeGauche = 25f;
+        private float margeDroite = 25f;
         private float margeHaut = 64f;
         private float margeBas = 64f;
 
         private float espaceHEntreCases = 10f;
         private float espaceVEntreCases = 10f;
 
+        private int nbRangeesParPage = 3;
+   
         public MainWindow()
         {
             InitializeComponent();
@@ -26,14 +28,13 @@ namespace Pages
             Document doc = new Document();
             try
             {
-                PdfWriter procEcriture = PdfWriter.GetInstance(doc, new FileStream(@"..\..\..\..\bd1\Images.pdf", FileMode.Create));
+                PdfWriter procEcriture = PdfWriter.GetInstance(doc, new FileStream(@"..\..\..\..\bd1\BD1\Images.pdf", FileMode.Create));
                 doc.Open();
 
-                float nbRangeesParPage = 4;
                 float hauteurCase = (doc.PageSize.Height - margeHaut - margeBas - (nbRangeesParPage - 1) * espaceVEntreCases) / nbRangeesParPage;
                 float largeurRangee = doc.PageSize.Width - margeDroite - margeGauche;
 
-                List<Espace> espaces = LireXML(@"..\..\..\..\bd1\bd.xml", hauteurCase);
+                List<Espace> espaces = LireXML(@"..\..\..\..\bd1\BD1\bd.xml", hauteurCase);
 
                 float x = 0;
                 float y = 0;
@@ -117,7 +118,29 @@ namespace Pages
 
                         List<Element> els = espace.getElements();
                         foreach (Element element in els)
+                        {
                             doc.Add(element.getImage());
+
+                            PdfContentByte cb = procEcriture.DirectContent;
+                            cb.RoundRectangle(200f, 500f, 200f, 200f, 5f);
+                            cb.SetColorFill(BaseColor.WHITE);
+                            cb.SetColorStroke(BaseColor.BLACK);
+                            cb.SetLineWidth(2f);
+                            cb.FillStroke();
+
+                            Paragraph paragraph = new Paragraph(
+                                    "This could be a very long sentence that needs to be wrapped.",
+                                    FontFactory.GetFont("dax-black")
+                                );
+                            ColumnText ct = new ColumnText(procEcriture.DirectContent);
+                            cb.SetColorFill(BaseColor.BLACK);
+                            ct.SetSimpleColumn(new Rectangle(206f, 700f, 400f, 600f));
+                            ct.AddElement(paragraph);
+                            ct.Go();
+                            Console.WriteLine(ct.LastX);
+                            Console.WriteLine(ct.YLine);
+                        }
+                            
 
                         x += espace.getLargeur() + espaceHEntreCases;
                     }
@@ -130,7 +153,7 @@ namespace Pages
                         doc.NewPage();
                         y = 0;
                     }
-                    else
+                    else if (i < espaces.Count)
                     {
                         y += espaces[i].getHauteur() + espaceVEntreCases;
                     }
@@ -144,6 +167,7 @@ namespace Pages
             {
                 doc.Close();
             }
+            System.Diagnostics.Process.Start(@"..\..\..\..\bd1\BD1\Images.pdf");
         }
 
         private List<Espace> LireXML(string fichierXML, float hauteurCase)
