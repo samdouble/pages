@@ -16,9 +16,9 @@ namespace Pages
             
         }
 
-        public override void Redimensionner(float hauteurCase)
+        public override void SetHeight(float height)
         {
-            float pctScaling = hauteurCase / this.image.Height;
+            float pctScaling = height / this.image.Height;
             this.image.ScalePercent(100 * pctScaling);
         }
 

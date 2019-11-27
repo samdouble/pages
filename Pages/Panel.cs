@@ -5,16 +5,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Pages
 {
-    class Case
+    class Panel
     {
         List<Element> elements = new List<Element>();
 
-        public Case(List<Element> elements)
+        public Panel(XmlNode xmlPanel)
         {
-            this.elements = elements;
+            foreach (XmlNode xmlElement in xmlPanel.ChildNodes)
+            {
+                Element element = null;
+                if (xmlElement.Name == "image")
+                    element = new Image(xmlElement);
+                else if (xmlElement.Name == "texte")
+                    element = new Texte(xmlElement);
+
+                this.elements.Add(element);
+            }
+        }
+
+        public void SetHeight(float height)
+        {
+            this.elements.ForEach(element => element.SetHeight(height));
         }
 
         // REQUIS: elements[0] doit être l'image principale

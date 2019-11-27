@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace Pages
 {
-    public class Element
+    public abstract class Element
     {
         protected iTextSharp.text.Image image;
         protected float offsetHaut;
@@ -23,10 +23,7 @@ namespace Pages
             this.offsetGauche = element.Attributes["gauche"] != null ? float.Parse(element.Attributes["gauche"].InnerText) : 0f;
         }
 
-        public virtual void Redimensionner(float hauteurCase)
-        {
-
-        }
+        public abstract void SetHeight(float height);
 
         public virtual void Decouper(PdfWriter procEcriture, float decoupageGauche, float offset)
         {

@@ -34,23 +34,26 @@ namespace Pages
                 float hauteurCase = (doc.PageSize.Height - margeHaut - margeBas - (nbRangeesParPage - 1) * espaceVEntreCases) / nbRangeesParPage;
                 float largeurRangee = doc.PageSize.Width - margeDroite - margeGauche;
 
-                List<Espace> espaces = LireXML(@"..\..\..\..\bd1\BD1\bd.xml", hauteurCase);
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.Load(@"..\..\..\..\bd1\BD1\bd.xml");
+                Comic comic = new Comic(xmlDocument.DocumentElement);
 
                 float x = 0;
                 float y = 0;
                 float noRangee = 0;
-                for (int i = 0; i < espaces.Count; )
+                for (int i = 0; i < comic.GetSlotsCount(); )
                 {
                     int nbCasesDansLaRangee = 0;
 
                     // On trouve le nombre de cases qu'on peut fitter dans la rangée
                     float largeurMin = 0;
                     float largeurMax = 0;
-                    for ( ; i + nbCasesDansLaRangee < espaces.Count && largeurMin < largeurRangee; ++nbCasesDansLaRangee)
+                    for ( ; i + nbCasesDansLaRangee < comic.GetSlotsCount() && largeurMin < largeurRangee; ++nbCasesDansLaRangee)
                     {
-                        Espace espace = espaces[i + nbCasesDansLaRangee];
-                        float largeurMinCase = espace.getLargeur() * (1 - ((espace.paddingMaxGauchePct + espace.paddingMaxDroitePct) / 100));
-                        float largeurMaxCase = espace.getLargeur();
+                        Slot slot = comic.GetNthSlot(i + nbCasesDansLaRangee);
+                        slot.SetHeight(hauteurCase);
+                        float largeurMinCase = slot.getLargeur() * (1 - ((slot.paddingMaxGauchePct + slot.paddingMaxDroitePct) / 100));
+                        float largeurMaxCase = slot.getLargeur();
                         if (largeurMin + largeurMinCase + (nbCasesDansLaRangee >= 1 ? espaceHEntreCases : 0) > largeurRangee)
                             break;
                         largeurMin += largeurMinCase + (nbCasesDansLaRangee >= 1 ? espaceHEntreCases : 0);
@@ -63,12 +66,12 @@ namespace Pages
                     float decoupageTotal = largeurRangee - largeurMin;
                     float decoupageAlloueParCase = decoupageTotal / nbCasesDansLaRangee;
 
-                    List<Espace> espacesSurLaRangee = new List<Espace>();
+                    List<Slot> espacesSurLaRangee = new List<Slot>();
                     for (int j = 0; j < nbCasesDansLaRangee; ++j)
-                        espacesSurLaRangee.Add(espaces[i + j]);
+                        espacesSurLaRangee.Add(comic.GetNthSlot(i + j));
 
                     // On essaie d'égaliser les côtés de chaque bord des images
-                    foreach (Espace espace in espacesSurLaRangee)
+                    foreach (Slot espace in espacesSurLaRangee)
                     {
                         float decoupageGauche, decoupageDroite;
                         float decoupagePossibleGauche = espace.getLargeur() * espace.paddingMaxGauchePct / 100;
@@ -88,10 +91,10 @@ namespace Pages
                     }
 
                     // On ajoute le padding qu'il faut pour remplir la rangée le plus équitablement possible
-                    List<Espace> espacesSurLaRangeeTries = espacesSurLaRangee.OrderBy(e => e.paddingMaxGauchePct + e.paddingMaxDroitePct).ToList();
+                    List<Slot> espacesSurLaRangeeTries = espacesSurLaRangee.OrderBy(e => e.paddingMaxGauchePct + e.paddingMaxDroitePct).ToList();
                     while (decoupage < Math.Min(decoupageTotal, espacesSurLaRangee.Sum(e => (e.paddingMaxGauchePct + e.paddingMaxDroitePct) * e.getLargeur() / 100)))
                     {
-                        foreach (Espace espace in espacesSurLaRangeeTries)
+                        foreach (Slot espace in espacesSurLaRangeeTries)
                         {
                             if (decoupage < decoupageTotal && espace.paddingGauche < (espace.paddingMaxGauchePct * espace.getLargeur() / 100))
                             {
@@ -108,7 +111,7 @@ namespace Pages
                     }
 
                     // On procède au découpage et positionnement de l'image
-                    foreach (Espace espace in espacesSurLaRangee)
+                    foreach (Slot espace in espacesSurLaRangee)
                     {
                         espace.Decouper(procEcriture);
 
@@ -153,9 +156,9 @@ namespace Pages
                         doc.NewPage();
                         y = 0;
                     }
-                    else if (i < espaces.Count)
+                    else if (i < comic.GetSlotsCount())
                     {
-                        y += espaces[i].getHauteur() + espaceVEntreCases;
+                        y += comic.GetNthSlot(i).getHauteur() + espaceVEntreCases;
                     }
                 }
             }
@@ -168,40 +171,6 @@ namespace Pages
                 doc.Close();
             }
             System.Diagnostics.Process.Start(@"..\..\..\..\bd1\BD1\Images.pdf");
-        }
-
-        private List<Espace> LireXML(string fichierXML, float hauteurCase)
-        {
-            XmlDocument xml = new XmlDocument();
-            xml.Load(fichierXML);
-            // Console.WriteLine(xml.ChildNodes[1].ChildNodes.Count);
-
-            List<Espace> espaces = new List<Espace>();
-            foreach (XmlNode espaceXML in xml.DocumentElement.ChildNodes)
-            {
-                List<Case> cases = new List<Case>();
-                foreach (XmlNode caseXML in espaceXML.ChildNodes)
-                {
-                    List<Element> elements = new List<Element>();
-                    foreach (XmlNode elementXML in caseXML.ChildNodes)
-                    {
-                        Element element = null;
-                        if (elementXML.Name == "image")
-                            element = new Image(elementXML);
-                        else if (elementXML.Name == "texte")
-                            element = new Texte(elementXML);
-
-                        element.Redimensionner(hauteurCase);
-                        elements.Add(element);
-                    }
-                    cases.Add(new Case(elements));
-                }
-                Espace espace = new Espace(cases);
-                espace.paddingMaxGauchePct = espaceXML.Attributes["decoupageMaxGauche"] != null ? float.Parse(espaceXML.Attributes["decoupageMaxGauche"].InnerText) : 0f;
-                espace.paddingMaxDroitePct = espaceXML.Attributes["decoupageMaxDroite"] != null ? float.Parse(espaceXML.Attributes["decoupageMaxDroite"].InnerText) : 0f;
-                espaces.Add(espace);
-            }
-            return espaces;
         }
     }
 }
