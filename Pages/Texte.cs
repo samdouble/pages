@@ -12,7 +12,7 @@ namespace Pages
             this.scale = float.Parse(element.Attributes["scale"]?.InnerText, CultureInfo.InvariantCulture);
         }
 
-        public override void Redimensionner(float hauteurCase)
+        public override void SetHeight(float height)
         {
             this.image.ScalePercent(this.scale);
         }
