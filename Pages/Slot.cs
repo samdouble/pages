@@ -19,11 +19,8 @@ namespace Pages
 
         public Slot(XmlNode xmlSlot)
         {
-            foreach (XmlNode xmlPanel in xmlSlot.ChildNodes)
-            {
-                Panel panel = new Panel(xmlPanel);
-                this.panels.Add(panel);
-            }
+            List<XmlNode> xmlPanels = new List<XmlNode>(xmlSlot.ChildNodes.Cast<XmlNode>());
+            this.panels.AddRange(xmlPanels.Select(xmlPanel => new Panel(xmlPanel)));
             this.paddingMaxGauchePct = xmlSlot.Attributes["decoupageMaxGauche"] != null ? float.Parse(xmlSlot.Attributes["decoupageMaxGauche"].InnerText) : 0f;
             this.paddingMaxDroitePct = xmlSlot.Attributes["decoupageMaxDroite"] != null ? float.Parse(xmlSlot.Attributes["decoupageMaxDroite"].InnerText) : 0f;
             this.paddingGauche = 0f;
@@ -35,12 +32,22 @@ namespace Pages
             this.panels.ForEach(panel => panel.SetHeight(height));
         }
 
-        // On prend cases[0] puisque toutes les cases d'un même espace
-        // doivent avoir la même largeur
-        public float getLargeur()
+        public float GetWidth()
         {
             return panels[0].getLargeur();
         }
+
+        public float GetMinWidth()
+        {
+            float minPctAvailable = (1 - ((this.paddingMaxGauchePct + this.paddingMaxDroitePct) / 100));
+            return minPctAvailable * this.GetWidth();
+        }
+
+        public float GetMaxWidth()
+        {
+            return this.GetWidth();
+        }
+
         public float getHauteur()
         {
             return panels[0].getHauteur();
@@ -48,8 +55,8 @@ namespace Pages
 
         public void Decouper(PdfWriter procEcriture)
         {
-            float decoupageGauche = (this.paddingMaxGauchePct * this.getLargeur() / 100) - this.paddingGauche;
-            float decoupageDroite = (this.paddingMaxDroitePct * this.getLargeur() / 100) - this.paddingDroite;
+            float decoupageGauche = (this.paddingMaxGauchePct * this.GetWidth() / 100) - this.paddingGauche;
+            float decoupageDroite = (this.paddingMaxDroitePct * this.GetWidth() / 100) - this.paddingDroite;
             float offset = decoupageGauche + decoupageDroite;
             foreach (Panel casex in panels)
                 casex.Decouper(procEcriture, decoupageGauche, offset);
@@ -67,12 +74,9 @@ namespace Pages
                 casex.AjouterBordures();
         }
 
-        public List<Element> getElements()
+        public void Render(Document doc)
         {
-            List<Element> elements = new List<Element>();
-            foreach (Panel casex in panels)
-                elements.AddRange(casex.getElements());
-            return elements;
+            this.panels.ForEach(panel => panel.Render(doc));
         }
     }
 }

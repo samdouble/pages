@@ -68,10 +68,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Elements\Description.cs" />
     <Compile Include="Panel.cs" />
     <Compile Include="Comic.cs" />
     <Compile Include="Slot.cs" />
-    <Compile Include="Texte.cs" />
+    <Compile Include="Elements\Texte.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,7 +81,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Element.cs" />
+    <Compile Include="Elements\Element.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

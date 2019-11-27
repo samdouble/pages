@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iTextSharp.text;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,11 +14,8 @@ namespace Pages
 
         public Comic(XmlNode xmlComic)
         {
-            foreach (XmlNode xmlSlot in xmlComic.ChildNodes)
-            {
-                Slot slot = new Slot(xmlSlot);
-                this.slots.Add(slot);
-            }
+            List<XmlNode> xmlSlots = new List<XmlNode>(xmlComic.ChildNodes.Cast<XmlNode>());
+            this.slots.AddRange(xmlSlots.Select(xmlSlot => new Slot(xmlSlot)));
         }
 
         public int GetSlotsCount()

@@ -18,7 +18,6 @@ namespace Pages
 
         public Element(XmlNode element)
         {
-            this.image = iTextSharp.text.Image.GetInstance(@"..\..\..\..\bd1\BD1\" + element.Attributes["src"]?.InnerText);
             this.offsetHaut = element.Attributes["haut"] != null ? float.Parse(element.Attributes["haut"].InnerText) : 0f;
             this.offsetGauche = element.Attributes["gauche"] != null ? float.Parse(element.Attributes["gauche"].InnerText) : 0f;
         }
@@ -47,16 +46,6 @@ namespace Pages
         public iTextSharp.text.Image getImage()
         {
             return this.image;
-        }
-
-        public float getLargeur()
-        {
-            return this.image.ScaledWidth;
-        }
-
-        public float getHauteur()
-        {
-            return this.image.ScaledHeight;
         }
     }
 }

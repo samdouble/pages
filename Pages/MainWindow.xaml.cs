@@ -43,6 +43,7 @@ namespace Pages
                 float noRangee = 0;
                 for (int i = 0; i < comic.GetSlotsCount(); )
                 {
+                    Console.WriteLine(i);
                     int nbCasesDansLaRangee = 0;
 
                     // On trouve le nombre de cases qu'on peut fitter dans la rangée
@@ -52,8 +53,8 @@ namespace Pages
                     {
                         Slot slot = comic.GetNthSlot(i + nbCasesDansLaRangee);
                         slot.SetHeight(hauteurCase);
-                        float largeurMinCase = slot.getLargeur() * (1 - ((slot.paddingMaxGauchePct + slot.paddingMaxDroitePct) / 100));
-                        float largeurMaxCase = slot.getLargeur();
+                        float largeurMinCase = slot.GetMinWidth();
+                        float largeurMaxCase = slot.GetMaxWidth();
                         if (largeurMin + largeurMinCase + (nbCasesDansLaRangee >= 1 ? espaceHEntreCases : 0) > largeurRangee)
                             break;
                         largeurMin += largeurMinCase + (nbCasesDansLaRangee >= 1 ? espaceHEntreCases : 0);
@@ -74,8 +75,8 @@ namespace Pages
                     foreach (Slot espace in espacesSurLaRangee)
                     {
                         float decoupageGauche, decoupageDroite;
-                        float decoupagePossibleGauche = espace.getLargeur() * espace.paddingMaxGauchePct / 100;
-                        float decoupagePossibleDroite = espace.getLargeur() * espace.paddingMaxDroitePct / 100;
+                        float decoupagePossibleGauche = espace.GetWidth() * espace.paddingMaxGauchePct / 100;
+                        float decoupagePossibleDroite = espace.GetWidth() * espace.paddingMaxDroitePct / 100;
 
                         if (decoupagePossibleGauche + decoupagePossibleDroite <= decoupageAlloueParCase)
                         {
@@ -92,17 +93,17 @@ namespace Pages
 
                     // On ajoute le padding qu'il faut pour remplir la rangée le plus équitablement possible
                     List<Slot> espacesSurLaRangeeTries = espacesSurLaRangee.OrderBy(e => e.paddingMaxGauchePct + e.paddingMaxDroitePct).ToList();
-                    while (decoupage < Math.Min(decoupageTotal, espacesSurLaRangee.Sum(e => (e.paddingMaxGauchePct + e.paddingMaxDroitePct) * e.getLargeur() / 100)))
+                    while (decoupage < Math.Min(decoupageTotal, espacesSurLaRangee.Sum(e => (e.paddingMaxGauchePct + e.paddingMaxDroitePct) * e.GetWidth() / 100)))
                     {
                         foreach (Slot espace in espacesSurLaRangeeTries)
                         {
-                            if (decoupage < decoupageTotal && espace.paddingGauche < (espace.paddingMaxGauchePct * espace.getLargeur() / 100))
+                            if (decoupage < decoupageTotal && espace.paddingGauche < (espace.paddingMaxGauchePct * espace.GetWidth() / 100))
                             {
                                 espace.paddingGauche++;
                                 decoupage++;
                             }
 
-                            if (decoupage < decoupageTotal && espace.paddingDroite < (espace.paddingMaxDroitePct * espace.getLargeur() / 100))
+                            if (decoupage < decoupageTotal && espace.paddingDroite < (espace.paddingMaxDroitePct * espace.GetWidth() / 100))
                             {
                                 espace.paddingDroite++;
                                 decoupage++;
@@ -119,10 +120,11 @@ namespace Pages
 
                         espace.AjouterBordures();
 
-                        List<Element> els = espace.getElements();
-                        foreach (Element element in els)
+                        espace.Render(doc);
+
+                        /*foreach (Element element in els)
                         {
-                            doc.Add(element.getImage());
+                            
 
                             PdfContentByte cb = procEcriture.DirectContent;
                             cb.RoundRectangle(200f, 500f, 200f, 200f, 5f);
@@ -142,10 +144,9 @@ namespace Pages
                             ct.Go();
                             Console.WriteLine(ct.LastX);
                             Console.WriteLine(ct.YLine);
-                        }
-                            
+                        }*/
 
-                        x += espace.getLargeur() + espaceHEntreCases;
+                        x += espace.GetWidth() + espaceHEntreCases;
                     }
                     x = 0;
                     i += nbCasesDansLaRangee;
