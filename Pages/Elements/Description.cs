@@ -12,33 +12,66 @@ namespace Pages
     class Description : Element
     {
         private string text;
+        private float horizontalPadding = 8f;
+        private float verticalPadding = 4f;
 
         public Description(XmlNode element) : base(element)
         {
             this.text = element.Attributes["text"]?.InnerText;
         }
 
-        public override void SetHeight(float height)
+        public void AjouterBordures()
         {
-            float pctScaling = height / this.image.Height;
-            this.image.ScalePercent(100 * pctScaling);
-        }
-
-        public override void AjouterBordures()
-        {
-            this.image.Border = Rectangle.BOX;
+            /*this.image.Border = Rectangle.BOX;
             this.image.BorderColor = BaseColor.BLACK;
-            this.image.BorderWidth = 2f;
+            this.image.BorderWidth = 2f;*/
         }
 
-        private static iTextSharp.text.Image Crop(iTextSharp.text.Image image, PdfWriter writer, float x, float y, float width, float height)
+        private Tuple<float, float> GetRenderedSize(PdfWriter writer, float width)
         {
+            float top;
+            float bottom;
+            Paragraph paragraph = new Paragraph(this.text, FontFactory.GetFont("dax-black"));
+            ColumnText ct = new ColumnText(writer.DirectContent);
+            ct.SetSimpleColumn(new Rectangle(0, 0, width, 1000f));
+            ct.AddElement(paragraph);
+            top = ct.YLine;
+            ct.Go();
+            bottom = ct.YLine;
+            return new Tuple<float, float>(ct.LastX, top - bottom);
+        }
+
+        // IRenderable
+        public override void Render(Document doc, PdfWriter writer)
+        {
+            Tuple<float, float> textSize = this.GetRenderedSize(writer, 500f); // TODO 500f should be panel width
+
             PdfContentByte cb = writer.DirectContent;
-            PdfTemplate t = cb.CreateTemplate(width, height);
-            float origWidth = image.ScaledWidth;
-            float origHeight = image.ScaledHeight;
-            t.AddImage(image, origWidth, 0, 0, origHeight, -x, -y);
-            return iTextSharp.text.Image.GetInstance(t);
+            cb.Rectangle(
+                this.position.X,
+                this.position.Y - textSize.Item2 - this.verticalPadding,
+                textSize.Item1 + 2 * this.horizontalPadding,
+                textSize.Item2 + this.verticalPadding
+            );
+            cb.SetColorFill(BaseColor.WHITE);
+            cb.SetColorStroke(BaseColor.BLACK);
+            cb.SetLineWidth(2f);
+            cb.FillStroke();
+
+            Paragraph paragraph = new Paragraph(this.text, FontFactory.GetFont("dax-black"));
+            ColumnText ct = new ColumnText(writer.DirectContent);
+            cb.SetColorFill(BaseColor.BLACK);
+            Console.WriteLine(textSize.Item1);
+            ct.SetSimpleColumn(
+                new Rectangle(
+                    (float) this.position.X + this.horizontalPadding,
+                    (float) this.position.Y + this.verticalPadding,
+                    (float) this.position.X + textSize.Item1 + 2 * this.horizontalPadding,
+                    (float) this.position.Y - textSize.Item2 + this.verticalPadding
+                )
+            );
+            ct.AddElement(paragraph);
+            ct.Go();
         }
     }
 }

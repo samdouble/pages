@@ -45,7 +45,7 @@ namespace Pages
 
         public float GetMaxWidth()
         {
-            return this.GetWidth();
+            return panels[0].getLargeur();
         }
 
         public float getHauteur()

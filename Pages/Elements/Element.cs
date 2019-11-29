@@ -1,28 +1,19 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using System;
 using System.Windows;
 using System.Xml;
 
 namespace Pages
 {
-    public abstract class Element
+    public abstract class Element : IRenderable
     {
-        protected iTextSharp.text.Image image;
-        protected float offsetHaut;
-        protected float offsetGauche;
-
-        public Element()
-        {
-
-        }
+        protected Point position;
 
         public Element(XmlNode element)
         {
-            this.offsetHaut = element.Attributes["haut"] != null ? float.Parse(element.Attributes["haut"].InnerText) : 0f;
-            this.offsetGauche = element.Attributes["gauche"] != null ? float.Parse(element.Attributes["gauche"].InnerText) : 0f;
+            
         }
-
-        public abstract void SetHeight(float height);
 
         public virtual void Decouper(PdfWriter procEcriture, float decoupageGauche, float offset)
         {
@@ -31,21 +22,10 @@ namespace Pages
 
         public virtual void Positionner(Document doc, float x, float y, float margeHaut, float margeGauche)
         {
-            Point position = new Point(margeGauche + x, doc.PageSize.Height - margeHaut - y - this.image.ScaledHeight);
-            position.X += this.offsetGauche;
-            position.Y -= this.offsetHaut;
-
-            this.image.SetAbsolutePosition((float) position.X, (float) position.Y);
+            this.position = new Point(margeGauche + x, doc.PageSize.Height - margeHaut - y);
         }
 
-        public virtual void AjouterBordures()
-        {
-
-        }
-
-        public iTextSharp.text.Image getImage()
-        {
-            return this.image;
-        }
+        // IRenderable
+        public abstract void Render(Document doc, PdfWriter writer);
     }
 }

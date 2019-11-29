@@ -50,7 +50,6 @@ namespace Pages
             float noRangee = 0;
             for (int i = 0; i < this.GetSlotsCount();)
             {
-                Console.WriteLine(i);
                 int nbCasesDansLaRangee = 0;
 
                 // On trouve le nombre de cases qu'on peut fitter dans la rangée
@@ -131,9 +130,7 @@ namespace Pages
 
                     /*foreach (Element element in els)
                     {
-
-
-                        PdfContentByte cb = procEcriture.DirectContent;
+                        PdfContentByte cb = writer.DirectContent;
                         cb.RoundRectangle(200f, 500f, 200f, 200f, 5f);
                         cb.SetColorFill(BaseColor.WHITE);
                         cb.SetColorStroke(BaseColor.BLACK);

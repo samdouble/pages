@@ -73,7 +73,6 @@
     <Compile Include="Panel.cs" />
     <Compile Include="Comic.cs" />
     <Compile Include="Slot.cs" />
-    <Compile Include="Elements\Texte.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

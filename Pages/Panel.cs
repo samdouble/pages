@@ -27,8 +27,6 @@ namespace Pages
                 Element element = null;
                 if (xmlElement.Name == "description")
                     element = new Description(xmlElement);
-                else if (xmlElement.Name == "texte")
-                    element = new Texte(xmlElement);
 
                 this.elements.Add(element);
             }
@@ -37,11 +35,8 @@ namespace Pages
         public void SetHeight(float height)
         {
             this.image.SetHeight(height);
-            this.elements.ForEach(element => element.SetHeight(height));
         }
 
-        // REQUIS: elements[0] doit être l'image principale
-        // (celle qui dicte ultimement la grosseur de l'espace)
         public float getLargeur()
         {
             return this.image.getLargeur();
@@ -74,7 +69,7 @@ namespace Pages
         public void Render(Document doc, PdfWriter writer)
         {
             this.image.Render(doc, writer);
-            this.elements.ForEach(element => doc.Add(element.getImage()));
+            this.elements.ForEach(element => element.Render(doc, writer));
         }
     }
 }
