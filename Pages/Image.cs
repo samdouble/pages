@@ -19,11 +19,6 @@ namespace Pages
             this.image = iTextSharp.text.Image.GetInstance(src);
         }
 
-        public iTextSharp.text.Image GetImage()
-        {
-            return this.image;
-        }
-
         public void SetHeight(float height)
         {
             float pctScaling = height / this.image.Height;
@@ -44,6 +39,7 @@ namespace Pages
         {
             this.image = Crop(this.image, procEcriture, decoupageGauche, 0, this.image.ScaledWidth - offset, this.image.ScaledHeight);
         }
+
         public void Positionner(Document doc, float x, float y, float margeHaut, float margeGauche)
         {
             Point position = new Point(margeGauche + x, doc.PageSize.Height - margeHaut - y - this.image.ScaledHeight);
@@ -65,6 +61,12 @@ namespace Pages
             float origHeight = image.ScaledHeight;
             t.AddImage(image, origWidth, 0, 0, origHeight, -x, -y);
             return iTextSharp.text.Image.GetInstance(t);
+        }
+
+        // IRenderable
+        public void Render(Document doc, PdfWriter writer)
+        {
+            doc.Add(this.image);
         }
     }
 }
