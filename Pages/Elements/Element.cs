@@ -6,9 +6,10 @@ using System.Xml;
 
 namespace Pages
 {
-    public abstract class Element : IRenderable
+    public abstract class Element : IPositionable, IRenderable
     {
-        protected Point position;
+        protected float x;
+        protected float y;
 
         public Element(XmlNode element)
         {
@@ -20,9 +21,11 @@ namespace Pages
 
         }
 
-        public virtual void Positionner(Document doc, float x, float y, float margeHaut, float margeGauche)
+        // IPositionable
+        public void SetPosition(float x, float y)
         {
-            this.position = new Point(margeGauche + x, doc.PageSize.Height - margeHaut - y);
+            this.x = x;
+            this.y = y;
         }
 
         // IRenderable

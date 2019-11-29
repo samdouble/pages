@@ -48,8 +48,8 @@ namespace Pages
 
             PdfContentByte cb = writer.DirectContent;
             cb.Rectangle(
-                this.position.X,
-                this.position.Y - textSize.Item2 - this.verticalPadding,
+                this.x,
+                this.y - textSize.Item2 - this.verticalPadding,
                 textSize.Item1 + 2 * this.horizontalPadding,
                 textSize.Item2 + this.verticalPadding
             );
@@ -61,13 +61,12 @@ namespace Pages
             Paragraph paragraph = new Paragraph(this.text, FontFactory.GetFont("dax-black"));
             ColumnText ct = new ColumnText(writer.DirectContent);
             cb.SetColorFill(BaseColor.BLACK);
-            Console.WriteLine(textSize.Item1);
             ct.SetSimpleColumn(
                 new Rectangle(
-                    (float) this.position.X + this.horizontalPadding,
-                    (float) this.position.Y + this.verticalPadding,
-                    (float) this.position.X + textSize.Item1 + 2 * this.horizontalPadding,
-                    (float) this.position.Y - textSize.Item2 + this.verticalPadding
+                    this.x + this.horizontalPadding,
+                    this.y + this.verticalPadding,
+                    this.x + textSize.Item1 + 2 * this.horizontalPadding,
+                    this.y - textSize.Item2 + this.verticalPadding
                 )
             );
             ct.AddElement(paragraph);

@@ -122,7 +122,7 @@ namespace Pages
                 {
                     espace.Decouper(writer);
 
-                    espace.Positionner(doc, x, y, this.topMargin, this.leftMargin);
+                    espace.SetPosition(this.leftMargin + x, doc.PageSize.Height - this.topMargin - y);
 
                     espace.AjouterBordures();
 

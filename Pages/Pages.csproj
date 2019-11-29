@@ -69,6 +69,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Elements\Description.cs" />
+    <Compile Include="IPositionable.cs" />
     <Compile Include="IRenderable.cs" />
     <Compile Include="Panel.cs" />
     <Compile Include="Comic.cs" />
