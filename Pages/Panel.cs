@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace Pages
 {
-    class Panel : IRenderable
+    class Panel : IPositionable, IRenderable
     {
         Image image;
         List<Element> elements = new List<Element>();
@@ -53,16 +53,16 @@ namespace Pages
                 element.Decouper(procEcriture, decoupageGauche, offset);
         }
 
-        public void Positionner(Document doc, float x, float y, float margeHaut, float margeGauche)
-        {
-            this.image.Positionner(doc, x, y, margeHaut, margeGauche);
-            foreach (Element element in elements)
-                element.Positionner(doc, x, y, margeHaut, margeGauche);
-        }
-
         public void AjouterBordures()
         {
             this.image.AjouterBordures();
+        }
+
+        // IPositionable
+        public void SetPosition(float x, float y)
+        {
+            this.image.SetPosition(x, y);
+            this.elements.ForEach(element => element.SetPosition(x, y));
         }
 
         // IRenderable

@@ -10,7 +10,7 @@ using System.Xml;
 
 namespace Pages
 {
-    public class Image
+    public class Image : IPositionable, IRenderable
     {
         private iTextSharp.text.Image image;
 
@@ -40,12 +40,6 @@ namespace Pages
             this.image = Crop(this.image, procEcriture, decoupageGauche, 0, this.image.ScaledWidth - offset, this.image.ScaledHeight);
         }
 
-        public void Positionner(Document doc, float x, float y, float margeHaut, float margeGauche)
-        {
-            Point position = new Point(margeGauche + x, doc.PageSize.Height - margeHaut - y - this.image.ScaledHeight);
-            this.image.SetAbsolutePosition((float) position.X, (float) position.Y);
-        }
-
         public void AjouterBordures()
         {
             this.image.Border = Rectangle.BOX;
@@ -61,6 +55,12 @@ namespace Pages
             float origHeight = image.ScaledHeight;
             t.AddImage(image, origWidth, 0, 0, origHeight, -x, -y);
             return iTextSharp.text.Image.GetInstance(t);
+        }
+
+        // IPositionable
+        public void SetPosition(float x, float y)
+        {
+            this.image.SetAbsolutePosition(x, y - this.image.ScaledHeight);
         }
 
         // IRenderable

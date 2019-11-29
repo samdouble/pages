@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace Pages
 {
-    class Slot : IRenderable
+    class Slot : IPositionable, IRenderable
     {
         private List<Panel> panels = new List<Panel>();
         public float paddingMaxGauchePct { get; set; }
@@ -62,16 +62,16 @@ namespace Pages
                 casex.Decouper(procEcriture, decoupageGauche, offset);
         }
 
-        public void Positionner(Document doc, float x, float y, float margeHaut, float margeGauche)
-        {
-            foreach (Panel casex in panels)
-                casex.Positionner(doc, x, y, margeHaut, margeGauche);
-        }
-
         public void AjouterBordures()
         {
-            foreach (Panel casex in panels)
-                casex.AjouterBordures();
+            foreach (Panel panel in panels)
+                panel.AjouterBordures();
+        }
+
+        // IPositionable
+        public void SetPosition(float x, float y)
+        {
+            this.panels.ForEach(panel => panel.SetPosition(x, y));
         }
 
         // IRenderable
