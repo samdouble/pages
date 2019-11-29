@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace Pages
 {
-    class Panel
+    class Panel : IRenderable
     {
         Image image;
         List<Element> elements = new List<Element>();
@@ -70,9 +70,10 @@ namespace Pages
             this.image.AjouterBordures();
         }
 
-        public void Render(Document doc)
+        // IRenderable
+        public void Render(Document doc, PdfWriter writer)
         {
-            doc.Add(this.image.GetImage());
+            this.image.Render(doc, writer);
             this.elements.ForEach(element => doc.Add(element.getImage()));
         }
     }

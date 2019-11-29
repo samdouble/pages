@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace Pages
 {
-    class Slot
+    class Slot : IRenderable
     {
         private List<Panel> panels = new List<Panel>();
         public float paddingMaxGauchePct { get; set; }
@@ -74,9 +74,10 @@ namespace Pages
                 casex.AjouterBordures();
         }
 
-        public void Render(Document doc)
+        // IRenderable
+        public void Render(Document doc, PdfWriter writer)
         {
-            this.panels.ForEach(panel => panel.Render(doc));
+            this.panels.ForEach(panel => panel.Render(doc, writer));
         }
     }
 }
