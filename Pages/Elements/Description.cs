@@ -20,13 +20,6 @@ namespace Pages
             this.text = element.Attributes["text"]?.InnerText;
         }
 
-        public void AjouterBordures()
-        {
-            /*this.image.Border = Rectangle.BOX;
-            this.image.BorderColor = BaseColor.BLACK;
-            this.image.BorderWidth = 2f;*/
-        }
-
         private Tuple<float, float> GetRenderedSize(PdfWriter writer, float width)
         {
             float top;

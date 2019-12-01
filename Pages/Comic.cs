@@ -124,8 +124,6 @@ namespace Pages
 
                     espace.SetPosition(this.leftMargin + x, doc.PageSize.Height - this.topMargin - y);
 
-                    espace.AjouterBordures();
-
                     espace.Render(doc, writer);
 
                     /*foreach (Element element in els)

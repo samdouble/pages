@@ -53,11 +53,6 @@ namespace Pages
                 element.Decouper(procEcriture, decoupageGauche, offset);
         }
 
-        public void AjouterBordures()
-        {
-            this.image.AjouterBordures();
-        }
-
         // IPositionable
         public void SetPosition(float x, float y)
         {

@@ -62,12 +62,6 @@ namespace Pages
                 casex.Decouper(procEcriture, decoupageGauche, offset);
         }
 
-        public void AjouterBordures()
-        {
-            foreach (Panel panel in panels)
-                panel.AjouterBordures();
-        }
-
         // IPositionable
         public void SetPosition(float x, float y)
         {

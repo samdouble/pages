@@ -40,7 +40,7 @@ namespace Pages
             this.image = Crop(this.image, procEcriture, decoupageGauche, 0, this.image.ScaledWidth - offset, this.image.ScaledHeight);
         }
 
-        public void AjouterBordures()
+        private void AddBorders()
         {
             this.image.Border = Rectangle.BOX;
             this.image.BorderColor = BaseColor.BLACK;
@@ -66,6 +66,7 @@ namespace Pages
         // IRenderable
         public void Render(Document doc, PdfWriter writer)
         {
+            this.AddBorders();
             doc.Add(this.image);
         }
     }
