@@ -12,8 +12,8 @@ namespace Pages
     class Description : Element
     {
         private string text;
-        private float horizontalPadding = 8f;
-        private float verticalPadding = 4f;
+        private float horizontalPadding = 5f;
+        private float verticalPadding = 3f;
 
         public Description(XmlNode element) : base(element)
         {
@@ -24,7 +24,8 @@ namespace Pages
         {
             float top;
             float bottom;
-            Paragraph paragraph = new Paragraph(this.text, FontFactory.GetFont("dax-black"));
+            Font font = FontFactory.GetFont("dax-black", 10);
+            Paragraph paragraph = new Paragraph(this.text, font);
             ColumnText ct = new ColumnText(writer.DirectContent);
             ct.SetSimpleColumn(new Rectangle(0, 0, width, 1000f));
             ct.AddElement(paragraph);
@@ -51,7 +52,8 @@ namespace Pages
             cb.SetLineWidth(2f);
             cb.FillStroke();
 
-            Paragraph paragraph = new Paragraph(this.text, FontFactory.GetFont("dax-black"));
+            Font font = FontFactory.GetFont("dax-black", 10);
+            Paragraph paragraph = new Paragraph(this.text, font);
             ColumnText ct = new ColumnText(writer.DirectContent);
             cb.SetColorFill(BaseColor.BLACK);
             ct.SetSimpleColumn(

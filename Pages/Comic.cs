@@ -46,8 +46,8 @@ namespace Pages
             float hauteurCase = (doc.PageSize.Height - this.topMargin - this.bottomMargin - (this.rowsPerPage - 1) * this.verticalPanelSpacing) / this.rowsPerPage;
             float largeurRangee = doc.PageSize.Width - this.rightMargin - this.leftMargin;
             float x = 0;
-            float y = 0;
-            float noRangee = 0;
+            float y = hauteurCase + this.verticalPanelSpacing;
+            float noRangee = 1;
             for (int i = 0; i < this.GetSlotsCount();)
             {
                 int nbCasesDansLaRangee = 0;
@@ -159,9 +159,9 @@ namespace Pages
                     doc.NewPage();
                     y = 0;
                 }
-                else if (i < this.GetSlotsCount())
+                else
                 {
-                    y += this.slots[i].getHauteur() + this.verticalPanelSpacing;
+                    y += hauteurCase + this.verticalPanelSpacing;
                 }
             }
         }
