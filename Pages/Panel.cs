@@ -1,5 +1,6 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Pages.Elements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,15 @@ namespace Pages
                 throw new Exception("A panel must have an image attribute");
 
             string imageSrc = xmlPanel.Attributes["image"].InnerText;
-            this.image = new Image(@"..\..\..\..\bd1\BD1\" + imageSrc);
+            this.image = new Image(@"..\..\..\..\BD\BD1\" + imageSrc);
 
             foreach (XmlNode xmlElement in xmlPanel.ChildNodes)
             {
                 Element element = null;
                 if (xmlElement.Name == "description")
                     element = new Description(xmlElement);
+                else if (xmlElement.Name == "text")
+                    element = new Text(xmlElement);
 
                 this.elements.Add(element);
             }
