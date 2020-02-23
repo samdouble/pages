@@ -3,6 +3,7 @@ using iTextSharp.text.pdf;
 using Pages.Elements;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Pages
     {
         Image image;
         List<Element> elements = new List<Element>();
+        PointF position;
 
         public Panel(XmlNode xmlPanel)
         {
@@ -29,7 +31,7 @@ namespace Pages
                 if (xmlElement.Name == "description")
                     element = new Description(xmlElement);
                 else if (xmlElement.Name == "text")
-                    element = new Text(xmlElement);
+                    element = new Text(xmlElement, this);
 
                 this.elements.Add(element);
             }
@@ -44,9 +46,15 @@ namespace Pages
         {
             return this.image.getLargeur();
         }
+
         public float getHauteur()
         {
             return this.image.getHauteur();
+        }
+
+        public PointF getPosition()
+        {
+            return this.position;
         }
 
         public void Decouper(PdfWriter procEcriture, float decoupageGauche, float offset)
@@ -59,6 +67,7 @@ namespace Pages
         // IPositionable
         public void SetPosition(float x, float y)
         {
+            this.position = new PointF(x, y);
             this.image.SetPosition(x, y);
             this.elements.ForEach(element => element.SetPosition(x, y));
         }
