@@ -29,7 +29,7 @@ namespace Pages
             {
                 Element element = null;
                 if (xmlElement.Name == "description")
-                    element = new Description(xmlElement);
+                    element = new Description(xmlElement, this);
                 else if (xmlElement.Name == "text")
                     element = new Text(xmlElement, this);
 
