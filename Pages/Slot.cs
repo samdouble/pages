@@ -9,8 +9,9 @@ using System.Xml;
 
 namespace Pages
 {
-    class Slot : IPositionable, IRenderable
+    class Slot : IRenderable
     {
+        private Comic parent;
         private List<Panel> panels = new List<Panel>();
         public float paddingMaxGauchePct { get; set; }
         public float paddingMaxDroitePct { get; set; }
@@ -18,8 +19,9 @@ namespace Pages
         public float paddingDroite { get; set; }
         public float height { get; set; }
 
-        public Slot(XmlNode xmlSlot)
+        public Slot(Comic parent, XmlNode xmlSlot)
         {
+            this.parent = parent;
             List<XmlNode> xmlPanels = new List<XmlNode>(xmlSlot.ChildNodes.Cast<XmlNode>());
             this.panels.AddRange(xmlPanels.Select(xmlPanel => new Panel(xmlPanel)));
             this.paddingMaxGauchePct = xmlSlot.Attributes["maxCropLeft"] != null ? float.Parse(xmlSlot.Attributes["maxCropLeft"].InnerText) : 0f;
@@ -57,7 +59,7 @@ namespace Pages
             return this.height;
         }
 
-        public void Decouper(PdfWriter procEcriture)
+        public void Crop(PdfWriter procEcriture)
         {
             int nbPanelsInSlot = this.panels.Count;
             float decoupageGauche = (this.paddingMaxGauchePct * this.GetWidth() / 100) - this.paddingGauche;
@@ -65,19 +67,19 @@ namespace Pages
             float horizontalOffset = decoupageGauche + decoupageDroite;
             for (int i = 0; i < nbPanelsInSlot; i++) {
                 Panel panel = this.panels[i];
-                float decoupageHaut = 0;
-                float verticalOffset = decoupageHaut;
-                panel.Decouper(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
+                panel.Crop(procEcriture, decoupageGauche, horizontalOffset);
             }
         }
 
         // IPositionable
-        public void SetPosition(float x, float y)
+        public void SetPosition(PdfWriter procEcriture, float x, float y)
         {
             int nbPanelsInSlot = this.panels.Count;
-            float panelHeight = this.height / nbPanelsInSlot;
+            float panelHeight =
+                (this.height - (nbPanelsInSlot - 1) * parent.getVerticalPanelSpacing()) / nbPanelsInSlot;
             for (int i = 0; i < nbPanelsInSlot; i++) {
                 Panel panel = this.panels[i];
+                panel.Crop(procEcriture, 0, 0, 0, 0);
                 panel.SetPosition(x, y - i * panelHeight);
             }
         }
