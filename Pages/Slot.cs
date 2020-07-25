@@ -16,6 +16,7 @@ namespace Pages
         public float paddingMaxDroitePct { get; set; }
         public float paddingGauche { get; set; }
         public float paddingDroite { get; set; }
+        public float height { get; set; }
 
         public Slot(XmlNode xmlSlot)
         {
@@ -29,7 +30,10 @@ namespace Pages
 
         public void SetHeight(float height)
         {
-            this.panels.ForEach(panel => panel.SetHeight(height));
+            this.height = height;
+            int nbPanelsInSlot = this.panels.Count;
+            float panelHeight = height / nbPanelsInSlot;
+            this.panels.ForEach(panel => panel.SetHeight(panelHeight));
         }
 
         public float GetWidth()
@@ -50,22 +54,30 @@ namespace Pages
 
         public float getHauteur()
         {
-            return panels[0].getHauteur();
+            return this.height;
         }
 
         public void Decouper(PdfWriter procEcriture)
         {
             float decoupageGauche = (this.paddingMaxGauchePct * this.GetWidth() / 100) - this.paddingGauche;
             float decoupageDroite = (this.paddingMaxDroitePct * this.GetWidth() / 100) - this.paddingDroite;
-            float offset = decoupageGauche + decoupageDroite;
-            foreach (Panel casex in panels)
-                casex.Decouper(procEcriture, decoupageGauche, offset);
+            float horizontalOffset = decoupageGauche + decoupageDroite;
+            float decoupageHaut = this.panels.Count > 1 ? 0.25f * this.getHauteur() : 0;
+            float verticalOffset = decoupageHaut;
+            foreach (Panel casex in this.panels) {
+                casex.Decouper(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
+            }
         }
 
         // IPositionable
         public void SetPosition(float x, float y)
         {
-            this.panels.ForEach(panel => panel.SetPosition(x, y));
+            int nbPanelsInSlot = this.panels.Count;
+            float panelHeight = this.height / nbPanelsInSlot;
+            for (int i = 0; i < nbPanelsInSlot; i++) {
+                Panel panel = this.panels[i];
+                panel.SetPosition(x, y - i * panelHeight);
+            }
         }
 
         // IRenderable
