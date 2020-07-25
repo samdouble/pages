@@ -59,13 +59,15 @@ namespace Pages
 
         public void Decouper(PdfWriter procEcriture)
         {
+            int nbPanelsInSlot = this.panels.Count;
             float decoupageGauche = (this.paddingMaxGauchePct * this.GetWidth() / 100) - this.paddingGauche;
             float decoupageDroite = (this.paddingMaxDroitePct * this.GetWidth() / 100) - this.paddingDroite;
             float horizontalOffset = decoupageGauche + decoupageDroite;
-            float decoupageHaut = this.panels.Count > 1 ? 0.25f * this.getHauteur() : 0;
-            float verticalOffset = decoupageHaut;
-            foreach (Panel casex in this.panels) {
-                casex.Decouper(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
+            for (int i = 0; i < nbPanelsInSlot; i++) {
+                Panel panel = this.panels[i];
+                float decoupageHaut = 0;
+                float verticalOffset = decoupageHaut;
+                panel.Decouper(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
             }
         }
 
