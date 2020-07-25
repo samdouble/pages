@@ -60,11 +60,11 @@ namespace Pages
             return this.position;
         }
 
-        public void Decouper(PdfWriter procEcriture, float decoupageGauche, float offset)
+        public void Decouper(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
-            this.image.Decouper(procEcriture, decoupageGauche, offset);
+            this.image.Decouper(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
             foreach (Element element in elements)
-                element.Decouper(procEcriture, decoupageGauche, offset);
+                element.Decouper(procEcriture, decoupageGauche, horizontalOffset);
         }
 
         // IPositionable

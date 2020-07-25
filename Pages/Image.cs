@@ -35,9 +35,9 @@ namespace Pages
             return this.image.ScaledWidth;
         }
 
-        public void Decouper(PdfWriter procEcriture, float decoupageGauche, float offset)
+        public void Decouper(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
-            this.image = Crop(this.image, procEcriture, decoupageGauche, 0, this.image.ScaledWidth - offset, this.image.ScaledHeight);
+            this.image = Crop(this.image, procEcriture, decoupageGauche, decoupageHaut, this.image.ScaledWidth - horizontalOffset, this.image.ScaledHeight - verticalOffset);
         }
 
         private void AddBorders()
