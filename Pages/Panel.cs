@@ -23,7 +23,7 @@ namespace Pages
                 throw new Exception("A panel must have an image attribute");
 
             string imageSrc = xmlPanel.Attributes["image"].InnerText;
-            this.image = new Image(@"..\..\..\..\BD\BD1\" + imageSrc);
+            this.image = new Image(@"..\..\..\..\BD\BD0\" + imageSrc);
 
             foreach (XmlNode xmlElement in xmlPanel.ChildNodes)
             {
@@ -33,7 +33,10 @@ namespace Pages
                 else if (xmlElement.Name == "text")
                     element = new Text(xmlElement, this);
 
-                this.elements.Add(element);
+                if (element != null)
+                {
+                    this.elements.Add(element);
+                }
             }
         }
 
