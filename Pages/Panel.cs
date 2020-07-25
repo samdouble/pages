@@ -16,6 +16,8 @@ namespace Pages
         Image image;
         List<Element> elements = new List<Element>();
         PointF position;
+        float width;
+        float height;
 
         public Panel(XmlNode xmlPanel)
         {
@@ -42,17 +44,19 @@ namespace Pages
 
         public void SetHeight(float height)
         {
+            this.height = height;
             this.image.SetHeight(height);
+            this.width = this.image.getLargeur();
         }
 
         public float getLargeur()
         {
-            return this.image.getLargeur();
+            return this.width;
         }
 
         public float getHauteur()
         {
-            return this.image.getHauteur();
+            return this.height;
         }
 
         public PointF getPosition()
@@ -60,11 +64,11 @@ namespace Pages
             return this.position;
         }
 
-        public void Decouper(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
+        public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
-            this.image.Decouper(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
+            this.image.Crop(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
             foreach (Element element in elements)
-                element.Decouper(procEcriture, decoupageGauche, horizontalOffset);
+                element.Crop(procEcriture, decoupageGauche, horizontalOffset);
         }
 
         // IPositionable
