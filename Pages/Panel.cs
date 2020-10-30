@@ -16,8 +16,6 @@ namespace Pages
         Image image;
         List<Element> elements = new List<Element>();
         PointF position;
-        float width;
-        float height;
 
         public Panel(XmlNode xmlPanel)
         {
@@ -44,19 +42,17 @@ namespace Pages
 
         public void SetHeight(float height)
         {
-            this.height = height;
             this.image.SetHeight(height);
-            this.width = this.image.getLargeur();
         }
 
         public float getLargeur()
         {
-            return this.width;
+            return this.image.getLargeur();
         }
 
         public float getHauteur()
         {
-            return this.height;
+            return this.image.getHauteur();
         }
 
         public PointF getPosition()
