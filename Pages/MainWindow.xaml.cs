@@ -15,7 +15,7 @@ namespace Pages
         {
             InitializeComponent();
 
-            Document doc = new Document();
+            Document doc = new Document(PageSize.A4);
             try
             {
                 PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"..\..\..\..\BD\BD0\Images.pdf", FileMode.Create));
