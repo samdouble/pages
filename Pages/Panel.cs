@@ -4,6 +4,7 @@ using Pages.Elements;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,12 @@ namespace Pages
                 throw new Exception("A panel must have an image attribute");
 
             string imageSrc = xmlPanel.Attributes["image"].InnerText;
-            this.image = new Image(@"..\..\..\..\BD\BD0\" + imageSrc);
+            if (File.Exists(@"..\..\..\..\BD\BD0\" + imageSrc))
+            {
+                this.image = new Image(@"..\..\..\..\BD\BD0\" + imageSrc);
+            } else {
+                this.image = new Image(@"..\..\..\..\BD\BD0\images\temp.png");
+            }
 
             foreach (XmlNode xmlElement in xmlPanel.ChildNodes)
             {
