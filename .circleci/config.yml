@@ -3,8 +3,8 @@ version: 2.1
 executors:
   my-executor:
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:6.0
       - image: cimg/go:1.16
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
 
 jobs:
   build:
@@ -19,7 +19,6 @@ jobs:
       - run:
           name: Release
           command: |
-            apt update && apt install golang=1.16.5 -y
             go get github.com/github-release/github-release
             github-release --help
 workflows:
