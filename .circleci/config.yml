@@ -16,6 +16,7 @@ jobs:
           command: |
             dotnet test
             dotnet build
+            ls
       - run:
           name: Release
           command: |
