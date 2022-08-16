@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Build
           command: |
-            dotnet build Pages.sln
+            dotnet build
 workflows:
   build-workflow:
     jobs:
