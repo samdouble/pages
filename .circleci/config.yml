@@ -1,14 +1,9 @@
 version: 2.1
 
-executors:
-  my-executor:
-    docker:
-      - image: mcr.microsoft.com/dotnet/sdk:6.0
-      - image: cimg/go:1.16
-
 jobs:
   build:
-    executor: my-executor
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
     steps:
       - checkout
       - run:
@@ -24,12 +19,16 @@ jobs:
             export GOPATH="$HOME/go"
             export PATH="$PATH:$GOPATH/bin"
             go get github.com/github-release/github-release
+            github-release delete \
+              --user samdouble \
+              --repo pages \
+              --tag v0.1.0
             github-release release \
               --user samdouble \
               --repo pages \
               --tag v0.1.0 \
               --name "v0.1.0" \
-              --pre-release
+              --file bin/*
 workflows:
   build-workflow:
     jobs:
