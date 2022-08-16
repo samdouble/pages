@@ -35,9 +35,14 @@ namespace Pages
             return this.image.ScaledWidth;
         }
 
-        public void Decouper(PdfWriter procEcriture, float decoupageGauche, float offset)
+        public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
-            this.image = Crop(this.image, procEcriture, decoupageGauche, 0, this.image.ScaledWidth - offset, this.image.ScaledHeight);
+            PdfContentByte cb = procEcriture.DirectContent;
+            PdfTemplate t = cb.CreateTemplate(this.image.ScaledWidth - horizontalOffset, this.image.ScaledHeight - verticalOffset);
+            float origWidth = this.image.ScaledWidth;
+            float origHeight = this.image.ScaledHeight;
+            t.AddImage(this.image, origWidth, 0, 0, origHeight, -decoupageGauche, -decoupageHaut);
+            this.image = iTextSharp.text.Image.GetInstance(t);
         }
 
         private void AddBorders()
@@ -45,16 +50,6 @@ namespace Pages
             this.image.Border = Rectangle.BOX;
             this.image.BorderColor = BaseColor.BLACK;
             this.image.BorderWidth = 2f;
-        }
-
-        private static iTextSharp.text.Image Crop(iTextSharp.text.Image image, PdfWriter writer, float x, float y, float width, float height)
-        {
-            PdfContentByte cb = writer.DirectContent;
-            PdfTemplate t = cb.CreateTemplate(width, height);
-            float origWidth = image.ScaledWidth;
-            float origHeight = image.ScaledHeight;
-            t.AddImage(image, origWidth, 0, 0, origHeight, -x, -y);
-            return iTextSharp.text.Image.GetInstance(t);
         }
 
         // IPositionable
