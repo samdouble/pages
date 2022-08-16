@@ -23,7 +23,13 @@ jobs:
             export GOPATH="$HOME/go"
             export PATH="$PATH:$GOPATH/bin"
             go get github.com/github-release/github-release
-            github-release --help
+            github-release info -u samdouble -r pages
+            github-release release \
+              --user samdouble \
+              --repo pages \
+              --tag v0.1.0 \
+              --name "v0.1.0" \
+              --pre-release
 workflows:
   build-workflow:
     jobs:
