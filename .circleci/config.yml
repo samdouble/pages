@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Release
           command: |
-            apt install golang -y
+            apt update && apt install golang -y
             go get github.com/github-release/github-release
             github-release --help
 workflows:
