@@ -30,8 +30,8 @@ namespace Pages.Elements
             this.top = element.Attributes["top"] != null ? float.Parse(element.Attributes["top"].InnerText) : 0.0f;
             this.width = element.Attributes["width"] != null ? float.Parse(element.Attributes["width"].InnerText) : (float?) null;
             // Load Font
-            BaseFont customfont = BaseFont.CreateFont(@"../../Comicsam-Bold.ttf", BaseFont.CP1252, BaseFont.EMBEDDED);
-            this.font = new Font(customfont, FONT_SIZE);
+            //BaseFont customfont = BaseFont.CreateFont(@"./Comicsam-Bold.ttf");
+            //this.font = new Font(customfont, FONT_SIZE);
         }
 
         public override void Render(Document doc, PdfWriter writer)
@@ -48,7 +48,8 @@ namespace Pages.Elements
             float bottom = this.parent.getPosition().Y - this.parent.getHauteur() + MARGIN;
             PdfContentByte cb = writer.DirectContent;
             ColumnText ct = new ColumnText(cb);
-            Paragraph phrase = new Paragraph(this.text, this.font);
+            //Paragraph phrase = new Paragraph(this.text, this.font);
+            Paragraph phrase = new Paragraph(this.text);
             ct.SetSimpleColumn(phrase, left, top, right, bottom, LINE_HEIGHT, 0);
             ct.Go();
         }

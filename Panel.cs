@@ -24,11 +24,11 @@ namespace Pages
                 throw new Exception("A panel must have an image attribute");
 
             string imageSrc = xmlPanel.Attributes["image"].InnerText;
-            if (File.Exists(@"..\..\..\..\BD\BD1\" + imageSrc))
+            if (File.Exists(@"" + imageSrc))
             {
-                this.image = new Image(@"..\..\..\..\BD\BD1\" + imageSrc);
+                this.image = new Image(@"" + imageSrc);
             } else {
-                this.image = new Image(@"..\..\..\..\BD\BD1\images\temp.png");
+                this.image = new Image(@"temp.png");
             }
 
             foreach (XmlNode xmlElement in xmlPanel.ChildNodes)
