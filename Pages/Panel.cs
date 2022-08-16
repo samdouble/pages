@@ -4,6 +4,7 @@ using Pages.Elements;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,12 @@ namespace Pages
                 throw new Exception("A panel must have an image attribute");
 
             string imageSrc = xmlPanel.Attributes["image"].InnerText;
-            this.image = new Image(@"..\..\..\..\BD\BD0\" + imageSrc);
+            if (File.Exists(@"..\..\..\..\BD\BD1\" + imageSrc))
+            {
+                this.image = new Image(@"..\..\..\..\BD\BD1\" + imageSrc);
+            } else {
+                this.image = new Image(@"..\..\..\..\BD\BD1\images\temp.png");
+            }
 
             foreach (XmlNode xmlElement in xmlPanel.ChildNodes)
             {
@@ -60,11 +66,11 @@ namespace Pages
             return this.position;
         }
 
-        public void Decouper(PdfWriter procEcriture, float decoupageGauche, float offset)
+        public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
-            this.image.Decouper(procEcriture, decoupageGauche, offset);
+            this.image.Crop(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
             foreach (Element element in elements)
-                element.Decouper(procEcriture, decoupageGauche, offset);
+                element.Crop(procEcriture, decoupageGauche, horizontalOffset);
         }
 
         // IPositionable

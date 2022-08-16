@@ -16,7 +16,7 @@ namespace Pages
             
         }
 
-        public virtual void Decouper(PdfWriter procEcriture, float decoupageGauche, float offset)
+        public virtual void Crop(PdfWriter procEcriture, float decoupageGauche, float offset)
         {
 
         }

@@ -13,8 +13,8 @@ namespace Pages.Elements
     {
         protected Panel parent;
         protected string text;
-        protected const int FONT_SIZE = 15;
-        protected const int LINE_HEIGHT = 14;
+        protected const int FONT_SIZE = 13;
+        protected const int LINE_HEIGHT = 12;
         protected const int MARGIN = 5;
         protected Font font;
         protected float left = 0;

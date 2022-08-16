@@ -32,12 +32,17 @@ namespace Pages
             this.rowsPerPage = float.Parse(xmlComic.Attributes["rowsPerPage"].InnerText);
 
             List<XmlNode> xmlSlots = new List<XmlNode>(xmlComic.ChildNodes.Cast<XmlNode>());
-            this.slots.AddRange(xmlSlots.Select(xmlSlot => new Slot(xmlSlot)));
+            this.slots.AddRange(xmlSlots.Select(xmlSlot => new Slot(this, xmlSlot)));
         }
 
         public int GetSlotsCount()
         {
             return this.slots.Count;
+        }
+
+        public float getVerticalPanelSpacing()
+        {
+            return this.verticalPanelSpacing;
         }
 
         // IRenderable
@@ -120,9 +125,9 @@ namespace Pages
                 // On procède au découpage et positionnement de l'image
                 foreach (Slot espace in espacesSurLaRangee)
                 {
-                    espace.Decouper(writer);
+                    espace.Crop(writer);
 
-                    espace.SetPosition(this.leftMargin + x, doc.PageSize.Height - this.topMargin - y);
+                    espace.SetPosition(writer, this.leftMargin + x, doc.PageSize.Height - this.topMargin - y);
 
                     espace.Render(doc, writer);
 
