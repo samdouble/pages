@@ -6,15 +6,16 @@ orbs:
 jobs:
   build:
     docker:
-      #- image: mcr.microsoft.com/dotnet/sdk:6.0
-      - image: cimg/go:1.19.0
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
     steps:
       - checkout
-      #- run:
-      #    name: Build
-      #    command: |
-      #      dotnet test
-      #      dotnet build
+      - go/test:
+          version: 1.16.5
+      - run:
+          name: Build
+          command: |
+            dotnet test
+            dotnet build
       - run:
           name: Publish a release on GitHub
           command: |
