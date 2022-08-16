@@ -4,11 +4,10 @@ This is the website for [jesusmidget.com](https://jesusmidget.com)
 
 ## Technologies & Languages
 
-- TypeScript
-- Next.js
-- React
+- C#
+- .NET
+- iTextSharp
 - CircleCI
-- AWS S3
 
 ## Development
 
