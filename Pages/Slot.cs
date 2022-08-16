@@ -9,16 +9,19 @@ using System.Xml;
 
 namespace Pages
 {
-    class Slot : IPositionable, IRenderable
+    class Slot : IRenderable
     {
+        private Comic parent;
         private List<Panel> panels = new List<Panel>();
         public float paddingMaxGauchePct { get; set; }
         public float paddingMaxDroitePct { get; set; }
         public float paddingGauche { get; set; }
         public float paddingDroite { get; set; }
+        public float height { get; set; }
 
-        public Slot(XmlNode xmlSlot)
+        public Slot(Comic parent, XmlNode xmlSlot)
         {
+            this.parent = parent;
             List<XmlNode> xmlPanels = new List<XmlNode>(xmlSlot.ChildNodes.Cast<XmlNode>());
             this.panels.AddRange(xmlPanels.Select(xmlPanel => new Panel(xmlPanel)));
             this.paddingMaxGauchePct = xmlSlot.Attributes["maxCropLeft"] != null ? float.Parse(xmlSlot.Attributes["maxCropLeft"].InnerText) : 0f;
@@ -29,7 +32,10 @@ namespace Pages
 
         public void SetHeight(float height)
         {
-            this.panels.ForEach(panel => panel.SetHeight(height));
+            this.height = height;
+            int nbPanelsInSlot = this.panels.Count;
+            float panelHeight = (height - (nbPanelsInSlot - 1) * parent.getVerticalPanelSpacing()) / nbPanelsInSlot;
+            this.panels.ForEach(panel => panel.SetHeight(panelHeight));
         }
 
         public float GetWidth()
@@ -39,7 +45,7 @@ namespace Pages
 
         public float GetMinWidth()
         {
-            float minPctAvailable = (1 - ((this.paddingMaxGauchePct + this.paddingMaxDroitePct) / 100));
+            float minPctAvailable = 1 - ((this.paddingMaxGauchePct + this.paddingMaxDroitePct) / 100);
             return minPctAvailable * this.GetWidth();
         }
 
@@ -50,22 +56,32 @@ namespace Pages
 
         public float getHauteur()
         {
-            return panels[0].getHauteur();
+            return this.height;
         }
 
-        public void Decouper(PdfWriter procEcriture)
+        public void Crop(PdfWriter procEcriture)
         {
+            int nbPanelsInSlot = this.panels.Count;
             float decoupageGauche = (this.paddingMaxGauchePct * this.GetWidth() / 100) - this.paddingGauche;
             float decoupageDroite = (this.paddingMaxDroitePct * this.GetWidth() / 100) - this.paddingDroite;
-            float offset = decoupageGauche + decoupageDroite;
-            foreach (Panel casex in panels)
-                casex.Decouper(procEcriture, decoupageGauche, offset);
+            float horizontalOffset = decoupageGauche + decoupageDroite;
+            for (int i = 0; i < nbPanelsInSlot; i++) {
+                Panel panel = this.panels[i];
+                panel.Crop(procEcriture, decoupageGauche, horizontalOffset);
+            }
         }
 
         // IPositionable
-        public void SetPosition(float x, float y)
+        public void SetPosition(PdfWriter procEcriture, float x, float y)
         {
-            this.panels.ForEach(panel => panel.SetPosition(x, y));
+            int nbPanelsInSlot = this.panels.Count;
+            float panelHeight =
+                (this.height - (nbPanelsInSlot - 1) * parent.getVerticalPanelSpacing()) / nbPanelsInSlot;
+            for (int i = 0; i < nbPanelsInSlot; i++) {
+                Panel panel = this.panels[i];
+                panel.Crop(procEcriture, 0, 0, 0, 0);
+                panel.SetPosition(x, y - i * panelHeight - (i - 1) * parent.getVerticalPanelSpacing());
+            }
         }
 
         // IRenderable
