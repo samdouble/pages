@@ -9,7 +9,7 @@ jobs:
       - image: mcr.microsoft.com/dotnet/sdk:6.0
     steps:
       - checkout
-      - go/test:
+      - go/install:
           version: 1.16.5
       - run:
           name: Build
