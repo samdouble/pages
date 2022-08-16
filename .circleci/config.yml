@@ -4,42 +4,24 @@ executors:
   my-executor:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:6.0
-    working_directory: /tmp
+      - image: cimg/go:1.16
 
 jobs:
   build:
     executor: my-executor
     steps:
       - checkout
-      #- go/install:
-      #    version: 1.16.5
       - run:
           name: Build
           command: |
             dotnet test
             dotnet build
-            echo "Hello, world!" > workspace/echo-output
-      - persist_to_workspace:
-          root: workspace
-          paths:
-            - echo-output
-  release:
-    docker:
-      - image: cimg/go:1.16
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
       - run:
-          name: Build
+          name: Release
           command: |
             go get github.com/github-release/github-release
             github-release --help
-            cat workspace/echo-output
 workflows:
   build-workflow:
     jobs:
       - build
-      - release:
-          requires:
-          - build
