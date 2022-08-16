@@ -18,11 +18,11 @@ namespace Pages
             Document doc = new Document(PageSize.A4);
             try
             {
-                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"..\..\..\..\BD\BD0\Images.pdf", FileMode.Create));
+                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"..\..\..\..\BD\BD1\Images.pdf", FileMode.Create));
                 doc.Open();
 
                 XmlDocument xmlDocument = new XmlDocument();
-                xmlDocument.Load(@"..\..\..\..\BD\BD0\bd.xml");
+                xmlDocument.Load(@"..\..\..\..\BD\BD1\bd.xml");
                 Comic comic = new Comic(xmlDocument.DocumentElement);
                 comic.Render(doc, writer);
             }
@@ -34,7 +34,8 @@ namespace Pages
             {
                 doc.Close();
             }
-            System.Diagnostics.Process.Start(@"..\..\..\..\BD\BD0\Images.pdf");
+            System.Diagnostics.Process.Start(@"..\..\..\..\BD\BD1\Images.pdf");
+            System.Environment.Exit(0);
         }
     }
 }
