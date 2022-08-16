@@ -18,15 +18,11 @@ jobs:
             export GOPATH="$HOME/go"
             export PATH="$PATH:$GOPATH/bin"
             go get github.com/github-release/github-release
-            github-release delete \
-              --user samdouble \
-              --repo pages \
-              --tag v0.1.0
             github-release release \
               --user samdouble \
               --repo pages \
-              --tag v0.1.0 \
-              --name "v0.1.0" \
+              --tag v0.1.1 \
+              --name "v0.1.1" \
               --file bin/Release
 workflows:
   build-workflow:
