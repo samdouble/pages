@@ -3,8 +3,8 @@ version: 2.1
 executors:
   my-executor:
     docker:
-      - image: cimg/go:1.16
       - image: mcr.microsoft.com/dotnet/sdk:6.0
+      - image: cimg/go:1.16
 
 jobs:
   build:
@@ -19,6 +19,9 @@ jobs:
       - run:
           name: Release
           command: |
+            rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.linux-amd64.tar.gz
+            export PATH=$PATH:/usr/local/go/bin
+            go version
             go get github.com/github-release/github-release
             github-release --help
 workflows:
