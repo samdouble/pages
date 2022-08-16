@@ -1,12 +1,14 @@
 version: 2.1
 
-#orbs: 
-#  go: circleci/go@1.7.1
+executors:
+  my-executor:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
+    working_directory: /tmp
 
 jobs:
   build:
-    docker:
-      - image: mcr.microsoft.com/dotnet/sdk:6.0
+    executor: my-executor
     steps:
       - checkout
       #- go/install:
@@ -26,12 +28,14 @@ jobs:
       - image: cimg/go:1.16
     steps:
       - checkout
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
           name: Build
           command: |
             go get github.com/github-release/github-release
             github-release --help
-            cat /tmp/workspace/echo-output
+            cat workspace/echo-output
 workflows:
   build-workflow:
     jobs:
