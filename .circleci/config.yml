@@ -4,12 +4,16 @@ jobs:
   build:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:6.0
+      - image: cimg/go:1.16
     steps:
       - checkout
       - run:
           name: Build
           command: |
+            dotnet test
             dotnet build
+            go get github.com/github-release/github-release
+            github-release --help
 workflows:
   build-workflow:
     jobs:
