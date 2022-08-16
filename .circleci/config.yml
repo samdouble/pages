@@ -16,6 +16,11 @@ jobs:
           command: |
             dotnet test
             dotnet build
+            echo "Hello, world!" > workspace/echo-output
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - echo-output
   release:
     docker:
       - image: cimg/go:1.16
@@ -26,8 +31,11 @@ jobs:
           command: |
             go get github.com/github-release/github-release
             github-release --help
+            cat /tmp/workspace/echo-output
 workflows:
   build-workflow:
     jobs:
       - build
-      - release
+      - release:
+          requires:
+          - build
