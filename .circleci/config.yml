@@ -14,18 +14,19 @@ jobs:
             export PATH="$PATH:/root/.dotnet/tools"
             dotnet tool install --global dotnet-releaser
             dotnet releaser new
-      - run:
-          name: Release
-          command: |
-            apt update && apt install golang-go -y
-            export GOPATH="$HOME/go"
-            export PATH="$PATH:$GOPATH/bin"
-            go get github.com/github-release/github-release
-            github-release release \
-              --user samdouble \
-              --repo pages \
-              --tag v0.1.4 \
-              --name "v0.1.4"
+            dotnet-releaser build --force dotnet-releaser.toml
+      #- run:
+      #    name: Release
+      #    command: |
+      #      apt update && apt install golang-go -y
+      #      export GOPATH="$HOME/go"
+      #      export PATH="$PATH:$GOPATH/bin"
+      #      go get github.com/github-release/github-release
+      #      github-release release \
+      #        --user samdouble \
+      #        --repo pages \
+      #        --tag v0.1.4 \
+      #        --name "v0.1.4"
 workflows:
   build-workflow:
     jobs:
