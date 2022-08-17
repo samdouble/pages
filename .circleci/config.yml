@@ -17,8 +17,8 @@ jobs:
             export PATH="$PATH:/root/.dotnet/tools"
             dotnet tool install --global dotnet-releaser
             dotnet releaser new
-            dotnet-releaser build --force dotnet-releaser.toml
-            dotnet-releaser publish --force --github-token $GITHUB_TOKEN dotnet-releaser.toml
+            dotnet-releaser build dotnet-releaser.toml
+            dotnet-releaser publish --github-token $GITHUB_TOKEN dotnet-releaser.toml
         #  command: |
         #    apt update && apt install golang-go -y
         #    export GOPATH="$HOME/go"
