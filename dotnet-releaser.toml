@@ -6,3 +6,5 @@ repo = "pages"
 branches = ["master", "circleci-project-setup"]
 [nuget]
 publish = false
+[brew]
+publish = false
