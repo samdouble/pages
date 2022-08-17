@@ -11,6 +11,7 @@ jobs:
           command: |
             dotnet test
             dotnet build
+            export PATH="$PATH:/root/.dotnet/tools"
             dotnet tool install --global dotnet-releaser
             dotnet-releaser run --github-token $GITHUB_TOKEN dotnet-releaser.toml
       - run:
