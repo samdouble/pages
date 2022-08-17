@@ -3,5 +3,6 @@ project = "Pages.sln"
 [github]
 user = "samdouble"
 repo = "pages"
+branches = ["master", "circleci-project-setup"]
 [nuget]
 publish = false
