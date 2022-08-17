@@ -6,6 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Description>pages</Description> 
+    <Copyright>Samuel Whittom</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Authors>Samuel Whittom</Authors>
+    <PackageTags>releaser;packaging;deb;rpm;tool</PackageTags>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/samdouble/pages</PackageProjectUrl>
+    <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="PdfSharp" Version="1.32.3057.0" />
