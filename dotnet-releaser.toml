@@ -1,0 +1,5 @@
+[msbuild]
+project = "Pages.sln"
+[github]
+user = "samdouble"
+repo = "pages"
