@@ -19,6 +19,11 @@ namespace Pages
             this.image = iTextSharp.text.Image.GetInstance(src);
         }
 
+        public Image(System.Drawing.Bitmap bitmap)
+        {
+            this.image = iTextSharp.text.Image.GetInstance(bitmap, BaseColor.WHITE);
+        }
+
         public void SetHeight(float height)
         {
             float pctScaling = height / this.image.Height;
