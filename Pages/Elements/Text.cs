@@ -30,7 +30,7 @@ namespace Pages.Elements
             this.top = element.Attributes["top"] != null ? float.Parse(element.Attributes["top"].InnerText) : 0.0f;
             this.width = element.Attributes["width"] != null ? float.Parse(element.Attributes["width"].InnerText) : (float?) null;
             // Load Font
-            BaseFont customfont = BaseFont.CreateFont(@"Comicsam-Bold.ttf", BaseFont.CP1252, BaseFont.EMBEDDED);
+            BaseFont customfont = BaseFont.CreateFont("Comicsam-Bold.ttf", BaseFont.CP1252, BaseFont.EMBEDDED);
             this.font = new Font(customfont, FONT_SIZE);
         }
 
