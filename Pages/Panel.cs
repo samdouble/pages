@@ -28,7 +28,7 @@ namespace Pages
             {
                 this.image = new Image(@"..\..\..\..\BD\BD1\" + imageSrc);
             } else {
-                this.image = new Image(@"..\..\..\..\BD\BD1\images\temp.png");
+                this.image = new Image(Properties.Resources.temp);
             }
 
             foreach (XmlNode xmlElement in xmlPanel.ChildNodes)
