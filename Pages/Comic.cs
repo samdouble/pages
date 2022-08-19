@@ -23,6 +23,7 @@ namespace Pages
 
         public Comic(XmlNode xmlComic)
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             this.leftMargin = float.Parse(xmlComic.Attributes["leftMargin"].InnerText);
             this.rightMargin = float.Parse(xmlComic.Attributes["rightMargin"].InnerText);
             this.topMargin = float.Parse(xmlComic.Attributes["topMargin"].InnerText);
