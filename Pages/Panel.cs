@@ -28,7 +28,7 @@ namespace Pages
             {
                 this.image = new Image(@"" + imageSrc);
             } else {
-                this.image = new Image(@"temp.png");
+                this.image = new Image(Properties.Resources.temp);
             }
 
             foreach (XmlNode xmlElement in xmlPanel.ChildNodes)
