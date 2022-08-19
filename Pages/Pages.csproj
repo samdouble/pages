@@ -16,7 +16,8 @@
     <PackageProjectUrl>https://github.com/samdouble/pages</PackageProjectUrl>
     <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <Version>1.0.3</Version>
+    <CustomResourceTypesSupport>true</CustomResourceTypesSupport>
+    <Version>1.0.4</Version>
   </PropertyGroup>
 
   <ItemGroup>
