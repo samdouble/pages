@@ -31,7 +31,7 @@ namespace Pages.Elements
             this.width = element.Attributes["width"] != null ? float.Parse(element.Attributes["width"].InnerText) : (float?) null;
             // Load Font
             byte[] baseFont = Properties.Resources.Comicsam_Bold;
-            BaseFont customfont = BaseFont.CreateFont("Comicsam-Bold.ttf", BaseFont.CP1252, BaseFont.EMBEDDED, BaseFont.CACHED, baseFont, null);
+            BaseFont customfont = BaseFont.CreateFont("Comicsam-Bold.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, BaseFont.CACHED, baseFont, null);
             this.font = new Font(customfont, FONT_SIZE);
         }
 
