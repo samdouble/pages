@@ -1,10 +1,29 @@
 [msbuild]
 project = "Pages.sln"
+
 [github]
 user = "samdouble"
 repo = "pages"
 branches = ["master", "circleci-project-setup"]
+
 [nuget]
 publish = false
+
 [brew]
 publish = false
+
+[[pack]]
+publish = false
+rid = ["win-x64", "win-arm", "win-arm64"]
+kinds = ["zip"]
+[[pack]]
+rid = ["linux-x64", "linux-arm", "linux-arm64"]
+kinds = ["deb"]
+[[pack]]
+publish = false
+rid = ["rhel-x64"]
+kinds = ["rpm", "tar"]
+[[pack]]
+publish = false
+rid = ["osx-x64", "osx-arm64"]
+kinds = ["tar"]
