@@ -16,7 +16,7 @@
     <PackageProjectUrl>https://github.com/samdouble/pages</PackageProjectUrl>
     <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,22 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Elements\Description.cs" />
-    <Compile Include="Elements\Text.cs" />
-    <Compile Include="IPositionable.cs" />
-    <Compile Include="IRenderable.cs" />
-    <Compile Include="Panel.cs" />
-    <Compile Include="Comic.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Slot.cs" />
-    <Compile Include="Elements\Element.cs" />
-    <Compile Include="Image.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
