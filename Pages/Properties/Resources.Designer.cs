@@ -83,10 +83,10 @@ namespace Pages.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap temp {
+        internal static byte[] temp {
             get {
                 object obj = ResourceManager.GetObject("temp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ((byte[])(obj));
             }
         }
     }

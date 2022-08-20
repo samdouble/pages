@@ -1,12 +1,5 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Xml;
 
 namespace Pages
 {
@@ -19,9 +12,9 @@ namespace Pages
             this.image = iTextSharp.text.Image.GetInstance(src);
         }
 
-        public Image(System.Drawing.Bitmap bitmap)
+        public Image(byte[] bytes)
         {
-            this.image = iTextSharp.text.Image.GetInstance(bitmap, BaseColor.WHITE);
+            this.image = iTextSharp.text.Image.GetInstance(bytes);
         }
 
         public void SetHeight(float height)
