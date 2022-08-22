@@ -11,19 +11,24 @@ namespace Pages
 {
     class Panel : IPositionable, IRenderable
     {
+        private Comic parent;
         Image image;
         List<Element> elements = new List<Element>();
         PointF position;
 
-        public Panel(XmlNode xmlPanel)
+        public Panel(Comic parent, XmlNode xmlPanel)
         {
+            this.parent = parent;
             if (xmlPanel.Attributes["image"] == null)
                 throw new Exception("A panel must have an image attribute");
 
             string imageSrc = xmlPanel.Attributes["image"].InnerText;
-            if (File.Exists(@"" + imageSrc))
+            string imagesFolderPath = parent.GetImagesFolderPath();
+
+            Console.WriteLine("Getting image at " + (@"" + imagesFolderPath + '/' + imageSrc));
+            if (File.Exists(@"" + imagesFolderPath + '/' + imageSrc))
             {
-                this.image = new Image(@"" + imageSrc);
+                this.image = new Image(@"" + imagesFolderPath + '/' + imageSrc);
             } else {
                 this.image = new Image(Properties.Resources.temp);
             }
