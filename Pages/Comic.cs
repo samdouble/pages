@@ -2,10 +2,8 @@
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Pages
@@ -20,10 +18,17 @@ namespace Pages
         private float horizontalPanelSpacing;
         private float verticalPanelSpacing;
         private float rowsPerPage;
+        private string imagesFolderPath;
 
-        public Comic(XmlNode xmlComic)
+        public Comic(string configFile, string imagesFolderPath)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
+            Console.WriteLine("Reading config file at " + (@"" + configFile));
+            this.imagesFolderPath = imagesFolderPath;
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(@"" + configFile);
+            XmlNode xmlComic = xmlDocument.DocumentElement;
             this.leftMargin = float.Parse(xmlComic.Attributes["leftMargin"].InnerText);
             this.rightMargin = float.Parse(xmlComic.Attributes["rightMargin"].InnerText);
             this.topMargin = float.Parse(xmlComic.Attributes["topMargin"].InnerText);
@@ -34,6 +39,11 @@ namespace Pages
 
             List<XmlNode> xmlSlots = new List<XmlNode>(xmlComic.ChildNodes.Cast<XmlNode>());
             this.slots.AddRange(xmlSlots.Select(xmlSlot => new Slot(this, xmlSlot)));
+        }
+
+        public string GetImagesFolderPath()
+        {
+            return this.imagesFolderPath;
         }
 
         public int GetSlotsCount()

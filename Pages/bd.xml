@@ -1,0 +1,1935 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comic
+  topMargin="64"
+  bottomMargin="64"
+  leftMargin="25"
+  rightMargin="25"
+  horizontalPanelSpacing="10"
+  verticalPanelSpacing="10"
+  rowsPerPage="3">
+  <slot maxCropLeft="5" maxCropRight="5">
+    <panel image="images/0040.png">
+      <text text="Je dois dire que, pour quelqu'un qui n'a pas encore fini ses études, votre résultat au test n'est pas mauvais du tout!" />
+      <text text="Merci!" top="60" left="120" />
+      <description text="On voit un bloc appartement. Il neige." visible="False" />
+    </panel>
+  </slot>
+  <slot maxCropRight="10">
+    <panel image="images/0050.png">
+      <text text="Donc vous disiez que vous allez obtenir votre diplôme à la fin du mois d'avril...Si vous aviez l'emploi, quand seriez-vous prêt à commencer?" width="100" />
+      <text text="Juste après. Je vais sûrement prendre une semaine de congé entre les deux, pour me laisser le temps de déménager." left="110" />
+      <description text="W est assis à son bureau devant son ordinateur, en vidéo-conférence. Il est habillé propre." visible="False" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0060.png">
+      <text text="Vous n'êtes pas de ceux qui souhaitent voyager à la fin de leurs études?" width="120" />
+      <text text="Je le ferais si j'avais plus d'argent." left="130" />
+      <description text="W est assis à son bureau devant son ordinateur, en vidéo-conférence. Il est habillé propre." visible="False" />
+    </panel>
+  </slot>
+  <slot maxCropRight="5">
+    <panel image="images/0120.png">
+      <text text="D'accord. Eh bien, nous avons encore plusieurs candidats à rencontrer, mais vous aurez de nos nouvelles d'ici vendredi. Merci pour votre temps." />
+      <text text="Merci à vous!" top="100" />
+      <description text="W est assis à son bureau devant son ordinateur, en vidéo-conférence. Il est habillé propre." visible="False" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0130.png">
+      <description text="W ferme son ordinateur et enlève ses écouteurs." visible="False" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0140.png">
+      <text text="Bon, je commence à avoir faim, moi!" />
+      <description text="W se lève. Il ne porte que des shorts sous sa chemise." visible="False" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0200.png">
+      <text text="Quelques mois plus tard..." />
+      <description text="Quelques semaines plus tard. On voit l'appartement de W avec un camion de déménagement devant." visible="False" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0205.png">
+      <text text="Allez, plus qu'un voyage!" />
+      <description text="W est dans le camion et prend les dernières boites. Il reste son vélo dans le fond du camion." visible="False" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0210.png">
+      <description text="W monte l'escalier avec ses boites dans les mains." visible="False" />
+    </panel>
+  </slot>
+  <slot maxCropRight="15">
+    <panel image="images/0220.png">
+      <description text="W dépose ses boites au milieu de son nouvel appartement." top="40" visible="False" />
+    </panel>
+  </slot>
+  <slot maxCropLeft="30">
+    <panel image="images/0225.png">
+      <description text="W sort de son appartement. Son téléphone sonne." visible="False" />
+    </panel>
+  </slot>
+  <slot maxCropLeft="10" maxCropRight="20">
+    <panel image="images/0230.png">
+      <text text="Allô?" />
+      <description text="W descend les marches, tandis qu'il répond." top="20" />
+    </panel>
+  </slot>
+  <slot maxCropLeft="10" maxCropRight="10">
+    <panel image="images/0250.png">
+      <text text="Bonjour M.Watkins. C'est simplement pour vous rappeler qu'il vous reste 30 minutes pour rapporter votre camion de location..." />
+      <text text="Euh...oui, merci. Je suis en route." top="75" />
+      <description text="Une personne au centre de location de camions parle au téléphone." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0270.png">
+      <text text="Déjà 17h00!" />
+      <description text="W regarde l'heure sur son téléphone tandis qu'il avance rapidement tête baissée pour sortir du bloc ." top="30" />
+    </panel>
+  </slot>
+  <slot maxCropLeft="15">
+    <panel image="images/0280.png">
+      <text text="Oh!" />
+      <description text="W entre en collision avec un monsieur qui rentrait dans l'immeuble avec son chien." top="20" />
+    </panel>
+  </slot>
+    <slot maxCropRight="10">
+    <panel image="images/0290.png">
+      <text text="Excusez-moi. Je n'ai pas fait attention!" />
+      <text text="J'ai bien vu!" top="40" />
+      <description text="W répond à un vieil homme qui est dans l'entrebâillement de sa porte." top="80" />
+    </panel>
+  </slot>
+  <slot maxCropRight="5">
+    <panel image="images/0300.png">
+      <text text="Vous êtes nouveau dans le bloc? Votre visage ne me dit rien." />
+      <text text="Oui, je suis en train d'emménager, justement." top="40" />
+      <description text="Le vieil homme scrute W." top="80" />
+    </panel>
+  </slot>
+  <slot maxCropLeft="5" maxCropRight="5">
+    <panel image="images/0310.png">
+      <text text="Ah! Donc c'est à vous, le camion devant? Vous n'avez jamais habité en ville auparavant, n'est-ce pas?" />
+      <text text="Comment vous le savez?" top="60" />
+      <description text="Le vieil homme regarde vaguement le camion." top="60" />
+    </panel>
+  </slot>
+  <slot maxCropRight="5">
+    <panel image="images/0320.png">
+      <text text="Vous n'auriez pas laissé la boîte de votre camion ouverte sans surveillance sinon." />
+      <text text="!" top="60" left="100" />
+      <description text="Le vieil homme pointe le camion." top="60" />
+    </panel>
+  </slot>
+  <slot maxCropLeft="10">
+    <panel image="images/0330.png">
+      <text text="Hé! Mon vélo!" />
+      <description text="W sort dehors à la hâte. Quelqu'un sort du camion avec le vélo de W à leur côté." top="20" />
+    </panel>
+  </slot>
+  <slot maxCropRight="10">
+    <panel image="images/0340.png">
+      <description text="La personne court en direction opposée au camion toujours en tenant le vélo." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/350.png">
+      <description text="W commence à courir. La personne commence à enfourcher le vélo." />
+    </panel>
+  </slot>
+  <slot maxCropRight="10">
+    <panel image="images/0360.png">
+      <description text="W ramasse un caillou par terre." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0365.png">
+      <description text="W lance la roche en direction du voleur." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0370.png">
+      <description text="Le voleur est atteint dans le dos, tandis qu'il commençait à rouler." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0375.png">
+      <text text="Ow!" />
+      <description text="Le voleur tombe du vélo." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0380.png">
+      <description text="W continue à courir après le voleur, qui se relève." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0385.png">
+      <description text="Le voleur commence à courir péniblement et abandonne le vélo. W rejoint son vélo, laissé dans la rue. Le voleur est assez loin." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0400.png">
+      <text text="Il s'en est fallu de peu...!" />
+      <description text="W remet son vélo dans la boite du camion." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0405.png">
+      <description text="W embarque dans le camion avec hâte." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0410.png">
+      <description text="W fait quelques mètres et se dirige vers la voie de chemin de fer." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0415.png">
+      <description text="On entend un DING DING et les barrières se mettent en place avant que le camion n'ait eu le temps de passer. Au loin un train de marchandise arrive." />
+    </panel>
+  </slot>
+  <slot maxCropLeft="10" maxCropRight="10">
+    <panel image="images/0460.png">
+      <text text="À 2 kilomètres de là..." />
+      <description text="On voit le fourgon blindé qui roule dans les rues." top="20" />
+    </panel>
+  </slot>
+  <slot maxCropLeft="10" maxCropRight="10">
+    <panel image="images/0465.png">
+      <description text="Le conducteur voit le fourgon qui le dépasse." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0470.png">
+      <description text="Le fourgon blindé se place pour se stationner de reculons à la banque pendant que la voiture des bandits tourne pour se stationner ailleurs." />
+    </panel>
+  </slot>
+  <slot maxCropRight="5">
+    <panel image="images/0475.png">
+      <description text="L'officier passager sort du fourgon." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0478.png">
+      <description text="L'officier passager s'en va pour ouvrir la porte en arrière de son fourgon." />
+    </panel>
+  </slot>
+  <slot maxCropRight="20">
+    <panel image="images/0480.png">
+      <text text="Ne te retourne pas." />
+      <description text="L'un des bandits l'agrippe en le menaçant. Son comparse est avec lui et pointe son arme vers le conducteur. La voiture se rapproche de l'action." />
+    </panel>
+  </slot>
+  <slot maxCropRight="20">
+    <panel image="images/0485.png">
+      <description text="L'officier ouvre la porte arrière tandis que le conducteur du fourgon sort avec les mains en l'air." />
+    </panel>
+  </slot>
+  <slot maxCropRight="20">
+    <panel image="images/0488.png">
+      <description text="Les bandits commencent à sortir l'argent." />
+    </panel>
+  </slot>
+  <slot maxCropRight="20">
+    <panel image="images/0490.png">
+      <description text="Un officier se fait tirer dessus dans le genou par celui qui les tient en joue. Tout le monde se retourne." />
+    </panel>
+  </slot>
+  <slot maxCropRight="20">
+    <panel image="images/0492.png">
+      <text text="Pourquoi tu as fait ça?" top="20" />
+      <text text="Il a essayé de se retourner!" top="40" />
+      <description text="Les bandits commencent à paniquer." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0495.png">
+      <text text="Allez, on s'en va!" />
+      <description text="Les bandits commencent à paniquer." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0497.png">
+      <description text="Les bandits donnent des coups derrière la tête des officiers, qui s'affaissent." />
+    </panel>
+  </slot>
+  <slot maxCropRight="20">
+    <panel image="images/0498.png">
+      <description text="Le camion de W est toujours pris derrière le train. On voit la fin du train." />
+    </panel>
+  </slot>
+  <slot maxCropRight="20">
+    <panel image="images/0500.png">
+      <description text="W regarde l'horloge du camion, énervé. L'horloge affiche 17h15. On voit la barrière se lever à travers le pare-brise." />
+    </panel>
+  </slot>
+  <slot maxCropRight="20">
+    <panel image="images/0505.png">
+      <description text="W conduit le camion rapidement. Derrière lui, il y a plusieurs voitures qui attendaient aussi après le train." />
+    </panel>
+  </slot>
+  <slot maxCropLeft="5" maxCropRight="10">
+    <panel image="images/0510.png">
+      <description text="W roule vite. Il passe sur des lumières jaunes." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0515.png">
+      <description text="W roule dans un quartier où il y a beaucoup de construction. Pas très passant." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0520.png">
+      <description text="W arrive à une intersection. Il hésite car il ne se rappelle plus du chemin." />
+    </panel>
+  </slot>
+  <slot maxCropLeft="15">
+    <panel image="images/0530.png">
+      <description text="W tourne à droite." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0540.png">
+      <description text="W arrive à une autre intersection. Le GPS lui dit de tourner à gauche, mais la rue est bloquée. Le chemin à droite a l'air désert." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0545.png">
+      <description text="W tourne à droite, puis dans la cour d'un immeuble qui semble désaffecté." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0550.png">
+      <description text="W, toujours pressé, recule avec le camion pour revenir sur son chemin." />
+    </panel>
+  </slot>
+  <slot maxCropLeft="10">
+    <panel image="images/0560.png">
+      <description text="Tandis que W recule, il entend un BANG." />
+    </panel>
+  </slot>
+  <slot maxCropRight="10">
+    <panel image="images/0570.png">
+      <text text="C'est une blague!" />
+      <description text="W regarde son miroir." top="60" />
+    </panel>
+  </slot>
+  <slot maxCropRight="10">
+    <panel image="images/0580.png">
+      <text text="Décidément, je frappe dans tout aujourd'hui! Comme si j'avais besoin de ça!" />
+      <description text="W est dehors derrière le camion et regarde avec quoi il a collisionné." top="40" />
+    </panel>
+  </slot>
+  <slot maxCropRight="10">
+    <panel image="images/0590.png">
+      <description text="W regarde la bosse sur le derrière de la voiture." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/0595.png">
+      <description text="W prend une photo de la bosse avec son téléphone." />
+    </panel>
+  </slot>
+  <slot maxCropRight="10">
+    <panel image="images/0600.png">
+      <description text="W entre dans son camion." />
+    </panel>
+  </slot>
+  <slot maxCropRight="10">
+    <panel image="images/0610.png">
+      <description text="W pose une note sur le pare-brise de la voiture." />
+    </panel>
+  </slot>
+  <slot maxCropRight="10">
+    <panel image="images/0620.png">
+      <description text="W s'en va rapidement avec le camion." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1600.png">
+      <description text="Le fourgon des bandits roule rapidement dans les rues." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1610.png">
+      <description text="Le fourgon entre dans la ruelle qui se rend au cul-de-sac où se trouve la voiture abandonnée." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1620.png">
+      <description text="Les bandits transfèrent l'argent du fourgon à la voiture." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1630.png">
+      <description text="Ils partent en trombe dans la voiture." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1635.png">
+      <description text="Les bandits sont dans la voiture et ôtent leur cagoule." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1640.png">
+      <text text="Eh, c'est une contravention, le papier qui flacote au vent?" />
+      <description text="Les bandits sont dans la voiture et ôtent leur cagoule." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1645.png">
+      <text text="Ça n'en a pas l'air, heureusement! Nous regarderons ça une fois arrivés." />
+      <description text="Le bandit passager avant remarque et pointe du doigt la note qui flacote au vent dans le pare-brise." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1680.png">
+      <text text="C'est quelqu'un qui dit qu'il a frappé l'arrière de notre voiture avec la sienne." />
+      <description text="Le conducteur regarde le passager, un peu inquiet. Le passager commence à lire la note." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1690.png">
+      <text text="Vous avez remarqué si c'était là avant qu'on parte pour la banque?" />
+      <text text="Je suis plutôt certain que non." top="40" />
+      <description text="Le conducteur est pensif." top="80" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1692.png">
+      <text text="Hum..." />
+      <description text="Le conducteur est pensif." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1695.png">
+      <description text="La voiture des bandits s'éloigne sur l'autoroute." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1700.png">
+      <description text="Sur l'autoroute, on voit la police arriver en sens inverse." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1710.png">
+      <description text="La voiture s'en va au loin sur l'autoroute. Le conducteur regarde dans son rétroviseur qu'elle s'éloigne bien." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1712.png">
+      <description text="L'employé de U-Haul ferme la grille." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1715.png">
+      <description text="W arrive au U-Haul en camion. La grille est fermée." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1720.png">
+      <text text="Bonjour, je viens rapporter le camion." />
+      <text text="Désolé, nous sommes fermés. Revenez demain." top="20" />
+      <description text="W parle au garde." top="60" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1725.png">
+      <text text="Il est 17h35!" />
+      <text text="Exactement." top="20" />
+      <description text="W parle au garde." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1730.png">
+      <description text="La voiture prend une sortie." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1740.png">
+      <description text="La voiture des bandits arrive dans un coin mal famé de la ville." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1745.png">
+      <description text="La voiture entre dans le garage d'une petite maison." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1750.png">
+      <text text="Prends les sacs. On apporte tout ça à l'intérieur." />
+      <description text="Dans le garage, les bandits sortent de la voiture. Le conducteur se dirige vers l'arrière de la voiture donne un ordre à l'un des deux autres." top="80" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1760.png">
+      <description text="Le conducteur se penche vers la bosse sur l'arrière de la voiture." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1770.png">
+      <description text="On voit que la bosse sur la voiture est près de la plaque d'immatriculation." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1770.png">
+      <description text="Le conducteur regarde avec les sourcils froncés." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1800.png">
+      <description text="Le bandit revient du garage et rejoint les autres." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1810.png">
+      <text text="C'est une belle récolte!" />
+      <text text="Génial." top="60" />
+      <description text="Les autres sont en train de compter l'argent. Ils sont enthousiastes. Le conducteur a l'air préoccupé." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1820.png">
+      <text text="Tu ne veux pas venir voir ça?" />
+      <text text="Je dois juste passer un appel. Tu as encore la note qui était sur le pare-brise?" top="60" />
+      <description text="Le conducteur prend le téléphone." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1830.png">
+      <text text="Elle est là." />
+      <description text="Le bandit pointe la note, négligée quelque part. Le conducteur s'y dirige." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1840.png">
+      <description text="Le conducteur compose sur le téléphone en regardant la note." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1850.png">
+      <description text="On voit le bloc appartment de W et toujours son camion devant." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1860.png">
+      <description text="W sent son téléphone vibrer, alors qu'il est chez lui à défaire des boites." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1870.png">
+      <text text="Allô?" />
+      <description text="Le bandit écoute sur speakerphone et est content d'entendre W répondre." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1880.png">
+      <text text="Bonjour. J'appelle au sujet de la note que vous avez laissée dans le pare-brise de ma voiture..." />
+      <text text="Ah! Oui, je suis désolé pour ça." top="80" />
+      <description text="W se rappelle l'accident." top="100" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1885.png">
+      <text text="Pas de problème! Je ne voulais pas vous importuner avec cela, mais j'ai peur que les réparations soient coûteuses." />
+      <text text="Vous avez une idée du montant?" top="80" />
+      <description text="Le bandit prépare son mensonge." top="100" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1890.png">
+      <text text="Dans les 500$, je dirais. Peut-être un peu plus..." />
+      <text text="Autant? Ce n'est qu'une toute petite bosse!" top="40" />
+      <description text="Le bandit prépare son mensonge." top="100" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1895.png">
+      <text text="Oui, eh bien, vous savez, les garagistes..." />
+      <text text="C'est à peine si la bosse fait la taille du '8' sur votre plaque d'immatriculation!" top="80" />
+      <description text="W regarde la photo sur son téléphone." top="100" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1898.png">
+      <text text="Comment vous savez ça?" />
+      <text text="J'ai pris une photo, juste au cas. Ça ne vous dérange pas?" top="40" />
+      <description text="Le bandit se redresse." top="100" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1900.png">
+      <text text="Non...Ehm...bref, est-ce qu'on peut se rencontrer rapidement pour régler ça?" />
+      <text text="Oui, bien sûr." top="80" />
+      <description text="Le bandit comprend quelque chose d'important." top="100" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1910.png">
+      <text text="Ce soir, ce serait possible?" />
+      <text text="Je crois...sinon, ce pourrait être demain. Il commence à se faire tard." top="20" />
+      <description text="W regarde l'heure." top="100" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1915.png">
+      <text text="Ce sera vite fait. Je peux me déplacer dans votre coin si ça vous arrange mieux. Dans quel quartier habitez-vous?" />
+      <description text="Le bandit prépare son mensonge." top="100" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1920.png">
+      <text text="Bien, bien. La luncheonette, c'est parfait! À tout de suite!" />
+      <description text="Le bandit est satisfait." top="80" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1930.png">
+      <text text="Qu'est-ce que tu fais?" />
+      <description text="Le bandit commence à mettre sa veste." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1940.png">
+      <text text="Je sors quelques instants." />
+      <description text="Le bandit met la note dans sa poche." top="80" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/1960.png">
+      <description text="La porte se referme, tandis que les 2 autres se regardent." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2150.png">
+      <description text="Il commence à faire noir. La voiture prend une sortie d'autoroute." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2160.png">
+      <description text="On voit la voiture qui approche de la luncheonette." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2170.png">
+      <description text="Le bandit se stationne de façon à pouvoir bien voir dans le restaurant." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2180.png">
+      <description text="W arrive en vélo à la luncheonette." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2190.png">
+      <description text="Du point de vue du bandit, on voit W marcher dans le restaurant parmi les clients." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2200.png">
+      <description text="Le bandit sort son téléphone." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2210.png">
+      <description text="W est attablé au restaurant. Il a quelques papiers devant lui et un verre en carton. Son téléphone vibre." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2220.png">
+      <description text="Du point de vue du bandit, on voit W prendre son téléphone dans le restaurant. Le bandit l'a repéré." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2230.png">
+      <text text="Oui, bonjour. C'est encore moi. J'ai un empêchement de dernière minute et je ne pourrai pas être là ce soir comme on avait convenu. Vous ne vous êtes pas encore dérangé, j'espère?" />
+      <description text="Le bandit sort son téléphone." top="100" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2240.png">
+      <text text="En fait, je suis déjà arrivé...ce n'est pas grave, on conviendra d'un autre moment. Bonne soirée." />
+      <description text="W répond, un peu énervé de perdre son temps." top="80" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2250.png">
+      <text text="Merci de votre compréhension. Bonne soir..." />
+      <description text="CLIC W a raccroché." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2260.png">
+      <text text="Quelle perte de temps!" />
+      <description text="W range son téléphone et est énervé." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2270.png">
+      <description text="W prend les papiers et son verre avec lui." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2280.png">
+      <description text="W sort du restaurant." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2290.png">
+      <description text="Le bandit le voit au loin débarrer son vélo." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2300.png">
+      <description text="W part avec son vélo avec ses choses. Derrière, le bandit démarre sa voiture." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2310.png">
+      <description text="W roule sur la route, la voiture derrière lui." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2320.png">
+      <description text="Du point de vue du bandit, on voit W rouler à vélo. Il y a trop de témoins potentiels pour faire un drive-by." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2330.png">
+      <description text="W roule dans un quartier différent, toujours suivi par le bandit." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2335.png">
+      <description text="Le pied du bandit appuie sur la pédale de gaz." />
+    </panel>
+    <panel image="images/2338.png">
+      <description text="Le bandit ouvre la fenêtre passager avant." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2340.png">
+      <description text="Le bandit sort son pistolet. Il n'est pas loin derrière W, qui ne se doute de rien." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2343.png">
+      <text text="Oh!" />
+      <description text="À la dernière seconde, W bifurque dans un passage pour vélo." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2346.png">
+      <text text="#####!" />
+      <description text="Le bandit est frustré. En arrière-plan, derrière lui, W s'éloigne sur le passage pour vélo. Il est hors d'atteinte du pistolet." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2350.png">
+      <description text="Le bandit roule rapidement." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2353.png">
+      <description text="Le bandit tourne brusquement sur une rue pour aller dans la même direction que W." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2356.png">
+      <description text="Le bandit regarde autour de lui pour voir s'il peut repérer W." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2360.png">
+      <description text="Il voit au loin W émerger du passage et se diriger vers une autre rue." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2363.png">
+      <description text="Le bandit accélère en fou pour ne pas perdre W." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2366.png">
+      <description text="W arrive devant son bloc appartement et rentre dans la cour." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2370.png">
+      <description text="W entre dans le lobby de son bloc." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2273.png">
+      <description text="La voiture se parke devant. Le bandit voit W s'éloigner dans la cour de son bloc." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2376.png">
+      <description text="Le bandit vient de sortir de la voiture et s'élance en direction du bloc pour rattraper W. Il tient son arme. Son visage est caché." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2380.png">
+      <description text="W commence à monter les marches. La porte commence à se fermer derrière lui." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2390.png">
+      <description text="W monte les marches." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2400.png">
+      <description text="Le bandit manque de justesse la porte qui s'est fermée." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2405.png">
+      <description text="Le bandit voit tout juste à travers la porte le soulier de W, qui monte les escaliers." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2410.png">
+      <description text="Le bandit sort avec précipitation dehors." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2420.png">
+      <description text="Le bandit s'en va sur le côté du bloc, où on voit les balcons de tout le monde." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2430.png">
+      <description text="Le bandit attend et regarde le côté du bâtiment, les balcons du 2ème étage." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2440.png">
+      <text text="Ah!" />
+      <description text="La lumière d'un appartement s'allume." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2450.png">
+      <text text="...3...4, parfait." />
+      <description text="Le bandit compte avec son doigt c'est la combientième fenêtre." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2460.png">
+      <description text="Le bandit s'en retourne à sa voiture." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2470.png">
+      <text text="Ramenez-vous rapidement, j'ai besoin de votre aide. Je vous donne l'adresse." />
+      <description text="Dans sa voiture, le bandit appelle ses comparses." top="60" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2480.png">
+      <text text="Qu'est-ce que tu crois qu'il a?" />
+      <text text="Je ne sais pas. Il ne l'a pas dit." top="20" />
+      <description text="Les bandits regardent la télé. L'un des deux se dirige vers la porte. Sur la télé, on voit une journaliste parler." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2490.png">
+      <description text="Le bandit regarde la télé. C'est l'autre bandit, qui met son manteau, qui parle. Sur la télé, on voit les policiers s'affairer autour du fourgon blindé laissé dans le cul-de-sac." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2500.png">
+      <description text="Sur la télé, on voit les policiers sortir un cadavre sur des civières, cachés par des couvertures, de l'arrière du fourgon." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2520.png">
+      <description text="W fait du ménage dans son appartement. Il range des boites." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2900.png">
+      <description text="La voiture rouge arrive et se stationne dans la rue, devant le bloc." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2905.png">
+      <text text="Qu'est-ce qui se passe?" />
+      <description text="La voiture rouge arrive et se stationne dans la rue, devant le bloc." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2910.png">
+      <text text="La 2ème fenêtre avec de la lumière. Montez, je vous explique." />
+      <description text="Les bandits se réunissent et préparent leur coup. Le premier bandit montre le bloc." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2912.png">
+      <description text="W range des choses dans son appartement." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2914.png">
+      <description text="W range des choses dans son appartement." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2916.png">
+      <text text="Je comprends ce qui se passe, mais je ne comprends toujours pas ce qu'on fait ici. Il a une photo de notre plaque d'immatriculation et c'est tout?" />
+      <description text="Les bandits se réunissent et préparent leur coup. Le premier bandit montre le bloc." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2918.png">
+      <text text="Il a vu notre voiture à l'endroit où le fourgon blindé et le VUS volé seront retrouvés. C'est un témoin." top="80" />
+      <text text="Ont été retrouvés. C'était aux nouvelles, juste avant qu'on vienne ici." top="80" />
+      <description text="Les bandits se réunissent et préparent leur coup. Le premier bandit montre le bloc." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2920.png">
+      <text text="Raison de plus pour agir vite. Je ne veux pas qu'il apprenne l'histoire et comprenne qu'il a des informations pour la police." />
+      <description text="Les bandits se réunissent et préparent leur coup. Le premier bandit montre le bloc." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2930.png">
+      <text text="Très bien. On fait quoi?" />
+      <text text="On attend qu'il dorme. Je ne veux rien qui puisse être entendu de ses voisins." top="20" />
+      <description text="Les bandits regardent le bloc appartement." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2935.png">
+      <text text="Et...on va là simplement pour se débarrasser de la photo ou...?." />
+      <text text="On va là pour être tranquilles." top="20" />
+      <description text="On voit la voiture." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2940.png">
+      <text text="Allez! Je terminerai demain." />
+      <description text="W regarde avec satisfaction son appartement presque terminé. Il baîlle. Il reste quelques boîtes ça et là." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2945.png">
+      <description text="W va se chercher un verre d'eau au lavabo." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2950.png">
+      <description text="W éteint la lumière de la pièce principale, son verre d'eau à la main." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2960.png">
+      <description text="Les bandits ont remarqué que la lumière s'est fermée. Il ne reste ouverte que la lumière de la chambre." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2970.png">
+      <description text="La lumière de la chambre est toujours ouverte." />
+    </panel>
+    <panel image="images/2980.png">
+      <description text="La lumière de la chambre se ferme." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2985.png">
+      <description text="W est encore réveillé, mais commence à s'endormir." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2990.png">
+      <text text="C'est à nous." />
+      <description text="Les bandits savent qu'il est bientôt temps de passer à l'action." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/2995.png">
+      <description text="W dort." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3000.png">
+          <text text="Allez-y, je vous attends ici." />
+      <description text="2 bandits, incluant le bandit #1, mettent des cagoules et traversent la rue en direction du bloc." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3002.png">
+      <description text="Les 2 bandits vont dans le lobby." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3005.png">
+      <description text="Les bandits essaient la porte, verrouillée." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3008.png">
+      <description text="Ils hésitent devant la liste des boutons pour le bloc." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3010.png">
+      <description text="Les bandits se regardent, avec un air entendu qu'ils devraient essayer un autre moyen." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3012.png">
+      <description text="Les 2 bandits se dirigent vers le côté de l'immeuble." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3015.png">
+      <description text="Les 2 bandits s'aident pour monter sur le balcon de W." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3020.png">
+      <description text="Le pied d'un bandit glisse et on entend le métal de la rambarde du balcon grincer." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3030.png">
+      <description text="W, qui dormait, ouvre les yeux." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3040.png">
+      <description text="Le bandit se hisse par-dessus la rambarde du balcon, qui grince encore." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3050.png">
+      <description text="W commence à trouver quelque chose de suspect." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3085.png">
+      <description text="W est assis sur son lit et se frotte les yeux de fatigue." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3090.png">
+      <description text="W regarde par la fenêtre de sa chambre." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3095.png">
+      <description text="Il voit avec un angle très serré que des gens sont sur son balcon." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3100.png">
+      <description text="W marche dans le corridor. Il fait encore sombre." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3110.png">
+      <text text="!" />
+      <description text="W voit avec étonnement un bandit accroupi en train de forcer le bas de la porte patio." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3120.png">
+      <description text="W, accroupi, s'approche d'une boite qui traine par terre." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3130.png">
+      <description text="W pousse la boite, qui glisse dans le bas de la porte patio." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3140.png">
+      <description text="W se dirige, encore accroupi, vers la porte de son appartement." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3160.png">
+          <text text="Ah!" />
+      <description text="Le bandit finit par ouvrir la porte patio." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3170.png">
+      <description text="Les bandits se préparent à entrer dans l'appartement. Ils prennent leur arme et leur lampe de poche et ouvrent tranquillement la porte patio." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3160.png">
+      <description text="W, accroupi et qui essaie d'ouvrir sa porte sans bruit, se retourne." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3180.png">
+      <description text="Le bandit #1 commence à entrer dans l'appartement." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3190.png">
+      <text text="#####!" />
+      <description text="Le bandit #1 trébuche sur la boite et s'étale sur le ventre." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3200.png">
+      <description text="Lorsque le bandit tombe, il frappe la table et ça fait un tumulte. Tout ce qui était sur la table tombe par terre." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3205.png">
+      <text text="Bravo pour une entrée discrète!" />
+      <description text="Le deuxième bandit passe par dessus le premier et se dépêche vers la chambre de W." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3210.png">
+      <description text="Les bandits se retournent alors qu'ils entendent la porte s'ouvrir." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3220.png">
+      <description text="Les bandits se ruent vers la porte entrouverte de l'appartement." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3230.png"> 
+      <description text="Le bandit sort de l'appartement et regarde autour." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3240.png">
+      <description text="W est en train de sortir du bloc. On le voit en bas des marches de dos qui pousse la porte." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3250.png">
+      <text text="Hé!" />
+      <description text="Le bandit pointe son arme sur W avant qu'il ne sorte dehors." top="20" />
+    </panel> 
+  </slot>
+  <slot>
+    <panel image="images/3260.png">
+      <description text="W court dehors. Il est près de son camion." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3270.png">
+      <description text="W regarde autour de lui pour une cachette." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3275.png">
+      <description text="Le bandit sort du bloc, fusil au poing." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3280.png">
+      <description text="Le bandit regarde autour de lui prudemment, à la recherche de W." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3285.png">
+      <text text="Mais qu'est-ce qui se passe ici?!" />
+      <description text="La porte d'un autre appartement s'ouvre." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3290.png">
+      <description text="Le bandit qui est resté dans l'appartement, cherche dans la chambre de W et se retourne vers la voix.'" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3300.png">
+      <description text="Le bandit dans l'appartement s'en va par là où ils sont entrés." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3310.png">
+      <description text="Il saute du 2ème étage et atterrit dans le gazon." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3315.png">
+      <text text="Vous l'avez eu?" />
+      <text text="Non! Tu l'as vu sortir? Il ne peut pas être loin." top="20" />
+      <description text="Les bandits se rejoignent aux voitures, qui sont plus loin sur la rue." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3320.png">
+      <text text="Non, je ne l'ai pas vu. Comment il a pu vous échapper?" />
+      <text text="Il faut s'en aller." top="20" />
+      <description text="Les bandits se rejoignent aux voitures, qui sont plus loin sur la rue." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3325.png">
+      <description text="W est assis dans la boite de camion et essaie de ne faire aucun bruit." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3330.png">
+      <description text="Les rayons des phares illuminent une partie de l'intérieur de la boite de camion." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3335.png">
+      <description text="W se penche pour essayer de voir ce qui se passe dans la rue." />
+    </panel>
+    <panel image="images/3338.png">
+      <description text="Dans la fente, on n'est qu'ébloui par les phares des voitures." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3340.png">
+      <description text="Les voitures dépassent rapidement le camion." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3345.png">
+      <description text="W sort prudemment de la boite du camion." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3350.png">
+      <description text="W essaie de voir les voitures qui s'en vont. Celle qu'il connait est cachée." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3500.png">
+      <text text="Bon, il n'y a plus personne. Vous savez qui a fait ça?" />
+      <text text="Non." top="100" />
+      <description text="Chez W, un policier revient du corridor. Il a fini de regarder l'appartement." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3510.png">
+      <text text="N'hésitez pas à nous appeler s'il y a quelque chose d'autre qu'on puisse faire." />
+      <text text="Vous pensez que c'est prudent si je reste ici cette nuit? Ils ont forcé ma porte." top="100" />
+      <description text="Les policiers s'apprêtent à quitter." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3530.png">
+      <text text="C'est vous qui voyez. D'habitude, les cambrioleurs ne reviennent pas." />
+      <description text="Les policiers s'apprêtent à quitter." top="80" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3540.png">
+      <text text="Pourquoi des cambrioleurs se seraient-ils donné la peine de monter dans un appartement du 2ème étage? Et par le balcon?" />
+      <description text="Les policiers s'apprêtent à quitter." top="140" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3550.png">
+      <text text="Je ne sais pas, mais ce serait une bonne question à leur poser si vous les revoyez. Je crois que vous avez été malchanceux, c'est tout." />
+      <description text="Les policiers s'en vont." top="140" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3560.png">
+      <description text="W regarde le désordre dans son appartement. On entend la porte se fermer." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3565.png">
+      <description text="De loin, les bandits observent les voitures de police devant le bloc de W." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3570.png">
+      <description text="Les voitures de police s'en vont." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3610.png">
+      <text text="Ils ont brisé ma porte. Elle ne ferme même plus correctement! Si seulement je pouvais la maintenir fermée avec..." />
+      <description text="W essaie de refermer la porte patio." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3620.png">
+      <text text="W embarque dans son camion." />
+      <description text="W ferme la lumière de sa chambre." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3630.png">
+      <description text="W attrape les sangles qui sont sur le siège passager." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3650.png">
+      <description text="Sangles en main, comme il s'apprête à débarquer du camion, il aperçoit de la lumière de phares dans le rétroviseur." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3655.png">
+      <description text="W éteint la lumière au plafond." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3660.png">
+      <description text="Les 2 voitures se stationnent au même endroit." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3670.png">
+      <description text="W entend les portes se fermer." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3670.png">
+      <text text="Mais qui sont ces gens et qu'est-ce qu'ils me veulent? Peut-être qu'ils en ont après l'ancien locataire..." />
+      <description text="W voit des ombres se diriger vers son bloc. Il prend garde de ne pas être vu." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3680.png">
+      <description text="W surveille toujours, tapi dans l'ombre. Les bandits disparaissent sur le côté de l'immeuble." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3690.png">
+      <text text="Mais où est-ce qu'il a bien pu aller? Il était encore chez lui lorsque la police est partie, non?" />
+      <description text="Les bandits s'en retournent à leurs voitures." top="100" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3700.png">
+      <text text="À présent, il va falloir attendre à demain...C'est loin d'être une réussite!" />
+      <description text="Les bandits s'en retournent à leurs voitures." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3710.png">
+      <text text="C'est bien la même voiture que tantôt!" />
+      <description text="Les voitures dépassent W, qui regarde." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3720.png">
+      <description text="W met en marche son camion quand les voitures sont assez loin." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3730.png">
+      <description text="W suit les voitures sur l'autoroute." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3740.png">
+      <description text="Le camion prend la même sortie que les voitures des bandits." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3750.png">
+      <description text="Le camion s'engage dans le quartier des bandits." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3760.png">
+      <description text="Les voitures se stationnent dans l'allée de la maison des bandits." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3770.png">
+      <description text="W observe au loin les voitures qui sont stationnées." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3780.png">
+      <description text="W débarque du camion et s'avance vers la maison." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3790.png">
+      <description text="W s'accroupit derrière les voitures tandis qu'il est devant la maison." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3800.png">
+      <description text="W prend une photo de la maison." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3810.png">
+      <description text="W prend une photo de la plaque de la première voiture." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3820.png">
+      <text text="Parfait!" />
+      <description text="W regarde sa photo." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3825.png">
+      <text text="Revenez demain matin à 8h." />
+      <text text="!" top="20" />
+      <description text="Les bandits sortent de la maison. W, caché derrière la voiture, lève la tête de surprise." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3830.png">
+      <description text="Du point de vue des bandits, on pourrait voir W regarder autour lui, mais il fait noir." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3835.png">
+      <description text="W, accroupi, avance dans la cour." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3840.png">
+      <description text="W est du côté opposé de la voiture au bandit, qui est devant sa portière. Il comprend qu'il doit dégager de là rapidement." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3845.png">
+      <description text="Le bandit embarque dans sa voiture et W sprinte bas vers des poubelles sur le côté du garage." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3850.png">
+      <description text="Le détecteur de mouvements sur le côté de la maison s'active." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3855.png">
+      <text text="!" />
+      <description text="Le côté de la maison s'allume." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3860.png">
+      <description text="W court le long de la maison vers l'arrière. On voit l'ombre du conducteur qui sort de sa voiture." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3865.png">
+      <description text="W est caché derrière la maison, sur le coin et on voit le bandit regarder le passage sur le côté de la maison." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3870.png">
+      <description text="Le bandit disparait." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3875.png">
+      <description text="La voiture du bandit s'en va." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3880.png">
+      <description text="W, toujours derrière la maison, regarde à l'intérieur du garage." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3885.png">
+      <text text="Une BMW noire!" />
+      <description text="Il voit la voiture avec laquelle il a collisionné plus tôt." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3890.png">
+      <description text="W s'avance dans le garage." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3900.png">
+      <text text="C'est bien la même!" />
+      <description text="W touche la bosse sur la voiture. Il comprend que c'est la même voiture." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3905.png">
+      <description text="W passe entre la voiture et une étagère pour sortir du garage." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3910.png">
+      <text text="!" />
+      <description text="W marche sur un râteau accoté sur le mur." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3930.png">
+      <text text="Tu vas le rappeler?" />
+      <text text="Oui, à l'instant." top="20" />
+      <description text="Les bandits semblent stressés. Ils sont autour du téléphone." top="60" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3935.png">
+      <text text="J'espère qu'il ne se doutera de rien." />
+      <text text="Comment veux-tu qu'il sache?" top="40" />
+      <description text="Le bandit qui appelle approche le téléphone." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3940.png">
+      <text text="Bonjour, c'est encore moi, pour la voiture. Est-ce que vous avez le temps de me rencontrer aujourd'hui?" />
+      <text text="Ah! J'avais presque oublié! Euh..." top="100" />
+      <description text="W pense pour lui-même, en étant un peu énervé d'avoir à gérer cela." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3950.png">
+      <text text="Ça ne tombe pas très bien. Je dois aller chez moi pour prendre les documents et..." />
+      <text text="D'accord. Prenez votre temps et appelez-moi lorsque vous serez prêt." top="100" />
+      <description text="W sort son téléphone." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3960.png">
+      <text text="Il ne perd pas de temps, lui!" />
+      <description text="W raccroche et regarde son téléphone, un peu énervé." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3980.png">
+      <description text="W débarre sa porte d'appartement." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/3990.png">
+      <description text="W arrive dans la pièce où on voit encore le bordel par terre." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4000.png">
+      <description text="Du bout du corridor, dans l'obscurité, là où se trouve la chambre de W, on voit W prendre un balai du débarras." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4010.png">
+      <description text="W commence à passer le balai dans son appartement." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4020.png">
+      <text text="?" />
+      <description text="W ramasse avec le balai le coin d'un bout de papier qui dépassait d'en-dessous d'un meuble." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4030.png">
+      <description text="Encore du point de vue du bout du corridor, W se penche pour voir le bout de papier." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4040.png">
+      <description text="On voit que la note est celle que W a laissée sur le pare-brise." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4050.png">
+      <description text="On voit que W, qui est accroupi, vient de comprendre." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4060.png">
+      <description text="CRRR. Un léger bruit derrière W. Close-up sur le visage de W qui se regarde brusquement derrière lui." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4070.png">
+      <description text="L'un des bandits est dans le corridor avec un couteau et essayait d'attaquer subtilement W de dos. On voit qu'il essayait d'approcher à pas de loup. Le bandit se voit surpris." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4080.png">
+      <description text="Le bandit commence à courir vers W. W roule sur le côté en laissant tomber la note, vers la porte patio avec le balai toujours dans sa main." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4090.png">
+      <description text="W fait ressortir le manche du balai du mur et fait trébucher le bandit." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4100.png">
+      <description text="W donne un coup de manche à balai sur la tête du bandit, qui est à 4 pattes." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4110.png">
+      <text text="Qu'est-ce que vous me voulez?" />
+      <description text="W s'aide du balai pour contrôler le bandit. Il est sous W et ne peut plus bouger ses bras." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4120.png">
+      <description text="Le bandit se remet du coup de balai et a l'air sonné. Il ne dit rien, avec un air de défi." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4130.png">
+      <text text="Je sais que c'est vous, pour la voiture. Vous avez laissé trainer ça." />
+      <text text="Mais comment...?" top="100" />
+      <description text="W est énervé et continue à maitriser le bandit. Il lui montre le papier du pare-brise." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4140.png">
+      <description text="Le bandit réalise que c'est en tombant hier soir qu'il a dû laisser le papier." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4150.png">
+      <text text="Qu'est-ce que vous me voulez? Ce n'est quand même pas pour une bosse sur votre voiture que vous êtes entré deux fois chez moi." />
+      <text text="Ce ne sont pas de tes affaires." top="100" />
+      <description text="W continue d'appliquer de la pression." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4155.png">
+      <text text="J'ai une photo de votre plaque. La police vous retrouvera sans problème." />
+      <text text="Ne fais pas ça. Écoute, pour la bosse, tout est oublié. Laisse-moi partir." top="60" />
+      <description text="W continue d'appliquer de la pression." top="120" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4160.png">
+      <description text="W fronce les sourcils. Il est en train de décider s'il croit le bandit." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4170.png">
+      <description text="Le bandit donne un coup de jambe sur W." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4190.png">
+      <description text="W donne un mise en échec dans le visage du bandit avec le manche à balai." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4200.png">
+      <description text="W court vers la porte patio." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4205.png">
+      <description text="Le bandit est à couché et se tient la tête, étourdi." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4220.png">
+      <description text="Le bandit, se relève et tourne la tête vers W, qui est en train d'ouvrir la porte patio." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4225.png">
+      <text text="Tant pis pour le bruit!" />
+      <description text="Le bandit se relève et prend son arme sur sa hanche." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4230.png">
+      <description text="W est sur son balcon et passe par-dessus la rambarde." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4240.png">
+      <description text="Le bandit tire plusieurs balles en direction de W." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4245.png">
+      <description text="W saute de son balcon. Les balles passent près de le toucher." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4250.png">
+      <description text="Le bandit court vers la porte patio." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4260.png">
+      <description text="W court pour aller le plus loin possible de son bloc." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4270.png">
+      <description text="Sur le balcon, le bandit tire sur W, qui est déjà loin." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4280.png">
+      <description text="W court à toute vitesse et regarde derrière lui." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4290.png">
+      <description text="Le bandit saute à son tour par-dessus le balcon." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4300.png">
+      <text text="Il court dans le voisinage. Trouvez-le! Je vais être à pied." />
+      <description text="Le bandit court en parlant au téléphone." top="60" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4310.png">
+      <description text="Les deux autres bandits démarrent la voiture. L'un est au téléphone." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4320.png">
+      <description text="W continue de courir. Il commence à s'essouffler tandis qu'il regarde s'il y a quelqu'un derrière lui." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4330.png">
+      <description text="W commence à ralentir. On voit qu'il est relativement loin de son appartement." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4340.png">
+      <description text="Toujours aux aguets, W commence à pitonner sur son téléphone." />
+    </panel>
+    <panel image="images/4350.png">
+      <description text="On voit 911 sur le téléphone et le pouce de W qui s'apprête à appuyer sur le bouton Appel." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4400.png">
+      <text text="Allô, police?" />
+      <description text="W continue de courir plus lentement. Il regarde derrière lui." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4410.png">
+      <description text="W voit très au loin le bandit lui courir après." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4420.png">
+      <description text="En se retournant pour regarder devant lui à nouveau, W frappe le véhicule des 2 autres bandits. Il passe par-dessus le capot. Son téléphone lui échappe des mains." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4430.png">
+      <description text="W se retrouve assis dans la rue, étourdi. Son téléphone est plus loin." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4440.png">
+      <description text="W est assis et voit la voiture freiner sec." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4450.png">
+      <description text="Le bandit passager sort de la voiture en tenant son pistolet à ses côtés." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4460.png">
+      <description text="W voit la main qui tient le pistolet." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4470.png">
+      <description text="W, tête la première, s'avance vers la rembarde." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4480.png">
+      <description text="Le bandit lève son arme tandis que W passe par-dessus la rembarde." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4490.png">
+      <text text="OUF!" />
+      <description text="W atterrit lourdement en bas." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4500.png">
+      <description text="W roule en-dessous du pont, pour se mettre à l'abri." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4510.png">
+      <description text="Le bandit regarde par-dessus la rembarde en pointant son arme." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4520.png">
+      <description text="Une main récupère le téléphone qui traine dans la rue." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4530.png">
+      <text text="Laisse tomber, on s'en va! J'ai son téléphone!" />
+      <text text="Il a vu mon visage!" top="40" />
+      <description text="Le 2ème bandit rejoint celui qui est à la rembarde." top="60" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4535.png">
+      <text text="Il y a une voiture qui s'en vient! On reviendra dans 2 minutes." />
+      <description text="On voit les 2 bandits sur la rembarde et une voiture qui arrive au loin." top="60" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4540.png">
+      <description text="Les deux bandits courent vers leur voiture." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4550.png">
+      <description text="Ils démarrent en trombe et s'éloignent au loin." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4560.png">
+      <description text="W se relève péniblement en se tenant la tête." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4570.png">
+      <description text="W marche toujours penché en se tenant la tête et essaie de regagner la route." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4580.png">
+      <description text="W se couche dans l'herbe, près de la route. Une voiture arrive en sens inverse." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4800.png">
+      <description text="On voit la voiture des bandits et une voiture qui la croise." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4805.png">
+      <description text="On voit la photo de la plaque d'immatriculation sur le téléphone brisé de W. Un pouce s'apprête à cliquer sur la poubelle pour supprimer la photo." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4810.png">
+      <text text="Et voilà, plus de photo!" />
+      <description text="Le bandit a l'air légèrement satisfait." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4820.png">
+      <text text="Fais demi-tour." />
+      <description text="Le bandit sent que la fin est proche." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4830.png">
+      <description text="La voiture fait demi-tour sur la route." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4840.png">
+      <description text="La voiture freine sec là où elle a fait la collision avec W." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4850.png">
+      <description text="L'un des bandits regarde en bas s'il peut apercevoir W." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4860.png">
+      <description text="Le bandit descend prudemment la colline pour se rendre sous le pont. Il est armé." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4870.png">
+      <description text="Il n'y a personne sous le pont. Le bandit pointe son arme." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4880.png">
+      <text text="Personne! Il ne peut pas être loin, pourtant!" />
+      <description text="Le bandit regarde dans les environs." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4890.png">
+      <text text="Je ne vois personne!" />
+      <description text="Le bandit crie aux autres." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4900.png">
+      <text text="Oh! Où est-ce que je suis?" />
+      <description text="W est sur la banquette et il se tient toujours la tête." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4910.png">
+      <text text="Tu ferais mieux de ne pas trop bouger. On t'amène à l'hôpital." />
+      <description text="Un couple se trouve à l'avant." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4920.png">
+      <text text="Il faudrait appeler la police." />
+      <description text="W a l'air d'avoir un mal de tête épouvantable." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4930.png">
+      <text text="La police? Pourquoi?" />
+      <description text="Le couple a l'air surpris." top="20" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/4940.png">
+      <description text="W s'est évanoui." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/5000.png">
+      <description text="On voit l'hôpital." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/5010.png">
+      <description text="W a l'air de se remettre. Il est couché dans un lit et se tient la tête." />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/5020.png">
+      <text text="Bonjour! Vous avez demandé à nous voir. Qu'est-ce qui vous est arrivé?" />
+      <description text="2 policiers arrivent dans la chambre. L'infirmière est là." top="40" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/5030.png">
+      <text text="Je m'enfuyais et j'ai fait une chute. Ah, et je me suis fait frapper par une voiture..." />
+      <description text="Les policiers se regardent." top="60" />
+    </panel>
+  </slot>
+  <slot>
+    <panel image="images/5040.png">
+      <text text="Vous vous enfuyiez de quoi?" />
+      <description text="Des gens qui sont entrés dans mon appartement." top="40" />
+    </panel>
+  </slot>
+</comic>
