@@ -6,8 +6,8 @@ This is the website for [jesusmidget.com](https://jesusmidget.com)
 
 - C#
 - .NET
-- iTextSharp
 - CircleCI
+- AWS S3
 
 ## Development
 

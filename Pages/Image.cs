@@ -1,59 +1,59 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Borders;
 
 namespace Pages
 {
     public class Image : IPositionable, IRenderable
     {
-        private iTextSharp.text.Image image;
+        private iText.Layout.Element.Image image;
 
         public Image(string src)
         {
-            this.image = iTextSharp.text.Image.GetInstance(src);
+            this.image = iText.Layout.Element.Image.GetInstance(src);
         }
 
         public Image(byte[] bytes)
         {
-            this.image = iTextSharp.text.Image.GetInstance(bytes);
+            this.image = iText.Layout.Element.Image.GetInstance(bytes);
         }
 
         public void SetHeight(float height)
         {
-            float pctScaling = height / this.image.Height;
-            this.image.ScalePercent(100 * pctScaling);
+            float pctScaling = height / this.image.GetImageHeight();
+            this.image.Scale(pctScaling, pctScaling);
         }
 
         public float getHauteur()
         {
-            return this.image.ScaledHeight;
+            return this.image.GetImageScaledHeight();
         }
 
         public float getLargeur()
         {
-            return this.image.ScaledWidth;
+            return this.image.GetImageScaledWidth();
         }
 
         public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
             PdfContentByte cb = procEcriture.DirectContent;
-            PdfTemplate t = cb.CreateTemplate(this.image.ScaledWidth - horizontalOffset, this.image.ScaledHeight - verticalOffset);
-            float origWidth = this.image.ScaledWidth;
-            float origHeight = this.image.ScaledHeight;
+            PdfTemplate t = cb.CreateTemplate(this.image.GetImageScaledWidth() - horizontalOffset, this.image.GetImageScaledHeight() - verticalOffset);
+            float origWidth = this.image.GetImageScaledWidth();
+            float origHeight = this.image.GetImageScaledHeight();
             t.AddImage(this.image, origWidth, 0, 0, origHeight, -decoupageGauche, -decoupageHaut);
             this.image = iTextSharp.text.Image.GetInstance(t);
         }
 
         private void AddBorders()
         {
-            this.image.Border = Rectangle.BOX;
-            this.image.BorderColor = BaseColor.BLACK;
-            this.image.BorderWidth = 2f;
+            Border border = new SolidBorder(Black, 2f);
+            this.image.SetBorder(border);
         }
 
         // IPositionable
         public void SetPosition(float x, float y)
         {
-            this.image.SetAbsolutePosition(x, y - this.image.ScaledHeight);
+            this.image.SetFixedPosition(x, y - this.image.GetImageScaledHeight());
         }
 
         // IRenderable

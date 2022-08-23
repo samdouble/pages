@@ -1,7 +1,5 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System;
-using System.Windows;
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
 using System.Xml;
 
 namespace Pages
