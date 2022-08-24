@@ -1,6 +1,10 @@
-﻿using iText.Kernel.Pdf;
+﻿using iText.IO.Image;
+using iText.Kernel.Colors;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Colorspace;
 using iText.Layout;
 using iText.Layout.Borders;
+using SixLabors.ImageSharp.ColorSpaces.Conversion;
 
 namespace Pages
 {
@@ -10,12 +14,14 @@ namespace Pages
 
         public Image(string src)
         {
-            this.image = iText.Layout.Element.Image.GetInstance(src);
+            ImageData imageData = ImageDataFactory.Create(src);
+            this.image = new iText.Layout.Element.Image(imageData);
         }
 
         public Image(byte[] bytes)
         {
-            this.image = iText.Layout.Element.Image.GetInstance(bytes);
+            ImageData imageData = ImageDataFactory.Create(bytes);
+            this.image = new iText.Layout.Element.Image(imageData);
         }
 
         public void SetHeight(float height)
@@ -36,17 +42,17 @@ namespace Pages
 
         public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
-            PdfContentByte cb = procEcriture.DirectContent;
-            PdfTemplate t = cb.CreateTemplate(this.image.GetImageScaledWidth() - horizontalOffset, this.image.GetImageScaledHeight() - verticalOffset);
+            // TODO PdfContentByte cb = procEcriture.DirectContent;
+            // TODO PdfTemplate t = cb.CreateTemplate(this.image.GetImageScaledWidth() - horizontalOffset, this.image.GetImageScaledHeight() - verticalOffset);
             float origWidth = this.image.GetImageScaledWidth();
             float origHeight = this.image.GetImageScaledHeight();
-            t.AddImage(this.image, origWidth, 0, 0, origHeight, -decoupageGauche, -decoupageHaut);
-            this.image = iTextSharp.text.Image.GetInstance(t);
+            // TODO t.AddImage(this.image, origWidth, 0, 0, origHeight, -decoupageGauche, -decoupageHaut);
+            // TODO this.image = iText.Layout.Element.Image.GetInstance(t);
         }
 
         private void AddBorders()
         {
-            Border border = new SolidBorder(Black, 2f);
+            Border border = new SolidBorder(2f);
             this.image.SetBorder(border);
         }
 

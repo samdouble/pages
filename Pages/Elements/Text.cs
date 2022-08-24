@@ -1,4 +1,5 @@
-﻿using iText.Kernel.Font;
+﻿using iText.IO.Font;
+using iText.Kernel.Font;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
@@ -29,7 +30,8 @@ namespace Pages.Elements
             this.width = element.Attributes["width"] != null ? float.Parse(element.Attributes["width"].InnerText) : (float?) null;
             // Load Font
             byte[] baseFont = Properties.Resources.Comicsam_Bold;
-            PdfFont customfont = PdfFontFactory.CreateFont("Comicsam-Bold.ttf");
+            FontProgram fontProgram = FontProgramFactory.CreateFont(baseFont);
+            PdfFont customfont = PdfFontFactory.CreateFont(fontProgram, PdfEncodings.CP1252);
             this.font = customfont;
         }
 
@@ -47,12 +49,12 @@ namespace Pages.Elements
             float bottom = this.parent.getPosition().Y - this.parent.getHauteur() + MARGIN;
             Style normal = new Style();
             normal.SetFont(this.font).SetFontSize(FONT_SIZE);
-            PdfContentByte cb = writer.DirectContent;
-            ColumnText ct = new ColumnText(cb);
+            // TODO PdfContentByte cb = writer.DirectContent;
+            // TODO ColumnText ct = new ColumnText(cb);
             Paragraph phrase = new Paragraph(this.text);
             phrase.AddStyle(normal);
-            ct.SetSimpleColumn(phrase, left, top, right, bottom, LINE_HEIGHT, 0);
-            ct.Go();
+            // TODO ct.SetSimpleColumn(phrase, left, top, right, bottom, LINE_HEIGHT, 0);
+            // TODO ct.Go();
         }
     }
 }

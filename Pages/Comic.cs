@@ -1,5 +1,8 @@
-﻿using iText.Kernel.Pdf;
+﻿using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
 using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,8 +62,9 @@ namespace Pages
         // IRenderable
         public void Render(Document doc, PdfWriter writer)
         {
-            float hauteurCase = (doc.PageSize.Height - this.topMargin - this.bottomMargin - (this.rowsPerPage - 1) * this.verticalPanelSpacing) / this.rowsPerPage;
-            float largeurRangee = doc.PageSize.Width - this.rightMargin - this.leftMargin;
+            Rectangle pageSize = doc.GetPdfDocument().GetDefaultPageSize();
+            float hauteurCase = (pageSize.GetHeight() - this.topMargin - this.bottomMargin - (this.rowsPerPage - 1) * this.verticalPanelSpacing) / this.rowsPerPage;
+            float largeurRangee = pageSize.GetWidth() - this.rightMargin - this.leftMargin;
             float x = 0;
             float y = hauteurCase + this.verticalPanelSpacing;
             float noRangee = 1;
@@ -138,7 +142,7 @@ namespace Pages
                 {
                     espace.Crop(writer);
 
-                    espace.SetPosition(writer, this.leftMargin + x, doc.PageSize.Height - this.topMargin - y);
+                    espace.SetPosition(writer, this.leftMargin + x, pageSize.GetHeight() - this.topMargin - y);
 
                     espace.Render(doc, writer);
 
@@ -172,7 +176,7 @@ namespace Pages
 
                 if (noRangee % this.rowsPerPage == 0)
                 {
-                    doc.NewPage();
+                    doc.Add(new AreaBreak(AreaBreakType.NEXT_PAGE));
                     y = 0;
                 }
                 else

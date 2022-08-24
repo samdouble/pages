@@ -1,9 +1,11 @@
-﻿using CommandLine.Text;
-using CommandLine;
+﻿using CommandLine;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml;
+using iText.Layout;
+using iText.Kernel.Geom;
+using PdfDocument = iText.Kernel.Pdf.PdfDocument;
+using PdfWriter = iText.Kernel.Pdf.PdfWriter;
 
 namespace Pages
 {
@@ -31,13 +33,14 @@ namespace Pages
     static void RunOptions(Options opts)
     {
       Console.WriteLine("Starting PDF generation...");
-      Document doc = new Document(PageSize.A4);
+      PdfWriter pdfWriter = new PdfWriter(new FileStream(@"" + opts.Output, FileMode.Create));
+      PdfDocument pdf = new PdfDocument(pdfWriter);
+      Document doc = new Document(pdf);
+      pdf.SetDefaultPageSize(PageSize.A4);
       try
       {
-          PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"" + opts.Output, FileMode.Create));
-          doc.Open();
           Comic comic = new Comic(opts.Config, opts.Images);
-          comic.Render(doc, writer);
+          comic.Render(doc, pdfWriter);
       }
       catch (Exception ex)
       {

@@ -12,7 +12,7 @@ namespace Pages
         public Description(XmlNode element, Panel parent) : base(element, parent)
         {
             this.visible = element.Attributes["visible"] != null ? bool.Parse(element.Attributes["visible"].InnerText) : true;
-            this.font.SetColor(255, 0, 0);
+            // TODO this.font.SetColor(255, 0, 0);
         }
 
         public override void Render(Document doc, PdfWriter writer)
