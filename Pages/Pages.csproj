@@ -8,9 +8,9 @@
 
   <PropertyGroup>
     <Description>pages</Description> 
-    <Copyright>Samuel Whittom</Copyright>
+    <Copyright>samdouble</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Authors>Samuel Whittom</Authors>
+    <Authors>samdouble</Authors>
     <PackageTags>releaser;packaging;deb;rpm;tool</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/samdouble/pages</PackageProjectUrl>

@@ -13,7 +13,7 @@ namespace Pages
 
         public Element(XmlNode element)
         {
-            
+
         }
 
         public virtual void Crop(PdfWriter procEcriture, float decoupageGauche, float offset)

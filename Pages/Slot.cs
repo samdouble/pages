@@ -65,7 +65,8 @@ namespace Pages
             float decoupageGauche = (this.paddingMaxGauchePct * this.GetWidth() / 100) - this.paddingGauche;
             float decoupageDroite = (this.paddingMaxDroitePct * this.GetWidth() / 100) - this.paddingDroite;
             float horizontalOffset = decoupageGauche + decoupageDroite;
-            for (int i = 0; i < nbPanelsInSlot; i++) {
+            for (int i = 0; i < nbPanelsInSlot; i++)
+            {
                 Panel panel = this.panels[i];
                 panel.Crop(procEcriture, decoupageGauche, horizontalOffset);
             }
@@ -77,7 +78,8 @@ namespace Pages
             int nbPanelsInSlot = this.panels.Count;
             float panelHeight =
                 (this.height - (nbPanelsInSlot - 1) * parent.getVerticalPanelSpacing()) / nbPanelsInSlot;
-            for (int i = 0; i < nbPanelsInSlot; i++) {
+            for (int i = 0; i < nbPanelsInSlot; i++)
+            {
                 Panel panel = this.panels[i];
                 panel.Crop(procEcriture, 0, 0, 0, 0);
                 panel.SetPosition(x, y - i * panelHeight - (i - 1) * parent.getVerticalPanelSpacing());

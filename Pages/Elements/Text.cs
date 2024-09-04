@@ -28,7 +28,7 @@ namespace Pages.Elements
             // Optional
             this.left = element.Attributes["left"] != null ? float.Parse(element.Attributes["left"].InnerText) : 0.0f;
             this.top = element.Attributes["top"] != null ? float.Parse(element.Attributes["top"].InnerText) : 0.0f;
-            this.width = element.Attributes["width"] != null ? float.Parse(element.Attributes["width"].InnerText) : (float?) null;
+            this.width = element.Attributes["width"] != null ? float.Parse(element.Attributes["width"].InnerText) : (float?)null;
             // Load Font
             byte[] baseFont = Properties.Resources.Comicsam_Bold;
             BaseFont customfont = BaseFont.CreateFont("Comicsam-Bold.ttf", BaseFont.CP1252, BaseFont.EMBEDDED, BaseFont.CACHED, baseFont, null);
@@ -39,12 +39,15 @@ namespace Pages.Elements
         {
             float left = this.parent.getPosition().X + this.left + MARGIN;
             float right;
-            if (this.width is float width) {
+            if (this.width is float width)
+            {
                 right = this.parent.getPosition().X + this.left + Math.Min(width, this.parent.getLargeur() - this.left) - MARGIN;
-            } else {
+            }
+            else
+            {
                 right = this.parent.getPosition().X + this.parent.getLargeur() - MARGIN;
             }
-            
+
             float top = this.parent.getPosition().Y - this.top;
             float bottom = this.parent.getPosition().Y - this.parent.getHauteur() + MARGIN;
             PdfContentByte cb = writer.DirectContent;

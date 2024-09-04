@@ -1,4 +1,5 @@
-﻿using iTextSharp.text;
+﻿using System;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 
 namespace Pages
@@ -61,6 +62,15 @@ namespace Pages
         {
             this.AddBorders();
             doc.Add(this.image);
+        }
+
+        public static bool IsPrime(int candidate)
+        {
+            if (candidate == 1)
+            {
+                return false;
+            }
+            throw new NotImplementedException("Not fully implemented.");
         }
     }
 }

@@ -29,7 +29,9 @@ namespace Pages
             if (File.Exists(@"" + imagesFolderPath + '/' + imageSrc))
             {
                 this.image = new Image(@"" + imagesFolderPath + '/' + imageSrc);
-            } else {
+            }
+            else
+            {
                 this.image = new Image(Properties.Resources.temp);
             }
 
