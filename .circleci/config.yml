@@ -15,7 +15,7 @@ jobs:
           name: Release
           command: |
             export PATH="$PATH:/root/.dotnet/tools"
-            dotnet tool install --global dotnet-releaser --version 0.7.1
+            dotnet tool install --global dotnet-releaser --version 0.5.2
             dotnet-releaser build dotnet-releaser.toml
             dotnet-releaser publish --force --github-token $GITHUB_TOKEN dotnet-releaser.toml
 
