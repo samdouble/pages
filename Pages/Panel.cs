@@ -6,90 +6,75 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace Pages
 {
-    class Panel : IPositionable, IRenderable
+    public class Panel : IPositionable, IRenderable
     {
-        private Comic parent;
-        Image image;
-        List<Element> elements = new List<Element>();
+        [XmlAttribute]
+        public string image = string.Empty;
+        [XmlElement(ElementName = "description")]
+        public List<Description> descriptions { get; set; } = new List<Description>();
+        [XmlElement(ElementName = "text")]
+        public List<Text> texts { get; set; } = new List<Text>();
+        Image img;
         PointF position;
 
-        public Panel(Comic parent, XmlNode xmlPanel)
+        public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
-            this.parent = parent;
-            if (xmlPanel.Attributes["image"] == null)
-                throw new Exception("A panel must have an image attribute");
-
-            string imageSrc = xmlPanel.Attributes["image"].InnerText;
-            string imagesFolderPath = parent.GetImagesFolderPath();
-
-            Console.WriteLine("Getting image at " + (@"" + imagesFolderPath + '/' + imageSrc));
-            if (File.Exists(@"" + imagesFolderPath + '/' + imageSrc))
-            {
-                this.image = new Image(@"" + imagesFolderPath + '/' + imageSrc);
-            }
-            else
-            {
-                this.image = new Image(Properties.Resources.temp);
-            }
-
-            foreach (XmlNode xmlElement in xmlPanel.ChildNodes)
-            {
-                Element element = null;
-                if (xmlElement.Name == "description")
-                    element = new Description(xmlElement, this);
-                else if (xmlElement.Name == "text")
-                    element = new Text(xmlElement, this);
-
-                if (element != null)
-                {
-                    this.elements.Add(element);
-                }
-            }
+            this.img.Crop(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
+            foreach (Description description in descriptions)
+                description.Crop(procEcriture, decoupageGauche, horizontalOffset);
+            foreach (Text text in texts)
+                text.Crop(procEcriture, decoupageGauche, horizontalOffset);
         }
 
-        public void SetHeight(float height)
+        public float GetHeight()
         {
-            this.image.SetHeight(height);
+            return this.img.GetHeight();
         }
 
-        public float getLargeur()
-        {
-            return this.image.getLargeur();
-        }
-
-        public float getHauteur()
-        {
-            return this.image.getHauteur();
-        }
-
-        public PointF getPosition()
+        public PointF GetPosition()
         {
             return this.position;
         }
 
-        public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
+        public float GetWidth()
         {
-            this.image.Crop(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
-            foreach (Element element in elements)
-                element.Crop(procEcriture, decoupageGauche, horizontalOffset);
+            return this.img.GetWidth();
+        }
+
+        // IRenderable
+        public void Render(Document doc, PdfWriter writer, IRenderable parent)
+        {
+            string imagePath = @"" + root.GetImagesFolderPath() + '/' + this.image;
+            Console.WriteLine("Getting image at " + imagePath);
+            if (File.Exists(imagePath))
+            {
+                this.img = new Image(imagePath);
+            }
+            else
+            {
+                this.img = new Image(Properties.Resources.temp);
+            }
+            this.img.Render(doc, writer, this);
+            this.descriptions.ForEach(element => element.Render(doc, writer, this));
+            this.texts.ForEach(element => element.Render(doc, writer, this));
+        }
+
+        public void SetHeight(float height)
+        {
+            this.img.SetHeight(height);
         }
 
         // IPositionable
         public void SetPosition(float x, float y)
         {
             this.position = new PointF(x, y);
-            this.image.SetPosition(x, y);
-            this.elements.ForEach(element => element.SetPosition(x, y));
-        }
-
-        // IRenderable
-        public void Render(Document doc, PdfWriter writer)
-        {
-            this.image.Render(doc, writer);
-            this.elements.ForEach(element => element.Render(doc, writer));
+            this.img.SetPosition(x, y);
+            this.descriptions.ForEach(element => element.SetPosition(x, y));
+            this.texts.ForEach(element => element.SetPosition(x, y));
         }
     }
 }

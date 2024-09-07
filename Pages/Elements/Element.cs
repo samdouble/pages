@@ -1,8 +1,5 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System;
-using System.Windows;
-using System.Xml;
 
 namespace Pages
 {
@@ -10,11 +7,6 @@ namespace Pages
     {
         protected float x;
         protected float y;
-
-        public Element(XmlNode element)
-        {
-
-        }
 
         public virtual void Crop(PdfWriter procEcriture, float decoupageGauche, float offset)
         {
@@ -29,6 +21,6 @@ namespace Pages
         }
 
         // IRenderable
-        public abstract void Render(Document doc, PdfWriter writer);
+        public abstract void Render(Document doc, PdfWriter writer, IRenderable parent);
     }
 }

@@ -1,77 +1,82 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using SixLabors.ImageSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace Pages
 {
-    class Comic : IRenderable
+    [XmlRoot(ElementName = "comic")]
+    public class Comic : IRenderable
     {
-        private List<Slot> slots = new List<Slot>();
-        private float leftMargin;
-        private float rightMargin;
-        private float topMargin;
-        private float bottomMargin;
-        private float horizontalPanelSpacing;
-        private float verticalPanelSpacing;
-        private float rowsPerPage;
-        private string imagesFolderPath;
+        [XmlAttribute]
+        public float leftMargin { get; set; }
+        [XmlAttribute]
+        public float rightMargin { get; set; }
+        [XmlAttribute]
+        public float topMargin { get; set; }
+        [XmlAttribute]
+        public float bottomMargin { get; set; }
+        [XmlAttribute]
+        public float horizontalPanelSpacing { get; set; }
+        [XmlAttribute]
+        public float verticalPanelSpacing { get; set; }
+        [XmlAttribute]
+        public float rowsPerPage { get; set; }
+        [XmlElement(ElementName = "slot")]
+        public List<Slot> slots { get; set; } = new List<Slot>();
+        private string? imagesFolderPath { get; set; }
 
-        public Comic(string configFile, string imagesFolderPath)
+        public float GetHeight()
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
-            Console.WriteLine("Reading config file at " + (@"" + configFile));
-            this.imagesFolderPath = imagesFolderPath;
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(@"" + configFile);
-            XmlNode xmlComic = xmlDocument.DocumentElement;
-            this.leftMargin = float.Parse(xmlComic.Attributes["leftMargin"].InnerText);
-            this.rightMargin = float.Parse(xmlComic.Attributes["rightMargin"].InnerText);
-            this.topMargin = float.Parse(xmlComic.Attributes["topMargin"].InnerText);
-            this.bottomMargin = float.Parse(xmlComic.Attributes["bottomMargin"].InnerText);
-            this.horizontalPanelSpacing = float.Parse(xmlComic.Attributes["horizontalPanelSpacing"].InnerText);
-            this.verticalPanelSpacing = float.Parse(xmlComic.Attributes["verticalPanelSpacing"].InnerText);
-            this.rowsPerPage = float.Parse(xmlComic.Attributes["rowsPerPage"].InnerText);
-
-            List<XmlNode> xmlSlots = new List<XmlNode>(xmlComic.ChildNodes.Cast<XmlNode>());
-            this.slots.AddRange(xmlSlots.Select(xmlSlot => new Slot(this, xmlSlot)));
+            throw new NotImplementedException("Not implemented.");
         }
 
-        public string GetImagesFolderPath()
+        public string? GetImagesFolderPath()
         {
             return this.imagesFolderPath;
         }
 
-        public int GetSlotsCount()
+        public PointF GetPosition()
         {
-            return this.slots.Count;
+            return new PointF(0f, 0f);
         }
 
-        public float getVerticalPanelSpacing()
+        public float GetWidth()
+        {
+            throw new NotImplementedException("Not implemented.");
+        }
+
+        public float GetVerticalPanelSpacing()
         {
             return this.verticalPanelSpacing;
         }
 
+        public void SetImagesFolderPath(string imagesFolderPath)
+        {
+            this.imagesFolderPath = imagesFolderPath;
+        }
+
         // IRenderable
-        public void Render(Document doc, PdfWriter writer)
+        public void Render(Document doc, PdfWriter writer, IRenderable parent)
         {
             float hauteurCase = (doc.PageSize.Height - this.topMargin - this.bottomMargin - (this.rowsPerPage - 1) * this.verticalPanelSpacing) / this.rowsPerPage;
             float largeurRangee = doc.PageSize.Width - this.rightMargin - this.leftMargin;
             float x = 0;
             float y = hauteurCase + this.verticalPanelSpacing;
             float noRangee = 1;
-            for (int i = 0; i < this.GetSlotsCount();)
+            Console.WriteLine(this.slots.Count);
+            for (int i = 0; i < this.slots.Count;)
             {
                 int nbCasesDansLaRangee = 0;
 
                 // On trouve le nombre de cases qu'on peut fitter dans la rangée
                 float largeurMin = 0;
                 float largeurMax = 0;
-                for (; i + nbCasesDansLaRangee < this.GetSlotsCount() && largeurMin < largeurRangee; ++nbCasesDansLaRangee)
+                for (; i + nbCasesDansLaRangee < this.slots.Count && largeurMin < largeurRangee; ++nbCasesDansLaRangee)
                 {
                     Slot slot = this.slots[i + nbCasesDansLaRangee];
                     slot.SetHeight(hauteurCase);
@@ -140,7 +145,7 @@ namespace Pages
 
                     espace.SetPosition(writer, this.leftMargin + x, doc.PageSize.Height - this.topMargin - y);
 
-                    espace.Render(doc, writer);
+                    espace.Render(doc, writer, this);
 
                     /*foreach (Element element in els)
                     {

@@ -1,15 +1,21 @@
-﻿using iTextSharp.text;
+﻿using SixLabors.ImageSharp;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pages
 {
-    interface IRenderable
+    public interface IRenderable
     {
-        void Render(Document doc, PdfWriter writer);
+        float GetHeight();
+
+        string? GetImagesFolderPath();
+
+        PointF GetPosition();
+
+        float GetVerticalPanelSpacing();
+
+        float GetWidth();
+
+        void Render(Document doc, PdfWriter writer, IRenderable parent);
     }
 }

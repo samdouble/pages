@@ -18,20 +18,11 @@ namespace Pages
             this.image = iTextSharp.text.Image.GetInstance(bytes);
         }
 
-        public void SetHeight(float height)
+        private void AddBorders()
         {
-            float pctScaling = height / this.image.Height;
-            this.image.ScalePercent(100 * pctScaling);
-        }
-
-        public float getHauteur()
-        {
-            return this.image.ScaledHeight;
-        }
-
-        public float getLargeur()
-        {
-            return this.image.ScaledWidth;
+            this.image.Border = Rectangle.BOX;
+            this.image.BorderColor = BaseColor.BLACK;
+            this.image.BorderWidth = 2f;
         }
 
         public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
@@ -44,11 +35,20 @@ namespace Pages
             this.image = iTextSharp.text.Image.GetInstance(t);
         }
 
-        private void AddBorders()
+        public float GetHeight()
         {
-            this.image.Border = Rectangle.BOX;
-            this.image.BorderColor = BaseColor.BLACK;
-            this.image.BorderWidth = 2f;
+            return this.image.ScaledHeight;
+        }
+
+        public float GetWidth()
+        {
+            return this.image.ScaledWidth;
+        }
+
+        public void SetHeight(float height)
+        {
+            float pctScaling = height / this.image.Height;
+            this.image.ScalePercent(100 * pctScaling);
         }
 
         // IPositionable
@@ -58,7 +58,7 @@ namespace Pages
         }
 
         // IRenderable
-        public void Render(Document doc, PdfWriter writer)
+        public void Render(Document doc, PdfWriter writer, IRenderable parent)
         {
             this.AddBorders();
             doc.Add(this.image);
