@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using iText.IO.Font;
+using iText.Kernel.Font;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using System;
 using System.Xml;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 
 namespace Pages.Elements
 {
@@ -16,7 +14,7 @@ namespace Pages.Elements
         protected const int FONT_SIZE = 13;
         protected const int LINE_HEIGHT = 12;
         protected const int MARGIN = 5;
-        protected Font font;
+        protected PdfFont font;
         protected float left = 0;
         protected float top = 0;
         protected float? width;
@@ -30,9 +28,7 @@ namespace Pages.Elements
             this.top = element.Attributes["top"] != null ? float.Parse(element.Attributes["top"].InnerText) : 0.0f;
             this.width = element.Attributes["width"] != null ? float.Parse(element.Attributes["width"].InnerText) : (float?)null;
             // Load Font
-            byte[] baseFont = Properties.Resources.Comicsam_Bold;
-            BaseFont customfont = BaseFont.CreateFont("Comicsam-Bold.ttf", BaseFont.CP1252, BaseFont.EMBEDDED, BaseFont.CACHED, baseFont, null);
-            this.font = new Font(customfont, FONT_SIZE);
+            this.font = PdfFontFactory.CreateFont(Properties.Resources.Comicsam_Bold, PdfEncodings.CP1252);
         }
 
         public override void Render(Document doc, PdfWriter writer)
@@ -50,11 +46,11 @@ namespace Pages.Elements
 
             float top = this.parent.getPosition().Y - this.top;
             float bottom = this.parent.getPosition().Y - this.parent.getHauteur() + MARGIN;
-            PdfContentByte cb = writer.DirectContent;
-            ColumnText ct = new ColumnText(cb);
-            Paragraph phrase = new Paragraph(this.text, this.font);
-            ct.SetSimpleColumn(phrase, left, top, right, bottom, LINE_HEIGHT, 0);
-            ct.Go();
+            // PdfContentByte cb = writer.DirectContent;
+            // ColumnText ct = new ColumnText(cb);
+            // Paragraph phrase = new Paragraph(this.text, this.font);
+            // ct.SetSimpleColumn(phrase, left, top, right, bottom, LINE_HEIGHT, 0);
+            // ct.Go();
         }
     }
 }

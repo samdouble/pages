@@ -1,5 +1,6 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
+﻿using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
+using iText.Layout;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace Pages
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            Console.WriteLine("Reading config file at " + (@"" + configFile));
+            Console.WriteLine("Reading config file at " + @"" + configFile);
             this.imagesFolderPath = imagesFolderPath;
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(@"" + configFile);
@@ -46,11 +47,6 @@ namespace Pages
             return this.imagesFolderPath;
         }
 
-        public int GetSlotsCount()
-        {
-            return this.slots.Count;
-        }
-
         public float getVerticalPanelSpacing()
         {
             return this.verticalPanelSpacing;
@@ -59,19 +55,21 @@ namespace Pages
         // IRenderable
         public void Render(Document doc, PdfWriter writer)
         {
-            float hauteurCase = (doc.PageSize.Height - this.topMargin - this.bottomMargin - (this.rowsPerPage - 1) * this.verticalPanelSpacing) / this.rowsPerPage;
-            float largeurRangee = doc.PageSize.Width - this.rightMargin - this.leftMargin;
+            PageSize pageSize = doc.GetPdfDocument().GetDefaultPageSize();
+            float hauteurCase = (pageSize.GetHeight() - this.topMargin - this.bottomMargin - (this.rowsPerPage - 1) * this.verticalPanelSpacing) / this.rowsPerPage;
+            float largeurRangee = pageSize.GetWidth() - this.rightMargin - this.leftMargin;
+            int page = 1;
             float x = 0;
             float y = hauteurCase + this.verticalPanelSpacing;
             float noRangee = 1;
-            for (int i = 0; i < this.GetSlotsCount();)
+            for (int i = 0; i < this.slots.Count;)
             {
                 int nbCasesDansLaRangee = 0;
 
                 // On trouve le nombre de cases qu'on peut fitter dans la rangée
                 float largeurMin = 0;
                 float largeurMax = 0;
-                for (; i + nbCasesDansLaRangee < this.GetSlotsCount() && largeurMin < largeurRangee; ++nbCasesDansLaRangee)
+                for (; i + nbCasesDansLaRangee < this.slots.Count && largeurMin < largeurRangee; ++nbCasesDansLaRangee)
                 {
                     Slot slot = this.slots[i + nbCasesDansLaRangee];
                     slot.SetHeight(hauteurCase);
@@ -137,32 +135,8 @@ namespace Pages
                 foreach (Slot espace in espacesSurLaRangee)
                 {
                     espace.Crop(writer);
-
-                    espace.SetPosition(writer, this.leftMargin + x, doc.PageSize.Height - this.topMargin - y);
-
+                    espace.SetPosition(writer, page, this.leftMargin + x, pageSize.GetHeight() - this.topMargin - y);
                     espace.Render(doc, writer);
-
-                    /*foreach (Element element in els)
-                    {
-                        PdfContentByte cb = writer.DirectContent;
-                        cb.RoundRectangle(200f, 500f, 200f, 200f, 5f);
-                        cb.SetColorFill(BaseColor.WHITE);
-                        cb.SetColorStroke(BaseColor.BLACK);
-                        cb.SetLineWidth(2f);
-                        cb.FillStroke();
-
-                        Paragraph paragraph = new Paragraph(
-                                "This could be a very long sentence that needs to be wrapped.",
-                                FontFactory.GetFont("dax-black")
-                            );
-                        ColumnText ct = new ColumnText(procEcriture.DirectContent);
-                        cb.SetColorFill(BaseColor.BLACK);
-                        ct.SetSimpleColumn(new Rectangle(206f, 700f, 400f, 600f));
-                        ct.AddElement(paragraph);
-                        ct.Go();
-                        Console.WriteLine(ct.LastX);
-                        Console.WriteLine(ct.YLine);
-                    }*/
 
                     x += espace.GetWidth() + this.horizontalPanelSpacing;
                 }
@@ -172,7 +146,8 @@ namespace Pages
 
                 if (noRangee % this.rowsPerPage == 0)
                 {
-                    doc.NewPage();
+                    doc.GetPdfDocument().AddNewPage();
+                    page++;
                     y = 0;
                 }
                 else

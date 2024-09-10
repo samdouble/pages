@@ -1,5 +1,5 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
 using Pages.Elements;
 using SixLabors.ImageSharp;
 using System;
@@ -78,11 +78,11 @@ namespace Pages
         }
 
         // IPositionable
-        public void SetPosition(float x, float y)
+        public void SetPosition(int noPage, float x, float y)
         {
             this.position = new PointF(x, y);
-            this.image.SetPosition(x, y);
-            this.elements.ForEach(element => element.SetPosition(x, y));
+            this.image.SetPosition(noPage, x, y);
+            this.elements.ForEach(element => element.SetPosition(noPage, x, y));
         }
 
         // IRenderable

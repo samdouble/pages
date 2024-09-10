@@ -1,10 +1,7 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System;
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Pages
@@ -73,7 +70,7 @@ namespace Pages
         }
 
         // IPositionable
-        public void SetPosition(PdfWriter procEcriture, float x, float y)
+        public void SetPosition(PdfWriter procEcriture, int noPage, float x, float y)
         {
             int nbPanelsInSlot = this.panels.Count;
             float panelHeight =
@@ -82,7 +79,7 @@ namespace Pages
             {
                 Panel panel = this.panels[i];
                 panel.Crop(procEcriture, 0, 0, 0, 0);
-                panel.SetPosition(x, y - i * panelHeight - (i - 1) * parent.getVerticalPanelSpacing());
+                panel.SetPosition(noPage, x, y - i * panelHeight - (i - 1) * parent.getVerticalPanelSpacing());
             }
         }
 

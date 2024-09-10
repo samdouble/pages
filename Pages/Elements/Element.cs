@@ -1,13 +1,12 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System;
-using System.Windows;
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
 using System.Xml;
 
 namespace Pages
 {
     public abstract class Element : IPositionable, IRenderable
     {
+        protected int noPage;
         protected float x;
         protected float y;
 
@@ -22,8 +21,9 @@ namespace Pages
         }
 
         // IPositionable
-        public void SetPosition(float x, float y)
+        public void SetPosition(int noPage, float x, float y)
         {
+            this.noPage = noPage;
             this.x = x;
             this.y = y;
         }
