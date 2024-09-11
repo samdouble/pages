@@ -6,9 +6,9 @@ This is a small application to export a comic book in PDF format from an XML con
 
 - C#
 - .NET
+- iText
 - CircleCI
 - GitHub Releases
-- AWS S3
 
 ## Production
 
