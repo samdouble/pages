@@ -1,11 +1,9 @@
-﻿using CommandLine.Text;
-using CommandLine;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+﻿using CommandLine;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
+using iText.Layout;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Xml;
 
 namespace Pages
 {
@@ -14,13 +12,13 @@ namespace Pages
         public class Options
         {
             [Option('c', "config", Required = true, HelpText = "Path to the XML file")]
-            public string Config { get; set; }
+            public string Config { get; set; } = string.Empty;
 
             [Option('i', "images", Required = true, HelpText = "Path to the folder containing the images")]
-            public string Images { get; set; }
+            public string Images { get; set; } = string.Empty;
 
             [Option('o', "output", Default = "Images.pdf", HelpText = "Name of the output PDF")]
-            public string Output { get; set; }
+            public string Output { get; set; } = string.Empty;
         }
 
         static void Main(string[] args)
@@ -33,22 +31,14 @@ namespace Pages
         static void RunOptions(Options opts)
         {
             Console.WriteLine("Starting PDF generation...");
-            Document doc = new Document(PageSize.A4);
-            try
-            {
-                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"" + opts.Output, FileMode.Create));
-                doc.Open();
-                Comic comic = new Comic(opts.Config, opts.Images);
-                comic.Render(doc, writer);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                doc.Close();
-            }
+            PdfWriter writer = new PdfWriter(@"" + opts.Output);
+            PdfDocument pdfDocument = new PdfDocument(writer);
+            pdfDocument.SetDefaultPageSize(PageSize.A4);
+            Document document = new Document(pdfDocument);
+            Comic comic = new Comic(opts.Config, opts.Images);
+            comic.Render(document);
+            document.Close();
+            pdfDocument.Close();
             Console.WriteLine("Generated " + opts.Output);
         }
 

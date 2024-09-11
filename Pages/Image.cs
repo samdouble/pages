@@ -1,67 +1,75 @@
-﻿using System;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+﻿using iText.IO.Image;
+using iText.Kernel.Colors;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf.Xobject;
+using iText.Layout;
+using System;
 
 namespace Pages
 {
     public class Image : IPositionable, IRenderable
     {
-        private iTextSharp.text.Image image;
+        private iText.Layout.Element.Image image;
+        protected int noPage;
+        protected float x;
+        protected float y;
 
         public Image(string src)
         {
-            this.image = iTextSharp.text.Image.GetInstance(src);
+            this.image = new iText.Layout.Element.Image(ImageDataFactory.Create(src));
         }
 
         public Image(byte[] bytes)
         {
-            this.image = iTextSharp.text.Image.GetInstance(bytes);
+            this.image = new iText.Layout.Element.Image(ImageDataFactory.Create(bytes));
         }
 
         public void SetHeight(float height)
         {
-            float pctScaling = height / this.image.Height;
-            this.image.ScalePercent(100 * pctScaling);
+            float pctScaling = height / this.image.GetImageHeight();
+            this.image.Scale(pctScaling, pctScaling);
         }
 
         public float getHauteur()
         {
-            return this.image.ScaledHeight;
+            return this.image.GetImageScaledHeight();
         }
 
         public float getLargeur()
         {
-            return this.image.ScaledWidth;
+            return this.image.GetImageScaledWidth();
         }
 
-        public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
+        public void Crop(Document doc, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
-            PdfContentByte cb = procEcriture.DirectContent;
-            PdfTemplate t = cb.CreateTemplate(this.image.ScaledWidth - horizontalOffset, this.image.ScaledHeight - verticalOffset);
-            float origWidth = this.image.ScaledWidth;
-            float origHeight = this.image.ScaledHeight;
-            t.AddImage(this.image, origWidth, 0, 0, origHeight, -decoupageGauche, -decoupageHaut);
-            this.image = iTextSharp.text.Image.GetInstance(t);
-        }
-
-        private void AddBorders()
-        {
-            this.image.Border = Rectangle.BOX;
-            this.image.BorderColor = BaseColor.BLACK;
-            this.image.BorderWidth = 2f;
+            this.image.SetFixedPosition(-decoupageGauche, -decoupageHaut);
+            Rectangle rectangle = new Rectangle(this.image.GetImageScaledWidth() - horizontalOffset, this.image.GetImageScaledHeight() - verticalOffset);
+            PdfFormXObject template = new PdfFormXObject(rectangle);
+            Canvas canvas = new Canvas(template, doc.GetPdfDocument());
+            canvas.Add(this.image);
+            this.image = new iText.Layout.Element.Image(template);
         }
 
         // IPositionable
-        public void SetPosition(float x, float y)
+        public void SetPosition(int noPage, float x, float y)
         {
-            this.image.SetAbsolutePosition(x, y - this.image.ScaledHeight);
+            this.noPage = noPage;
+            this.x = x;
+            this.y = y;
+            this.image.SetFixedPosition(this.noPage, this.x, this.y - this.image.GetImageScaledHeight());
         }
 
         // IRenderable
-        public void Render(Document doc, PdfWriter writer)
+        public void Render(Document doc)
         {
-            this.AddBorders();
             doc.Add(this.image);
+
+            // Add borders
+            iText.Kernel.Pdf.Canvas.PdfCanvas canvas = new iText.Kernel.Pdf.Canvas.PdfCanvas(doc.GetPdfDocument().GetPage(this.noPage));
+            canvas.SetStrokeColor(ColorConstants.BLACK);
+            canvas.SetLineWidth(2f);
+            canvas.Rectangle(this.x, this.y - image.GetImageScaledHeight(), image.GetImageScaledWidth(), image.GetImageScaledHeight());
+            canvas.Stroke();
         }
 
         public static bool IsPrime(int candidate)

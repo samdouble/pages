@@ -1,5 +1,5 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
 using Pages.Elements;
 using SixLabors.ImageSharp;
 using System;
@@ -70,26 +70,26 @@ namespace Pages
             return this.position;
         }
 
-        public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
+        public void Crop(Document doc, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
-            this.image.Crop(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
+            this.image.Crop(doc, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
             foreach (Element element in elements)
-                element.Crop(procEcriture, decoupageGauche, horizontalOffset);
+                element.Crop(doc, decoupageGauche, horizontalOffset);
         }
 
         // IPositionable
-        public void SetPosition(float x, float y)
+        public void SetPosition(int noPage, float x, float y)
         {
             this.position = new PointF(x, y);
-            this.image.SetPosition(x, y);
-            this.elements.ForEach(element => element.SetPosition(x, y));
+            this.image.SetPosition(noPage, x, y);
+            this.elements.ForEach(element => element.SetPosition(noPage, x, y));
         }
 
         // IRenderable
-        public void Render(Document doc, PdfWriter writer)
+        public void Render(Document doc)
         {
-            this.image.Render(doc, writer);
-            this.elements.ForEach(element => element.Render(doc, writer));
+            this.image.Render(doc);
+            this.elements.ForEach(element => element.Render(doc));
         }
     }
 }

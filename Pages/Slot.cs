@@ -1,10 +1,7 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System;
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Pages
@@ -59,7 +56,7 @@ namespace Pages
             return this.height;
         }
 
-        public void Crop(PdfWriter procEcriture)
+        public void Crop(Document doc)
         {
             int nbPanelsInSlot = this.panels.Count;
             float decoupageGauche = (this.paddingMaxGauchePct * this.GetWidth() / 100) - this.paddingGauche;
@@ -68,12 +65,12 @@ namespace Pages
             for (int i = 0; i < nbPanelsInSlot; i++)
             {
                 Panel panel = this.panels[i];
-                panel.Crop(procEcriture, decoupageGauche, horizontalOffset);
+                panel.Crop(doc, decoupageGauche, horizontalOffset);
             }
         }
 
         // IPositionable
-        public void SetPosition(PdfWriter procEcriture, float x, float y)
+        public void SetPosition(Document doc, int noPage, float x, float y)
         {
             int nbPanelsInSlot = this.panels.Count;
             float panelHeight =
@@ -81,15 +78,15 @@ namespace Pages
             for (int i = 0; i < nbPanelsInSlot; i++)
             {
                 Panel panel = this.panels[i];
-                panel.Crop(procEcriture, 0, 0, 0, 0);
-                panel.SetPosition(x, y - i * panelHeight - (i - 1) * parent.getVerticalPanelSpacing());
+                panel.Crop(doc, 0, 0, 0, 0);
+                panel.SetPosition(noPage, x, y - i * panelHeight - (i - 1) * parent.getVerticalPanelSpacing());
             }
         }
 
         // IRenderable
-        public void Render(Document doc, PdfWriter writer)
+        public void Render(Document doc)
         {
-            this.panels.ForEach(panel => panel.Render(doc, writer));
+            this.panels.ForEach(panel => panel.Render(doc));
         }
     }
 }
