@@ -1,7 +1,6 @@
 ﻿using iText.IO.Font;
 using iText.Kernel.Colors;
 using iText.Kernel.Font;
-using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using System;
@@ -47,7 +46,7 @@ namespace Pages.Elements
                 right = this.parent.getPosition().X + this.parent.getLargeur() - MARGIN;
             }
 
-            float top = this.parent.getPosition().Y - this.top;
+            float top = this.parent.getPosition().Y - this.top - 3;
             float bottom = this.parent.getPosition().Y - this.parent.getHauteur() + MARGIN;
             float phraseWidth = right - left;
             Paragraph phrase = new Paragraph(this.text);

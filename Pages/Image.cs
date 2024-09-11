@@ -1,10 +1,8 @@
 ﻿using iText.IO.Image;
 using iText.Kernel.Colors;
 using iText.Kernel.Geom;
-using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Xobject;
 using iText.Layout;
-using iText.Layout.Borders;
 using System;
 
 namespace Pages
@@ -12,6 +10,9 @@ namespace Pages
     public class Image : IPositionable, IRenderable
     {
         private iText.Layout.Element.Image image;
+        protected int noPage;
+        protected float x;
+        protected float y;
 
         public Image(string src)
         {
@@ -52,14 +53,23 @@ namespace Pages
         // IPositionable
         public void SetPosition(int noPage, float x, float y)
         {
-            this.image.SetFixedPosition(noPage, x, y - this.image.GetImageScaledHeight());
+            this.noPage = noPage;
+            this.x = x;
+            this.y = y;
+            this.image.SetFixedPosition(this.noPage, this.x, this.y - this.image.GetImageScaledHeight());
         }
 
         // IRenderable
         public void Render(Document doc)
         {
-            this.image.SetBorder(new SolidBorder(ColorConstants.BLACK, 2f));
             doc.Add(this.image);
+
+            // Add borders
+            iText.Kernel.Pdf.Canvas.PdfCanvas canvas = new iText.Kernel.Pdf.Canvas.PdfCanvas(doc.GetPdfDocument().GetPage(this.noPage));
+            canvas.SetStrokeColor(ColorConstants.BLACK);
+            canvas.SetLineWidth(2f);
+            canvas.Rectangle(this.x, this.y - image.GetImageScaledHeight(), image.GetImageScaledWidth(), image.GetImageScaledHeight());
+            canvas.Stroke();
         }
 
         public static bool IsPrime(int candidate)
