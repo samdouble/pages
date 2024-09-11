@@ -6,11 +6,14 @@ user = "samdouble"
 repo = "pages"
 branches = ["master"]
 
+[brew]
+publish = false
+
 [changelog]
 publish = false
 
 [nuget]
 publish = false
 
-[brew]
+[scoop]
 publish = false
