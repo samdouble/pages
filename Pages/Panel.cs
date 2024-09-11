@@ -70,11 +70,11 @@ namespace Pages
             return this.position;
         }
 
-        public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
+        public void Crop(Document doc, PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
-            this.image.Crop(procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
+            this.image.Crop(doc, procEcriture, decoupageGauche, horizontalOffset, decoupageHaut, verticalOffset);
             foreach (Element element in elements)
-                element.Crop(procEcriture, decoupageGauche, horizontalOffset);
+                element.Crop(doc, procEcriture, decoupageGauche, horizontalOffset);
         }
 
         // IPositionable

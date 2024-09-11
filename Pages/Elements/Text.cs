@@ -1,7 +1,9 @@
 ﻿using iText.IO.Font;
+using iText.Kernel.Colors;
 using iText.Kernel.Font;
 using iText.Kernel.Pdf;
 using iText.Layout;
+using iText.Layout.Element;
 using System;
 using System.Xml;
 
@@ -11,6 +13,7 @@ namespace Pages.Elements
     {
         protected Panel parent;
         protected string text;
+        protected Color color = ColorConstants.BLACK;
         protected const int FONT_SIZE = 13;
         protected const int LINE_HEIGHT = 12;
         protected const int MARGIN = 5;
@@ -46,11 +49,15 @@ namespace Pages.Elements
 
             float top = this.parent.getPosition().Y - this.top;
             float bottom = this.parent.getPosition().Y - this.parent.getHauteur() + MARGIN;
-            // PdfContentByte cb = writer.DirectContent;
-            // ColumnText ct = new ColumnText(cb);
-            // Paragraph phrase = new Paragraph(this.text, this.font);
-            // ct.SetSimpleColumn(phrase, left, top, right, bottom, LINE_HEIGHT, 0);
-            // ct.Go();
+            float phraseWidth = right - left;
+            Paragraph phrase = new Paragraph(this.text);
+            phrase.SetFixedLeading(LINE_HEIGHT);
+            phrase.SetVerticalAlignment(iText.Layout.Properties.VerticalAlignment.TOP);
+            phrase.SetHeight(top - bottom);
+            phrase.SetFont(this.font);
+            phrase.SetFixedPosition(this.noPage, left, bottom, phraseWidth);
+            phrase.SetFontColor(this.color);
+            doc.Add(phrase);
         }
     }
 }

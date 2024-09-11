@@ -134,8 +134,8 @@ namespace Pages
                 // On procède au découpage et positionnement de l'image
                 foreach (Slot espace in espacesSurLaRangee)
                 {
-                    espace.Crop(writer);
-                    espace.SetPosition(writer, page, this.leftMargin + x, pageSize.GetHeight() - this.topMargin - y);
+                    espace.Crop(doc, writer);
+                    espace.SetPosition(doc, writer, page, this.leftMargin + x, pageSize.GetHeight() - this.topMargin - y);
                     espace.Render(doc, writer);
 
                     x += espace.GetWidth() + this.horizontalPanelSpacing;

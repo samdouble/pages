@@ -1,4 +1,5 @@
-﻿using iText.Kernel.Pdf;
+﻿using iText.Kernel.Colors;
+using iText.Kernel.Pdf;
 using iText.Layout;
 using Pages.Elements;
 using System.Xml;
@@ -11,10 +12,10 @@ namespace Pages
 
         public Description(XmlNode element, Panel parent) : base(element, parent)
         {
+            this.color = ColorConstants.RED;
             this.visible = element.Attributes["visible"] != null
                 ? bool.Parse(element.Attributes["visible"].InnerText)
                 : true;
-            // this.font.SetColor(255, 0, 0);
         }
 
         public override void Render(Document doc, PdfWriter writer)

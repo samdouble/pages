@@ -1,6 +1,10 @@
 ﻿using iText.IO.Image;
+using iText.Kernel.Colors;
+using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Xobject;
 using iText.Layout;
+using iText.Layout.Borders;
 using System;
 
 namespace Pages
@@ -35,22 +39,14 @@ namespace Pages
             return this.image.GetImageScaledWidth();
         }
 
-        private void AddBorders()
+        public void Crop(Document doc, PdfWriter writer, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
         {
-            // this.image.AddStyle()
-            // this.image.Border = Rectangle.BOX;
-            // this.image.BorderColor = BaseColor.BLACK;
-            // this.image.BorderWidth = 2f;
-        }
-
-        public void Crop(PdfWriter procEcriture, float decoupageGauche, float horizontalOffset, float decoupageHaut = 0, float verticalOffset = 0)
-        {
-            // PdfContentByte cb = procEcriture.DirectContent;
-            // PdfTemplate t = cb.CreateTemplate(this.image.ScaledWidth - horizontalOffset, this.image.ScaledHeight - verticalOffset);
-            // float origWidth = this.image.ScaledWidth;
-            // float origHeight = this.image.ScaledHeight;
-            // t.AddImage(this.image, origWidth, 0, 0, origHeight, -decoupageGauche, -decoupageHaut);
-            // this.image = new iText.Layout.Element.Image(t);
+            this.image.SetFixedPosition(-decoupageGauche, -decoupageHaut);
+            Rectangle rectangle = new Rectangle(this.image.GetImageScaledWidth() - horizontalOffset, this.image.GetImageScaledHeight() - verticalOffset);
+            PdfFormXObject template = new PdfFormXObject(rectangle);
+            Canvas canvas = new Canvas(template, doc.GetPdfDocument());
+            canvas.Add(this.image);
+            this.image = new iText.Layout.Element.Image(template);
         }
 
         // IPositionable
@@ -62,8 +58,7 @@ namespace Pages
         // IRenderable
         public void Render(Document doc, PdfWriter writer)
         {
-            this.AddBorders();
-            Console.WriteLine("HELLO");
+            this.image.SetBorder(new SolidBorder(ColorConstants.BLACK, 2f));
             doc.Add(this.image);
         }
 
