@@ -1,5 +1,4 @@
-﻿using iText.Kernel.Pdf;
-using iText.Layout;
+﻿using iText.Layout;
 using Pages.Elements;
 using SixLabors.ImageSharp;
 using System;
