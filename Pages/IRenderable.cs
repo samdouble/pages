@@ -1,10 +1,9 @@
-﻿using iText.Kernel.Pdf;
-using iText.Layout;
+﻿using iText.Layout;
 
 namespace Pages
 {
     interface IRenderable
     {
-        void Render(Document doc, PdfWriter writer);
+        void Render(Document doc);
     }
 }

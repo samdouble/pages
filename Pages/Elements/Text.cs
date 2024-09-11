@@ -34,7 +34,7 @@ namespace Pages.Elements
             this.font = PdfFontFactory.CreateFont(Properties.Resources.Comicsam_Bold, PdfEncodings.CP1252);
         }
 
-        public override void Render(Document doc, PdfWriter writer)
+        public override void Render(Document doc)
         {
             float left = this.parent.getPosition().X + this.left + MARGIN;
             float right;

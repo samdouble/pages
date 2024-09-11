@@ -15,7 +15,7 @@ namespace Pages
 
         }
 
-        public virtual void Crop(Document doc, PdfWriter procEcriture, float decoupageGauche, float offset)
+        public virtual void Crop(Document doc, float decoupageGauche, float offset)
         {
 
         }
@@ -29,6 +29,6 @@ namespace Pages
         }
 
         // IRenderable
-        public abstract void Render(Document doc, PdfWriter writer);
+        public abstract void Render(Document doc);
     }
 }

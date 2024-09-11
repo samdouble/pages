@@ -53,7 +53,7 @@ namespace Pages
         }
 
         // IRenderable
-        public void Render(Document doc, PdfWriter writer)
+        public void Render(Document doc)
         {
             PageSize pageSize = doc.GetPdfDocument().GetDefaultPageSize();
             float hauteurCase = (pageSize.GetHeight() - this.topMargin - this.bottomMargin - (this.rowsPerPage - 1) * this.verticalPanelSpacing) / this.rowsPerPage;
@@ -134,9 +134,9 @@ namespace Pages
                 // On procède au découpage et positionnement de l'image
                 foreach (Slot espace in espacesSurLaRangee)
                 {
-                    espace.Crop(doc, writer);
-                    espace.SetPosition(doc, writer, page, this.leftMargin + x, pageSize.GetHeight() - this.topMargin - y);
-                    espace.Render(doc, writer);
+                    espace.Crop(doc);
+                    espace.SetPosition(doc, page, this.leftMargin + x, pageSize.GetHeight() - this.topMargin - y);
+                    espace.Render(doc);
 
                     x += espace.GetWidth() + this.horizontalPanelSpacing;
                 }

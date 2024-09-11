@@ -18,11 +18,11 @@ namespace Pages
                 : true;
         }
 
-        public override void Render(Document doc, PdfWriter writer)
+        public override void Render(Document doc)
         {
             if (this.visible)
             {
-                base.Render(doc, writer);
+                base.Render(doc);
             }
         }
     }

@@ -56,7 +56,7 @@ namespace Pages
             return this.height;
         }
 
-        public void Crop(Document doc, PdfWriter procEcriture)
+        public void Crop(Document doc)
         {
             int nbPanelsInSlot = this.panels.Count;
             float decoupageGauche = (this.paddingMaxGauchePct * this.GetWidth() / 100) - this.paddingGauche;
@@ -65,12 +65,12 @@ namespace Pages
             for (int i = 0; i < nbPanelsInSlot; i++)
             {
                 Panel panel = this.panels[i];
-                panel.Crop(doc, procEcriture, decoupageGauche, horizontalOffset);
+                panel.Crop(doc, decoupageGauche, horizontalOffset);
             }
         }
 
         // IPositionable
-        public void SetPosition(Document doc, PdfWriter procEcriture, int noPage, float x, float y)
+        public void SetPosition(Document doc, int noPage, float x, float y)
         {
             int nbPanelsInSlot = this.panels.Count;
             float panelHeight =
@@ -78,15 +78,15 @@ namespace Pages
             for (int i = 0; i < nbPanelsInSlot; i++)
             {
                 Panel panel = this.panels[i];
-                panel.Crop(doc, procEcriture, 0, 0, 0, 0);
+                panel.Crop(doc, 0, 0, 0, 0);
                 panel.SetPosition(noPage, x, y - i * panelHeight - (i - 1) * parent.getVerticalPanelSpacing());
             }
         }
 
         // IRenderable
-        public void Render(Document doc, PdfWriter writer)
+        public void Render(Document doc)
         {
-            this.panels.ForEach(panel => panel.Render(doc, writer));
+            this.panels.ForEach(panel => panel.Render(doc));
         }
     }
 }

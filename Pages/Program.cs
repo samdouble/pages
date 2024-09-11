@@ -36,7 +36,7 @@ namespace Pages
             pdfDocument.SetDefaultPageSize(PageSize.A4);
             Document document = new Document(pdfDocument);
             Comic comic = new Comic(opts.Config, opts.Images);
-            comic.Render(document, writer);
+            comic.Render(document);
             document.Close();
             pdfDocument.Close();
             Console.WriteLine("Generated " + opts.Output);
