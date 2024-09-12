@@ -30,12 +30,12 @@ namespace Pages
             this.image.Scale(pctScaling, pctScaling);
         }
 
-        public float getHauteur()
+        public float GetHeight()
         {
             return this.image.GetImageScaledHeight();
         }
 
-        public float getLargeur()
+        public float GetWidth()
         {
             return this.image.GetImageScaledWidth();
         }

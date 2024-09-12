@@ -39,15 +39,15 @@ namespace Pages.Elements
             float right;
             if (this.width is float width)
             {
-                right = this.parent.getPosition().X + this.left + Math.Min(width, this.parent.getLargeur() - this.left) - MARGIN;
+                right = this.parent.getPosition().X + this.left + Math.Min(width, this.parent.GetWidth() - this.left) - MARGIN;
             }
             else
             {
-                right = this.parent.getPosition().X + this.parent.getLargeur() - MARGIN;
+                right = this.parent.getPosition().X + this.parent.GetWidth() - MARGIN;
             }
 
             float top = this.parent.getPosition().Y - this.top - 3;
-            float bottom = this.parent.getPosition().Y - this.parent.getHauteur() + MARGIN;
+            float bottom = this.parent.getPosition().Y - this.parent.GetHeight() + MARGIN;
             float phraseWidth = right - left;
             Paragraph phrase = new Paragraph(this.text);
             phrase.SetFixedLeading(LINE_HEIGHT);

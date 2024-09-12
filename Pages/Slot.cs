@@ -1,5 +1,4 @@
-﻿using iText.Kernel.Pdf;
-using iText.Layout;
+﻿using iText.Layout;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
@@ -37,7 +36,7 @@ namespace Pages
 
         public float GetWidth()
         {
-            return panels[0].getLargeur();
+            return panels[0].GetWidth();
         }
 
         public float GetMinWidth()
@@ -48,10 +47,10 @@ namespace Pages
 
         public float GetMaxWidth()
         {
-            return panels[0].getLargeur();
+            return panels[0].GetWidth();
         }
 
-        public float getHauteur()
+        public float GetHeight()
         {
             return this.height;
         }
