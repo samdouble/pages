@@ -9,9 +9,6 @@ branches = ["master"]
 [brew]
 publish = false
 
-[changelog]
-publish = false
-
 [nuget]
 publish = false
 

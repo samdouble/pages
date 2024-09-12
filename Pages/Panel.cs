@@ -54,14 +54,14 @@ namespace Pages
             this.image.SetHeight(height);
         }
 
-        public float getLargeur()
+        public float GetWidth()
         {
-            return this.image.getLargeur();
+            return this.image.GetWidth();
         }
 
-        public float getHauteur()
+        public float GetHeight()
         {
-            return this.image.getHauteur();
+            return this.image.GetHeight();
         }
 
         public PointF getPosition()

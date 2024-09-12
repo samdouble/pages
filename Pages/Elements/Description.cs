@@ -1,5 +1,4 @@
 ﻿using iText.Kernel.Colors;
-using iText.Kernel.Pdf;
 using iText.Layout;
 using Pages.Elements;
 using System.Xml;
