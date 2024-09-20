@@ -4,6 +4,7 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Pages
 {
@@ -17,10 +18,11 @@ namespace Pages
             [Option('i', "images", Required = true, HelpText = "Path to the folder containing the images")]
             public string Images { get; set; } = string.Empty;
 
-            [Option('o', "output", Default = "Images.pdf", HelpText = "Name of the output PDF")]
+            [Option('o', "output", Default = "Images.pdf", HelpText = "Name of the generated PDF")]
             public string Output { get; set; } = string.Empty;
         }
 
+        [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(Options))]
         static void Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args)
