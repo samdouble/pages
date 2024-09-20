@@ -25,7 +25,7 @@ jobs:
           dotnet build
       - name: Release
         env:
-          PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           export PATH="$PATH:/root/.dotnet/tools"
           dotnet tool install --global dotnet-releaser
