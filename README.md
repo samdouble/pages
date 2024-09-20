@@ -1,13 +1,13 @@
-# pages
+# Panels
 
 This is a small application to export a comic book in PDF format from an XML configuration and a set of images.
 
 ## Technologies & Languages
 
-- C#
-- .NET
-- iText
-- CircleCI
+- C# 11
+- .NET 7
+- iText 8
+- GitHub Actions
 - GitHub Releases
 
 ## Production
