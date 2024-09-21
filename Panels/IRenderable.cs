@@ -1,6 +1,6 @@
 ﻿using iText.Layout;
 
-namespace Pages
+namespace Panels
 {
     interface IRenderable
     {

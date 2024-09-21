@@ -1,7 +1,7 @@
 using Xunit;
-using Pages;
+using Panels;
 
-namespace Pages.Tests.Services
+namespace Panels.Tests.Services
 {
     public class Program_IsPrimeShould
     {

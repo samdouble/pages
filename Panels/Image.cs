@@ -5,7 +5,7 @@ using iText.Kernel.Pdf.Xobject;
 using iText.Layout;
 using System;
 
-namespace Pages
+namespace Panels
 {
     public class Image : IPositionable, IRenderable
     {

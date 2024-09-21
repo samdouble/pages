@@ -1,12 +1,12 @@
 ﻿using iText.Layout;
-using Pages.Elements;
+using Panels.Elements;
 using SixLabors.ImageSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 
-namespace Pages
+namespace Panels
 {
     class Panel : IPositionable, IRenderable
     {

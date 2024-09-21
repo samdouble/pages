@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Description>pages</Description> 
+    <Description>panels</Description> 
     <Copyright>samdouble</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>samdouble</Authors>
     <PackageTags>releaser;packaging;deb;rpm;tool</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <PackageProjectUrl>https://github.com/samdouble/pages</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/samdouble/panels</PackageProjectUrl>
     <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <CustomResourceTypesSupport>true</CustomResourceTypesSupport>
