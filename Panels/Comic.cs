@@ -23,7 +23,7 @@ namespace Panels
 
         public Comic(string configFile, string imagesFolderPath)
         {
-            Encoding.RegisterProvider(CodePanelsEncodingProvider.Instance);
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             Console.WriteLine("Reading config file at " + @"" + configFile);
             this.imagesFolderPath = imagesFolderPath;
