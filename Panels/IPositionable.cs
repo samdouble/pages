@@ -1,4 +1,4 @@
-﻿namespace Pages
+﻿namespace Panels
 {
     interface IPositionable
     {

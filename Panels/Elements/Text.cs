@@ -6,7 +6,7 @@ using iText.Layout.Element;
 using System;
 using System.Xml;
 
-namespace Pages.Elements
+namespace Panels.Elements
 {
     class Text : Element
     {

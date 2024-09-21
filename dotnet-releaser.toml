@@ -1,9 +1,9 @@
 [msbuild]
-project = "Pages.sln"
+project = "Panels.sln"
 
 [github]
 user = "samdouble"
-repo = "pages"
+repo = "panels"
 branches = ["master"]
 
 [brew]

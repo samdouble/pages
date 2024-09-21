@@ -1,9 +1,9 @@
 ﻿using iText.Kernel.Colors;
 using iText.Layout;
-using Pages.Elements;
+using Panels.Elements;
 using System.Xml;
 
-namespace Pages
+namespace Panels
 {
     class Description : Text
     {

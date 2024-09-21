@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace Pages
+namespace Panels
 {
     class Comic : IRenderable
     {
@@ -23,7 +23,7 @@ namespace Pages
 
         public Comic(string configFile, string imagesFolderPath)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            Encoding.RegisterProvider(CodePanelsEncodingProvider.Instance);
 
             Console.WriteLine("Reading config file at " + @"" + configFile);
             this.imagesFolderPath = imagesFolderPath;

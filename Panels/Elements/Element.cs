@@ -1,7 +1,7 @@
 ﻿using iText.Layout;
 using System.Xml;
 
-namespace Pages
+namespace Panels
 {
     public abstract class Element : IPositionable, IRenderable
     {

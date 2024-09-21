@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Pages": {
+    "Panels": {
       "commandName": "Project",
       "commandLineArgs": "--output Images.pdf\r\n--config BD1/bd.xml\r\n--images BD1/images",
       "workingDirectory": "C:\\Users\\samle\\Desktop\\Projets\\BD"

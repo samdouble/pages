@@ -1,4 +1,4 @@
-name: Lint Commit Messages
+name: Checks
 on: [pull_request]
 
 permissions:

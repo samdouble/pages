@@ -13,8 +13,8 @@ This is a small application to export a comic book in PDF format from an XML con
 ## Production
 
 1. Change the version number in the *csproj* file.
-1. Push your changes to any branch.
-2. dotnet-releaser on CircleCI will create a new release on GitHub.
+2. Merge to the `master` branch.
+3. dotnet-releaser on CircleCI will create a new GitHub Release.
 
 ## How to Use
 
