@@ -19,6 +19,7 @@ jobs:
           dotnet-version: '7.0'
       - name: Audit
         run: |
+          dotnet restore
           dotnet list package --vulnerable --include-transitive
       - name: Test
         run: |
