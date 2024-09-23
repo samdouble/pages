@@ -17,6 +17,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '7.0'
+      - name: Audit
+        run: |
+          dotnet list package --vulnerable --include-transitive
       - name: Test
         run: |
           dotnet test
