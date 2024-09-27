@@ -1,5 +1,4 @@
 ﻿using iText.Kernel.Geom;
-using iText.Kernel.Pdf;
 using iText.Layout;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ namespace Panels
 {
     class Comic : IRenderable
     {
-        private List<Slot> slots = new List<Slot>();
+        private List<object> children = new List<object>();
         private float leftMargin;
         private float rightMargin;
         private float topMargin;
@@ -38,8 +37,15 @@ namespace Panels
             this.verticalPanelSpacing = float.Parse(xmlComic.Attributes["verticalPanelSpacing"].InnerText);
             this.rowsPerPage = float.Parse(xmlComic.Attributes["rowsPerPage"].InnerText);
 
-            List<XmlNode> xmlSlots = new List<XmlNode>(xmlComic.ChildNodes.Cast<XmlNode>());
-            this.slots.AddRange(xmlSlots.Select(xmlSlot => new Slot(this, xmlSlot)));
+            List<XmlNode> xmlNodes = new List<XmlNode>(xmlComic.ChildNodes.Cast<XmlNode>());
+            foreach (XmlNode xmlNode in xmlNodes) {
+                if (xmlNode.Name == "newpage") {
+                    this.children.Add(new NewPage(this, xmlNode));
+                }
+                if (xmlNode.Name == "slot") {
+                    this.children.Add(new Slot(this, xmlNode));
+                }
+            }
         }
 
         public string GetImagesFolderPath()
@@ -57,39 +63,52 @@ namespace Panels
         {
             PageSize pageSize = doc.GetPdfDocument().GetDefaultPageSize();
             float hauteurCase = (pageSize.GetHeight() - this.topMargin - this.bottomMargin - (this.rowsPerPage - 1) * this.verticalPanelSpacing) / this.rowsPerPage;
-            float largeurRangee = pageSize.GetWidth() - this.rightMargin - this.leftMargin;
+            float rowWidth = pageSize.GetWidth() - this.rightMargin - this.leftMargin;
             int page = 1;
             float x = 0;
             float y = hauteurCase + this.verticalPanelSpacing;
             float noRangee = 1;
-            for (int i = 0; i < this.slots.Count;)
+            for (int i = 0; i < this.children.Count;)
             {
-                int nbCasesDansLaRangee = 0;
+                // Handle newpage elements
+                if (this.children[i].GetType() == typeof(NewPage)) {
+                    if (x != 0 || y != 0) {
+                        doc.GetPdfDocument().AddNewPage();
+                        page++;
+                        x = 0;
+                        y = 0;
+                    }
+                    i++;
+                    continue;
+                }
 
+                int nbPanelsInRow = 0;
                 // On trouve le nombre de cases qu'on peut fitter dans la rangée
-                float largeurMin = 0;
-                float largeurMax = 0;
-                for (; i + nbCasesDansLaRangee < this.slots.Count && largeurMin < largeurRangee; ++nbCasesDansLaRangee)
+                float minWidth = 0;
+                float maxWidth = 0;
+                for (; i + nbPanelsInRow < this.children.Count && minWidth < rowWidth; ++nbPanelsInRow)
                 {
-                    Slot slot = this.slots[i + nbCasesDansLaRangee];
+                    if (this.children[i + nbPanelsInRow].GetType() != typeof(Slot))
+                        break;
+                    Slot slot = (Slot) this.children[i + nbPanelsInRow];
                     slot.SetHeight(hauteurCase);
                     float largeurMinCase = slot.GetMinWidth();
                     float largeurMaxCase = slot.GetMaxWidth();
-                    if (largeurMin + largeurMinCase + (nbCasesDansLaRangee >= 1 ? this.horizontalPanelSpacing : 0) > largeurRangee)
+                    if (minWidth + largeurMinCase + (nbPanelsInRow >= 1 ? this.horizontalPanelSpacing : 0) > rowWidth)
                         break;
-                    largeurMin += largeurMinCase + (nbCasesDansLaRangee >= 1 ? this.horizontalPanelSpacing : 0);
-                    largeurMax += largeurMaxCase + (nbCasesDansLaRangee >= 1 ? this.horizontalPanelSpacing : 0);
+                    minWidth += largeurMinCase + (nbPanelsInRow >= 1 ? this.horizontalPanelSpacing : 0);
+                    maxWidth += largeurMaxCase + (nbPanelsInRow >= 1 ? this.horizontalPanelSpacing : 0);
                 }
 
                 // =============================
 
                 float decoupage = 0;
-                float decoupageTotal = largeurRangee - largeurMin;
-                float decoupageAlloueParCase = decoupageTotal / nbCasesDansLaRangee;
+                float decoupageTotal = rowWidth - minWidth;
+                float decoupageAlloueParCase = decoupageTotal / nbPanelsInRow;
 
                 List<Slot> espacesSurLaRangee = new List<Slot>();
-                for (int j = 0; j < nbCasesDansLaRangee; ++j)
-                    espacesSurLaRangee.Add(this.slots[i + j]);
+                for (int j = 0; j < nbPanelsInRow; ++j)
+                    espacesSurLaRangee.Add((Slot) this.children[i + j]);
 
                 // On essaie d'égaliser les côtés de chaque bord des images
                 foreach (Slot espace in espacesSurLaRangee)
@@ -141,7 +160,7 @@ namespace Panels
                     x += espace.GetWidth() + this.horizontalPanelSpacing;
                 }
                 x = 0;
-                i += nbCasesDansLaRangee;
+                i += nbPanelsInRow;
                 ++noRangee;
 
                 if (noRangee % this.rowsPerPage == 0)
