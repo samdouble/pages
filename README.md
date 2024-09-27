@@ -5,7 +5,7 @@ This is a small application to export a comic book in PDF format from an XML con
 ## Technologies & Languages
 
 - C# 11
-- .NET 8
+- .NET 7
 - iText 8
 - GitHub Actions
 - GitHub Releases
