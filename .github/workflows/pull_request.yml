@@ -9,6 +9,8 @@ jobs:
   checks:
     runs-on: ubuntu-latest
     steps:
+      - name: Commitlint
+        uses: wagoid/commitlint-github-action@v6
       - name: Checkout
         uses: actions/checkout@v4
       - name: Commitlint

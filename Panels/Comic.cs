@@ -75,6 +75,7 @@ namespace Panels
                     if (x != 0 || y != 0) {
                         doc.GetPdfDocument().AddNewPage();
                         page++;
+                        noRangee = page * this.rowsPerPage;
                         x = 0;
                         y = 0;
                     }
