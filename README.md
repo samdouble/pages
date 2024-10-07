@@ -15,7 +15,7 @@ This is a small application to export a comic book in PDF format from an XML con
 ### Running locally
 
 ```
-dotnet run --project Panels --framework net8.0 -- -c ~/Desktop/github/proj/bd1/BD0/bd.xml -i ~/Desktop/github/proj/bd1/BD0/images
+dotnet run --project Panels -- -c ~/Desktop/github/proj/bd1/BD0/bd.xml -i ~/Desktop/github/proj/bd1/BD0/images
 ```
 
 ### Testing
